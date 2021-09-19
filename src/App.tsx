@@ -21,6 +21,7 @@ import { MenuIcon, SearchIcon, ShoppingCartIcon, UserIcon, XIcon } from '@heroic
 import { InstagramIcon } from './assets/instagram'
 import { WhatsAppIcon } from './assets/WhatsappIcon'
 import ZatarHeaderImage from './assets/header-zatar.jpeg'
+import LeafLogo from './assets/leaf-logo.png'
 
 const currencies = ['CAD', 'USD', 'AUD', 'EUR', 'GBP']
 const navigation = {
@@ -208,11 +209,11 @@ export default function Example() {
                 <div className="h-16 flex items-center justify-between">
                   {/* Logo (lg+) */}
                   <div className="lg:flex lg:items-center">
-                    <a href="#">
-                      <span className="sr-only">Workflow</span>
+                    <a href="/">
+                      <span className="sr-only">ZatarSamar</span>
                       <img
                         className="h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600"
+                        src={LeafLogo}
                         alt=""
                       />
                     </a>
@@ -243,11 +244,11 @@ export default function Example() {
         {/* Hero */}
         <div className="flex flex-col border-b border-gray-200 lg:border-0">
           <div className="relative">
-            <div aria-hidden="true" className="hidden absolute w-1/2 h-full bg-gray-100 lg:block" />
+            <div aria-hidden="true" className="hidden absolute w-1/2 h-full bg-gray-50 lg:block" />
 
 
 
-            <div className="w-full h-48 sm:h-64 lg:absolute lg:top-0 lg:right-0 lg:w-1/2 lg:h-full">
+            <div className="w-full h-36 sm:h-64 lg:absolute lg:top-0 lg:right-0 lg:w-1/2 lg:h-full">
               <img
                 src={ZatarHeaderImage}
                 alt=""
@@ -255,30 +256,32 @@ export default function Example() {
               />
             </div>
 
-            <div className="relative bg-gray-100 lg:bg-transparent text-right">
+            <div className="relative bg-gray-50 lg:bg-transparent text-right">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:grid lg:grid-cols-2">
-                <div className="max-w-2xl mx-auto py-10 lg:py-64 lg:max-w-none">
+                <div className="max-w-2xl mx-auto py-5 lg:py-64 lg:max-w-none">
                   <div className="lg:pr-16">
-                    <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl xl:text-6xl">
+                    <h1 className="text-3xl sm:text-5xl xl:text-6xl font-extrabold tracking-tight text-gray-900">
                       زعتر سمر
                     </h1>
-                    <div className="mt-4 space-x-6 flex justify-end">
+                    <div className="text-xs sm:text-base lg:mt-4 space-x-6 flex justify-end">
                         <a
-                          href="#"
-                          className="text-gray-400 hover:text-gray-500 group flex items-center px-2 py-2 text-base font-medium"
+                          href="https://www.instagram.com/zatarsamar/"
+                          className="text-gray-400 hover:text-gray-500 group flex items-center px-2 py-2 font-medium"
+                          target="_blank" rel="noopener noreferrer"
                         >
                           <InstagramIcon className="mr-1 flex-shrink-0 h-6 w-6" aria-hidden="true" />
                           ZatarSamar
                         </a>
                         <a href="https://wa.me/96565544219"
-                        className="text-gray-400 hover:text-gray-500 group flex items-center px-2 py-2 text-base font-medium"
+                        className="text-gray-400 hover:text-gray-500 group flex items-center px-2 py-2 font-medium"
+                        target="_blank" rel="noopener noreferrer"
                         >
                           <WhatsAppIcon className="mr-1 flex-shrink-0 h-6 w-6" aria-hidden="true" />
                           wa.me/96565544219
                         </a>
                     </div>
-                    <hr className="mt-4" />
-                    <p className="mt-4 text-xl text-gray-600">
+                    <hr className="mt-4 hidden lg:block" />
+                    <p className="mt-4 text-sm sm:text-xl text-gray-600">
                     مشروع كويتي - زعتر أصلي درجة أولى - دُقة (زعتر أحمر) أجود أنواع الزعتر الفلسطيني
                     </p>
                   </div>
@@ -292,20 +295,16 @@ export default function Example() {
 
         {/* Trending products */}
         <section aria-labelledby="trending-heading" className="bg-white">
-          <div className="py-16 sm:py-24 lg:max-w-7xl lg:mx-auto lg:py-32 lg:px-8">
-            <div className="px-4 flex items-center justify-between sm:px-6 lg:px-0">
-              <h2 id="trending-heading" className="text-2xl font-extrabold tracking-tight text-gray-900">
-                Trending products
+          <div className="text-right py-9 sm:py-24 lg:max-w-7xl lg:mx-auto lg:py-32 lg:px-8">
+            <div className="px-4 flex items-center justify-end sm:px-6 lg:px-0">
+              <h2 id="trending-heading" className="text-3xl sm:text-5xl font-extrabold tracking-tight text-gray-900">
+                منتجاتنا
               </h2>
-              <a href="#" className="hidden sm:block text-sm font-semibold text-indigo-600 hover:text-indigo-500">
-                See everything<span aria-hidden="true"> &rarr;</span>
-              </a>
             </div>
 
             <div className="mt-8 relative">
               <div className="relative w-full overflow-x-auto">
                 <ul
-                  role="list"
                   className="mx-4 inline-flex space-x-8 sm:mx-6 lg:mx-0 lg:space-x-0 lg:grid lg:grid-cols-4 lg:gap-x-8"
                 >
                   {trendingProducts.map((product) => (
