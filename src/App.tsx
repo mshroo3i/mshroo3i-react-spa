@@ -15,84 +15,13 @@
   }
   ```
 */
-import { Fragment, useState } from 'react'
-import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
-import { MenuIcon, SearchIcon, ShoppingCartIcon, UserIcon, XIcon } from '@heroicons/react/outline'
+import { ShoppingCartIcon } from '@heroicons/react/outline'
 import { InstagramIcon } from './assets/instagram'
 import { WhatsAppIcon } from './assets/WhatsappIcon'
 import ZatarHeaderImage from './assets/header-zatar.jpeg'
 import LeafLogo from './assets/leaf-logo.png'
+import { Boom } from './boom'
 
-const currencies = ['CAD', 'USD', 'AUD', 'EUR', 'GBP']
-const navigation = {
-  categories: [
-    {
-      name: 'Women',
-      featured: [
-        { name: 'Sleep', href: '#' },
-        { name: 'Swimwear', href: '#' },
-        { name: 'Underwear', href: '#' },
-      ],
-      collection: [
-        { name: 'Everything', href: '#' },
-        { name: 'Core', href: '#' },
-        { name: 'New Arrivals', href: '#' },
-        { name: 'Sale', href: '#' },
-      ],
-      categories: [
-        { name: 'Basic Tees', href: '#' },
-        { name: 'Artwork Tees', href: '#' },
-        { name: 'Bottoms', href: '#' },
-        { name: 'Underwear', href: '#' },
-        { name: 'Accessories', href: '#' },
-      ],
-      brands: [
-        { name: 'Full Nelson', href: '#' },
-        { name: 'My Way', href: '#' },
-        { name: 'Re-Arranged', href: '#' },
-        { name: 'Counterfeit', href: '#' },
-        { name: 'Significant Other', href: '#' },
-      ],
-    },
-    {
-      name: 'Men',
-      featured: [
-        { name: 'Casual', href: '#' },
-        { name: 'Boxers', href: '#' },
-        { name: 'Outdoor', href: '#' },
-      ],
-      collection: [
-        { name: 'Everything', href: '#' },
-        { name: 'Core', href: '#' },
-        { name: 'New Arrivals', href: '#' },
-        { name: 'Sale', href: '#' },
-      ],
-      categories: [
-        { name: 'Artwork Tees', href: '#' },
-        { name: 'Pants', href: '#' },
-        { name: 'Accessories', href: '#' },
-        { name: 'Boxers', href: '#' },
-        { name: 'Basic Tees', href: '#' },
-      ],
-      brands: [
-        { name: 'Significant Other', href: '#' },
-        { name: 'My Way', href: '#' },
-        { name: 'Counterfeit', href: '#' },
-        { name: 'Re-Arranged', href: '#' },
-        { name: 'Full Nelson', href: '#' },
-      ],
-    },
-  ],
-  pages: [
-    { name: 'Company', href: '#' },
-    { name: 'Stores', href: '#' },
-  ],
-}
-const offers = [
-  { name: 'Download the app', description: 'Get an exclusive $5 off code', href: '#' },
-  { name: "Return when you're ready", description: '60 days of free returns', href: '#' },
-  { name: 'Sign up for our newsletter', description: '15% off your first order', href: '#' },
-]
 const trendingProducts = [
   {
     id: 1,
@@ -191,9 +120,6 @@ const footerNavigation = {
   ],
 }
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
-}
 
 export default function Example() {
 
@@ -243,10 +169,9 @@ export default function Example() {
       <main>
         {/* Hero */}
         <div className="flex flex-col border-b border-gray-200 lg:border-0">
-          <div className="relative">
-            <div aria-hidden="true" className="hidden absolute w-1/2 h-full bg-gray-50 lg:block" />
+          <div className="relative ">
 
-
+            <div aria-hidden="true" className="hidden absolute w-1/2 h-full bg-white lg:block" />
 
             <div className="w-full h-36 sm:h-64 lg:absolute lg:top-0 lg:right-0 lg:w-1/2 lg:h-full">
               <img
@@ -256,9 +181,9 @@ export default function Example() {
               />
             </div>
 
-            <div className="relative bg-gray-50 lg:bg-transparent text-right">
+            <div className="relative bg-white lg:bg-transparent text-right">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:grid lg:grid-cols-2">
-                <div className="max-w-2xl mx-auto py-5 lg:py-64 lg:max-w-none">
+                <div className="max-w-2xl mx-auto py-5 lg:py-24 lg:max-w-none">
                   <div className="lg:pr-16">
                     <h1 className="text-3xl sm:text-5xl xl:text-6xl font-extrabold tracking-tight text-gray-900">
                       زعتر سمر
@@ -289,69 +214,23 @@ export default function Example() {
               </div>
             </div>
 
-
           </div>
         </div>
 
         {/* Trending products */}
-        <section aria-labelledby="trending-heading" className="bg-white">
-          <div className="text-right py-9 sm:py-24 lg:max-w-7xl lg:mx-auto lg:py-32 lg:px-8">
+        <section aria-labelledby="trending-heading" className="bg-gray-50">
+          <div className="text-right py-4 sm:py-9 lg:max-w-7xl lg:mx-auto lg:px-8">
             <div className="px-4 flex items-center justify-end sm:px-6 lg:px-0">
               <h2 id="trending-heading" className="text-3xl sm:text-5xl font-extrabold tracking-tight text-gray-900">
                 منتجاتنا
               </h2>
             </div>
 
+            <Boom />
             <div className="mt-8 relative">
-              <div className="relative w-full overflow-x-auto">
-                <ul
-                  className="mx-4 inline-flex space-x-8 sm:mx-6 lg:mx-0 lg:space-x-0 lg:grid lg:grid-cols-4 lg:gap-x-8"
-                >
-                  {trendingProducts.map((product) => (
-                    <li key={product.id} className="w-64 inline-flex flex-col text-center lg:w-auto">
-                      <div className="group relative">
-                        <div className="w-full bg-gray-200 rounded-md overflow-hidden aspect-w-1 aspect-h-1">
-                          <img
-                            src={product.imageSrc}
-                            alt={product.imageAlt}
-                            className="w-full h-full object-center object-cover group-hover:opacity-75"
-                          />
-                        </div>
-                        <div className="mt-6">
-                          <p className="text-sm text-gray-500">{product.color}</p>
-                          <h3 className="mt-1 font-semibold text-gray-900">
-                            <a href={product.href}>
-                              <span className="absolute inset-0" />
-                              {product.name}
-                            </a>
-                          </h3>
-                          <p className="mt-1 text-gray-900">{product.price}</p>
-                        </div>
-                      </div>
-
-                      <h4 className="sr-only">Available colors</h4>
-                      <ul role="list" className="mt-auto pt-6 flex items-center justify-center space-x-3">
-                        {product.availableColors.map((color) => (
-                          <li
-                            key={color.name}
-                            className="w-4 h-4 rounded-full border border-black border-opacity-10"
-                            style={{ backgroundColor: color.colorBg }}
-                          >
-                            <span className="sr-only">{color.name}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </li>
-                  ))}
-                </ul>
-              </div>
             </div>
 
-            <div className="mt-12 px-4 sm:hidden">
-              <a href="#" className="text-sm font-semibold text-indigo-600 hover:text-indigo-500">
-                See everything<span aria-hidden="true"> &rarr;</span>
-              </a>
-            </div>
+
           </div>
         </section>
 
