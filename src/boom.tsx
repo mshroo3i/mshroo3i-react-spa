@@ -45,7 +45,7 @@ const orders =  [
 
 export function Boom() {
   return (
-      <div className="py-4">
+      <div className="pt-4">
           <div className="grid gap-2 mb-8 md:grid-cols-1 lg:grid-cols-2 ltr md:rtl">
               <React.Fragment>
                     {orders.map((product) => (
