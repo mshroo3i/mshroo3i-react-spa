@@ -82,11 +82,11 @@ const navigation = {
 
   export function Footer() {
     return (
-      <footer className="bg-white text-right" aria-labelledby="footer-heading">
+      <footer className="bg-gray-50 border-t text-right" aria-labelledby="footer-heading">
         <h2 id="footer-heading" className="sr-only">
           Footer
         </h2>
-        <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+        <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-14 lg:px-8">
               <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
                 Subscribe to our newsletter
               </h3>

@@ -169,7 +169,7 @@ export default function Example() {
 
       <main>
         {/* Hero */}
-        <div className="flex flex-col border-b border-gray-200 lg:border-0">
+        <div className="flex flex-col border-b border-gray-200 ">
           <div className="relative ">
 
             <div aria-hidden="true" className="hidden absolute w-1/2 h-full bg-white lg:block" />
@@ -184,7 +184,7 @@ export default function Example() {
 
             <div className="relative bg-white lg:bg-transparent text-right">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:grid lg:grid-cols-2">
-                <div className="max-w-2xl mx-auto py-5 lg:py-24 lg:max-w-none">
+                <div className="max-w-2xl mx-auto py-5 lg:py-32 lg:max-w-none">
                   <div className="lg:pr-16">
                     <h1 className="text-3xl sm:text-5xl xl:text-6xl font-extrabold tracking-tight text-gray-900">
                       زعتر سمر
@@ -219,9 +219,9 @@ export default function Example() {
         </div>
 
         {/* Products */}
-        <section aria-labelledby="trending-heading" className="bg-gray-50">
-          <div className="text-right py-4 sm:py-9 lg:max-w-7xl lg:mx-auto lg:px-8">
-            <div className="px-4 flex items-center justify-end sm:px-6 lg:px-0">
+        <section aria-labelledby="trending-heading" className="">
+          <div className="text-right pt-8  sm:py-9 lg:max-w-7xl lg:mx-auto lg:px-8">
+            <div className="pb-4 px-4 flex items-center justify-end sm:px-6 lg:px-0">
               <h2 id="trending-heading" className="text-3xl sm:text-5xl font-extrabold tracking-tight text-gray-900">
                 منتجاتنا
               </h2>
