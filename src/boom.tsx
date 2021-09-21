@@ -1,5 +1,3 @@
-/* This example requires Tailwind CSS v2.0+ */
-import { CheckIcon } from '@heroicons/react/outline'
 import React from 'react'
 
 const orders =  [
@@ -9,7 +7,7 @@ const orders =  [
         description:
           "This durable double-walled insulated tumbler keeps your beverages at the perfect.",
         href: '#',
-        price: '$35.00',
+        price: '‏١٫٥٠٠ د.ك',
         status: 'out-for-delivery',
         date: 'January 5, 2021',
         datetime: '2021-01-05',
@@ -22,7 +20,7 @@ const orders =  [
         description:
           "This durable double-walled insulated tumbler keeps your beverages at the perfect.",
         href: '#',
-        price: '$35.00',
+        price: '‏١٫٥٠٠ د.ك',
         status: 'out-for-delivery',
         date: 'January 5, 2021',
         datetime: '2021-01-05',
@@ -35,7 +33,7 @@ const orders =  [
         description:
           "This durable double-walled insulated tumbler keeps your beverages at the perfect.",
         href: '#',
-        price: '$35.00',
+        price: '‏١٫٥٠٠ د.ك',
         status: 'out-for-delivery',
         date: 'January 5, 2021',
         datetime: '2021-01-05',
@@ -48,10 +46,10 @@ const orders =  [
 export function Boom() {
   return (
       <div className="py-4">
-          <div className="grid gap-2 mb-8 md:grid-cols-1 lg:grid-cols-2 ">
+          <div className="grid gap-2 mb-8 md:grid-cols-1 lg:grid-cols-2 ltr md:rtl">
               <React.Fragment>
                     {orders.map((product) => (
-                      <a href="#" key={product.id} className="flex flex-row-reverse md:flex-row lg:flex shadow-sm rounded bg-white hover:shadow-md">
+                      <a href="#" key={product.id} className="relative flex flex-row-reverse md:flex-row lg:flex shadow-sm rounded bg-white hover:shadow-md ltr">
                         <div className="px-2 py-4 sm:py-10 min-w-0 flex-1 lg:flex lg:flex-col">
                           <div className="lg:flex-1">
                               <div>
@@ -67,6 +65,7 @@ export function Boom() {
                             className="col-start-2 col-end-3 sm:col-start-1 sm:row-start-1 sm:row-span-2 object-center object-cover h-full max-h-32 md:max-h-40" //
                           />}
                         </div>
+                        <div className="absolute top-2 left-2 py-1 px-1 text-sm lg:text-base font-bold bg-white text-gray-800 rounded">{product.price}</div>
                       </a>
                     ))}
               </React.Fragment>
