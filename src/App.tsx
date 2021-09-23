@@ -23,104 +23,6 @@ import LeafLogo from './assets/leaf-logo.png'
 import { Boom } from './boom'
 import { Footer } from './Footer'
 
-const trendingProducts = [
-  {
-    id: 1,
-    name: 'Machined Pen',
-    color: 'Black',
-    price: '$35',
-    href: '#',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-product-01.jpg',
-    imageAlt: 'Black machined steel pen with hexagonal grip and small white logo at top.',
-    availableColors: [
-      { name: 'Black', colorBg: '#111827' },
-      { name: 'Brass', colorBg: '#FDE68A' },
-      { name: 'Chrome', colorBg: '#E5E7EB' },
-    ],
-  },
-  // More products...
-]
-const collections = [
-  {
-    name: 'Desk and Office',
-    description: 'Work from home accessories',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-01.jpg',
-    imageAlt: 'Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug.',
-    href: '#',
-  },
-  {
-    name: 'Self-Improvement',
-    description: 'Journals and note-taking',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-02.jpg',
-    imageAlt: 'Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant.',
-    href: '#',
-  },
-  {
-    name: 'Travel',
-    description: 'Daily commute essentials',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-03.jpg',
-    imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
-    href: '#',
-  },
-]
-const testimonials = [
-  {
-    id: 1,
-    quote:
-      'My order arrived super quickly. The product is even better than I hoped it would be. Very happy customer over here!',
-    attribution: 'Sarah Peters, New Orleans',
-  },
-  {
-    id: 2,
-    quote:
-      'I had to return a purchase that didn’t fit. The whole process was so simple that I ended up ordering two new items!',
-    attribution: 'Kelly McPherson, Chicago',
-  },
-  {
-    id: 3,
-    quote:
-      'Now that I’m on holiday for the summer, I’ll probably order a few more shirts. It’s just so convenient, and I know the quality will always be there.',
-    attribution: 'Chris Paul, Phoenix',
-  },
-]
-const footerNavigation = {
-  products: [
-    { name: 'Bags', href: '#' },
-    { name: 'Tees', href: '#' },
-    { name: 'Objects', href: '#' },
-    { name: 'Home Goods', href: '#' },
-    { name: 'Accessories', href: '#' },
-  ],
-  customerService: [
-    { name: 'Contact', href: '#' },
-    { name: 'Shipping', href: '#' },
-    { name: 'Returns', href: '#' },
-    { name: 'Warranty', href: '#' },
-    { name: 'Secure Payments', href: '#' },
-    { name: 'FAQ', href: '#' },
-    { name: 'Find a store', href: '#' },
-  ],
-  company: [
-    { name: 'Who we are', href: '#' },
-    { name: 'Sustainability', href: '#' },
-    { name: 'Press', href: '#' },
-    { name: 'Careers', href: '#' },
-    { name: 'Terms & Conditions', href: '#' },
-    { name: 'Privacy', href: '#' },
-  ],
-  legal: [
-    { name: 'Terms of Service', href: '#' },
-    { name: 'Return Policy', href: '#' },
-    { name: 'Privacy Policy', href: '#' },
-    { name: 'Shipping Policy', href: '#' },
-  ],
-  bottomLinks: [
-    { name: 'Accessibility', href: '#' },
-    { name: 'Privacy', href: '#' },
-    { name: 'Terms', href: '#' },
-  ],
-}
-
 
 export default function Example() {
 
@@ -149,7 +51,7 @@ export default function Example() {
                   <div className="flex-1 flex items-center justify-end">
                     <div className="flex items-center lg:ml-8">
                       <div className="flow-root">
-                        <a href="#" className="group -m-2 p-2 flex items-center">
+                        <a href="/" className="group -m-2 p-2 flex items-center">
                           <ShoppingCartIcon
                             className="flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500"
                             aria-hidden="true"

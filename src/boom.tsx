@@ -7,7 +7,7 @@ export function Boom() {
           <div className="grid gap-2 mb-8 md:grid-cols-1 lg:grid-cols-2 ltr md:rtl">
               <React.Fragment>
                     {products.map((product) => (
-                      <a href="#" key={product.id} className="relative flex flex-row-reverse md:flex-row lg:flex shadow-sm rounded border rounded hover:shadow-md ltr">
+                      <a href="/" key={product.id} className="relative flex flex-row-reverse md:flex-row lg:flex shadow-sm rounded border hover:shadow-md ltr">
                         <div className="px-2 py-4 sm:py-10 min-w-0 flex-1 lg:flex lg:flex-col">
                           <div className="lg:flex-1">
                               <div>
