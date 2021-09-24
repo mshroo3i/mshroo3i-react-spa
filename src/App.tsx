@@ -22,6 +22,7 @@ import ZatarHeaderImage from './assets/header-zatar.jpeg'
 import LeafLogo from './assets/leaf-logo.png'
 import { Boom } from './boom'
 import { Footer } from './Footer'
+import { Banner } from './Banner'
 
 
 export default function Example() {
@@ -48,7 +49,7 @@ export default function Example() {
                     </a>
                   </div>
 
-                  <div className="flex-1 flex items-center justify-end">
+                  {/* <div className="flex-1 flex items-center justify-end">
                     <div className="flex items-center lg:ml-8">
                       <div className="flow-root">
                         <a href="/" className="group -m-2 p-2 flex items-center">
@@ -61,7 +62,7 @@ export default function Example() {
                         </a>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -76,7 +77,7 @@ export default function Example() {
 
             <div aria-hidden="true" className="hidden absolute w-1/2 h-full bg-white lg:block" />
 
-            <div className="w-full h-36 sm:h-64 lg:absolute lg:top-0 lg:right-0 lg:w-1/2 lg:h-full">
+            <div className="w-full h-52 sm:h-64 lg:absolute lg:top-0 lg:right-0 lg:w-1/2 lg:h-full">
               <img
                 src={ZatarHeaderImage}
                 alt=""
@@ -137,6 +138,8 @@ export default function Example() {
       </main>
 
       <Footer></Footer>
+
+      <Banner></Banner>
 
       {/* <footer aria-labelledby="footer-heading" className="bg-white">
         <h2 id="footer-heading" className="sr-only">
