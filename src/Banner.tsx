@@ -1,15 +1,4 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { SpeakerphoneIcon, XIcon } from '@heroicons/react/outline'
-
-const enum Status {
-    BROWSING_PRODUCTS = "BROWSING_PRODUCTS",
-    PRODUCT_VIEW = "PRODUCT_VIEW"
-}
-
-interface Props {
-    Status: Status,
-
-}
 
 export function Banner(props: any) {
     return (

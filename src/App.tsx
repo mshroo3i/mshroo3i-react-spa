@@ -15,7 +15,6 @@
   }
   ```
 */
-import { ShoppingCartIcon } from '@heroicons/react/outline'
 import { InstagramIcon } from './assets/instagram'
 import { WhatsAppIcon } from './assets/WhatsappIcon'
 import ZatarHeaderImage from './assets/header-zatar.jpeg'
