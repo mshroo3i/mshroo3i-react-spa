@@ -22,6 +22,7 @@ import LeafLogo from './assets/leaf-logo.png'
 import { Boom } from './boom'
 import { Footer } from './Footer'
 import { Banner } from './Banner'
+import { Modal } from './Modal'
 
 
 export default function Example() {
@@ -139,6 +140,8 @@ export default function Example() {
       <Footer></Footer>
 
       <Banner></Banner>
+
+      <Modal />
 
       {/* <footer aria-labelledby="footer-heading" className="bg-white">
         <h2 id="footer-heading" className="sr-only">
