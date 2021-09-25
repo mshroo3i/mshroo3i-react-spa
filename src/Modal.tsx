@@ -9,7 +9,7 @@ const product = products[0];
 const Customizations = ({ customizations }: { customizations: Customization[] }) => (
     <div className="flex flex-col gap-y-5">
     {customizations.map(c => (
-      <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline px-1 rtl">
+      <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline px-1 pb-1 rtl">
         <div>
           <div
             className="text-base font-medium text-gray-900 sm:text-sm sm:text-gray-700"
@@ -24,12 +24,12 @@ const Customizations = ({ customizations }: { customizations: Customization[] })
               {c.choices.map(choice => (
                 <div className="flex items-center">
                   <input
-                    id="push-everything"
-                    name="push-notifications"
+                    id={choice.id.toString()}
+                    name={c.description}
                     type="radio"
                     className="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300"
                   />
-                  <label htmlFor="push-everything" className="mx-3 block text-sm  font-normal text-gray-700">
+                  <label htmlFor={choice.id.toString()} className="mx-3 block text-sm  font-normal text-gray-700">
                     {choice.text} {choice.price.toFormattedString()}
                   </label>
                 </div>

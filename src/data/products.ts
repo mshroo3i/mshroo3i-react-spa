@@ -8,7 +8,7 @@ import { Price } from '../lib/price';
 export interface Customization {
     description: string,
     inputType: CustomizationOptionType
-    choices: Array<{ text: string, price: Price }>
+    choices: Array<{ id: number, text: string, price: Price }>
 }
 
 export interface Product {
@@ -40,8 +40,10 @@ export const products: Product[] = [
                 description: "الحجم",
                 inputType: CustomizationOptionType.Radio,
                 choices: [
-                    { text: "علبه ريع كيلو", price: new Price(2)},
-                    { text: "علبه نص كيلو", price: new Price(4)},
+                    { id: 1, text: "علبه ريع كيلو", price: new Price(2)},
+                    { id: 2, text: "علبه نص كيلو", price: new Price(4)},
+                    // { text: "علبه نص كيلو", price: new Price(4)},
+                    // { text: "علبه نص كيلو", price: new Price(4)},
                 ]
             },
         ]
