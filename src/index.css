@@ -16,6 +16,10 @@ code {
     monospace;
 }
 
+.max-modal-scrollable-height {
+  max-height: 50vh;
+}
+
 @responsive {
   .ltr {
     direction: ltr;

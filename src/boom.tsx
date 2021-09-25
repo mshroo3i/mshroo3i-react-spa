@@ -23,7 +23,7 @@ export function Boom() {
                             className="col-start-2 col-end-3 sm:col-start-1 sm:row-start-1 sm:row-span-2 object-center object-cover h-full max-h-32 md:max-h-40" //
                           />}
                         </div>
-                        <div className="absolute top-2 left-2 py-1 px-1 text-sm lg:text-base font-bold bg-white text-gray-800 rounded bg-opacity-75">{product.price}</div>
+                        <div className="absolute top-2 left-2 py-1 px-1 text-sm lg:text-base font-bold bg-white text-gray-800 rounded bg-opacity-75">{product.price.toFormattedString()}</div>
                       </a>
                     ))}
               </React.Fragment>
