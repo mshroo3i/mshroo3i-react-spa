@@ -7,7 +7,33 @@ import { products, Customization } from '../data/products'
 const product = products[0];
 
 const Customizations = ({ customizations }: { customizations: Customization[] }) => (
-    <div className="flex flex-col gap-y-5">
+  <div className="flex flex-col gap-y-5">
+    <div className="mt-4 sm:mt-0 flex justify-start flex-row-reverse items-center text-base font-medium text-gray-900 sm:text-sm sm:text-gray-700">
+      <label htmlFor={`quantity-${product.id}`} className="block ml-4">
+        الكمية
+      </label>
+      <select
+        id={`quantity-${product.id}`}
+        name={`quantity-${product.id}`}
+        className="max-w-full rounded-md border border-gray-300 py-1.5 text-base leading-5 font-medium text-gray-700 text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+      >
+        <option value={1}>1</option>
+        <option value={2}>2</option>
+        <option value={3}>3</option>
+        <option value={4}>4</option>
+        <option value={5}>5</option>
+        <option value={6}>6</option>
+        <option value={7}>7</option>
+        <option value={8}>8</option>
+      </select>
+
+      <div className="absolute top-0 right-0">
+        <button type="button" className="-m-2 p-2 inline-flex text-gray-400 hover:text-gray-500">
+          <span className="sr-only">Remove</span>
+          <XIcon className="h-5 w-5" aria-hidden="true" />
+        </button>
+      </div>
+    </div>
     {customizations.map(c => (
       <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline px-1 pb-1 rtl">
         <div>
@@ -41,7 +67,7 @@ const Customizations = ({ customizations }: { customizations: Customization[] })
 
 
     ))}
-    </div>
+  </div>
 
 )
 
