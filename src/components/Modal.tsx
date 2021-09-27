@@ -2,13 +2,11 @@
 import React, { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
-import { products, Customization } from '../data/products'
+import { Option, Product, products } from '../data/products'
 
-const product = products[0];
-
-const Customizations = ({ customizations }: { customizations: Customization[] }) => (
+const Customizations = ({ customizations, product }: { customizations: Option[], product: Product }) => (
   <div className="flex flex-col gap-y-5">
-    <div className="mt-4 sm:mt-0 flex justify-start flex-row-reverse items-center text-base font-medium text-gray-900 sm:text-sm sm:text-gray-700">
+    <div className="mt-4 mb-1 sm:mt-0 flex justify-start flex-row-reverse items-center text-base font-medium text-gray-900 sm:text-sm sm:text-gray-700">
       <label htmlFor={`quantity-${product.id}`} className="block ml-4">
         الكمية
       </label>
@@ -27,15 +25,9 @@ const Customizations = ({ customizations }: { customizations: Customization[] })
         <option value={8}>8</option>
       </select>
 
-      <div className="absolute top-0 right-0">
-        <button type="button" className="-m-2 p-2 inline-flex text-gray-400 hover:text-gray-500">
-          <span className="sr-only">Remove</span>
-          <XIcon className="h-5 w-5" aria-hidden="true" />
-        </button>
-      </div>
     </div>
     {customizations.map(c => (
-      <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline px-1 pb-1 rtl">
+      <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline px-1 pb-1 rtl" key={c.id}>
         <div>
           <div
             className="text-base font-medium text-gray-900 sm:text-sm sm:text-gray-700"
@@ -48,7 +40,7 @@ const Customizations = ({ customizations }: { customizations: Customization[] })
           <div className="max-w-lg">
             <div className="mt-4 space-y-4">
               {c.choices.map(choice => (
-                <div className="flex items-center">
+                <div className="flex items-center" key={choice.id}>
                   <input
                     id={choice.id.toString()}
                     name={c.description}
@@ -71,7 +63,7 @@ const Customizations = ({ customizations }: { customizations: Customization[] })
 
 )
 
-const ModalContent = () => (
+const ModalContent = ({ product }: { product: Product }) => (
   <>
     <Dialog.Title as="h3" className="text-lg leading-6 font-medium text-gray-900">
       {product.name}
@@ -81,18 +73,16 @@ const ModalContent = () => (
       {product.description}
     </p>
     <div className="mt-3 pt-3 border-t max-modal-scrollable-height overflow-y-auto">
-      <Customizations customizations={product.options} />
+      <Customizations customizations={product.options} product={product} />
     </div>
   </>
 )
 
 
-export function Modal() {
-  const [open, setOpen] = useState(true)
-
+export function Modal({ product, open, closeModal }: { product: Product | undefined, open: boolean, closeModal: any }) {
   return (
     <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="fixed z-10 inset-0" onClose={setOpen}>
+      <Dialog as="div" className="fixed z-10 inset-0" onClose={closeModal}>
         <div className="flex items-start justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
           <Transition.Child
             as={Fragment}
@@ -120,18 +110,19 @@ export function Modal() {
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
             <div className="bg-gray-50 inline-block w-full align-bottom bg-white rounded-lg px-0 pt-0 pb-4 overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6 sm:pt-0 sm:px-0">
+            {product?.imageSrc &&
               <div className="w-full h-52 ml-0 sm:mr-4 flex-shrink-0 sm:m-0  sm:order-first">
-                {product.imageSrc && <img
+                 <img
                   src={product.imageSrc}
                   alt={product.imageAlt}
                   className="w-full h-full object-center object-cover" //
-                />}
-              </div>
+                />
+              </div>}
               <div className="absolute top-0 left-0 pt-4 pl-4">
                 <button
                   type="button"
                   className="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  onClick={() => setOpen(false)}
+                  onClick={() => closeModal()}
                 >
                   <span className="sr-only">Close</span>
                   <XIcon className="h-6 w-6" aria-hidden="true" />
@@ -139,17 +130,18 @@ export function Modal() {
               </div>
               <div className="sm:flex sm:items-start px-4 pt-1 sm:p-6">
                 <div className="w-full mt-3 text-right sm:mt-0">
-                  <ModalContent />
+                  {product && <ModalContent product={product} />}
                 </div>
               </div>
               <div className="mx-4 mt-5 sm:mt-1 sm:flex sm:flex-row-reverse">
-                <button
-                  type="button"
-                  className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-2 py-1 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:text-sm"
-                  onClick={() => setOpen(false)}
-                >
-                  أضف إلى الطلب {product.price.toFormattedString()}
-                </button>
+                {product &&
+                  <button
+                    type="button"
+                    className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-2 py-1 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:text-sm"
+                    onClick={() => closeModal()}
+                  >
+                    أضف إلى الطلب {product.price.toFormattedString()}
+                  </button>}
               </div>
             </div>
           </Transition.Child>

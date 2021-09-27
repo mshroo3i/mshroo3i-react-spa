@@ -1,7 +1,7 @@
 import { Product } from "../data/products";
 
-export const ProductItem = ({ product }: { product: Product}) => (
-    <a href="/" key={product.id} className="relative flex flex-row-reverse md:flex-row lg:flex shadow-sm rounded border hover:shadow-md ltr">
+export const ProductItem = ({ product, onClick }: { product: Product, onClick: any}) => (
+    <button onClick={onClick} key={product.id} className="text-right relative flex flex-row-reverse md:flex-row lg:flex shadow-sm rounded border hover:shadow-md ltr">
         <div className="px-2 py-4 sm:py-10 min-w-0 flex-1 lg:flex lg:flex-col">
             <div className="lg:flex-1">
                 <div>
@@ -18,5 +18,5 @@ export const ProductItem = ({ product }: { product: Product}) => (
             />}
         </div>
         <div className="absolute top-2 left-2 py-1 px-1 text-sm lg:text-base font-bold bg-white text-gray-800 rounded bg-opacity-75">{product.price.toFormattedString()}</div>
-    </a>
+    </button>
 )

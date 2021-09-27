@@ -5,7 +5,8 @@ import magdoosImage from '../assets/products-pics/magdoos-1.jpeg';
 import simsimiaImage from '../assets/products-pics/simsimya-2.jpeg';
 import { Price } from '../lib/price';
 
-export interface Customization {
+export interface Option {
+    id: number,
     description: string,
     inputType: CustomizationOptionType
     choices: Array<{ id: number, text: string, price: Price }>
@@ -18,7 +19,7 @@ export interface Product {
     price:  Price
     imageSrc: string | null
     imageAlt: string
-    options: Customization[]
+    options: Option[]
 }
 
 const enum CustomizationOptionType {
@@ -37,6 +38,7 @@ export const products: Product[] = [
         imageAlt: 'زعتر فاخر فلسطيني',
         options: [
             {
+                id: 1,
                 description: "الحجم",
                 inputType: CustomizationOptionType.Radio,
                 choices: [
