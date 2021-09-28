@@ -6,7 +6,8 @@ export interface ProductOrder {
     // Product: Product
     productId: number
     quantity: number
-    options: OrderOption[]
+    options: OrderOption[],
+    product: Product
 }
 
 export interface OrderOption {
@@ -22,10 +23,10 @@ export const enum UserActionType {
 }
 
 type UserAction =
-    | { type: UserActionType.ADD_TO_CART; productOrder: ProductOrder, product: Product }
+    | { type: UserActionType.ADD_TO_CART; productOrder: ProductOrder }
     | { type: UserActionType.REMOVE_FROM_CART; productId: number }
     | { type: UserActionType.GET_TOTAL_PRICE }
-    | { type: UserActionType.SET_CURRENT_ORDER_VIEW, productOrder: ProductOrder, product: Product }
+    | { type: UserActionType.SET_CURRENT_ORDER_VIEW, productOrder: ProductOrder }
 
 
 export interface State {
@@ -34,18 +35,16 @@ export interface State {
     currentProductView: ProductOrder
 }
 
-const initialState: State = { cart: [], products: {}, currentProductView: { productId: NaN, quantity: NaN, options: [] } };
-
 const reducer = (state: State, action: UserAction): State => {
     switch (action.type) {
         case UserActionType.ADD_TO_CART:
             const cart = [...state.cart, action.productOrder];
-            const products = { ...state.products, [action.product.id]: action.product }
+            const products = { ...state.products, [action.productOrder.productId]: action.productOrder.product }
             return { ...state, cart, products }
         case UserActionType.REMOVE_FROM_CART:
             return { ...state, cart: state.cart.filter(c => c.productId !== action.productId) }
         case UserActionType.SET_CURRENT_ORDER_VIEW:
-            const products2 = { ...state.products, [action.product.id]: action.product }
+            const products2 = { ...state.products, [action.productOrder.productId]: action.productOrder.product }
             return { ...state, currentProductView: action.productOrder, products: products2}
         default:
             throw new Error();
@@ -55,31 +54,26 @@ const reducer = (state: State, action: UserAction): State => {
 export function selectTotalPrice(state: State): Price {
     let total = 0;
     for (const order of state.cart) {
-        const product = state.products[order.productId];
-        total += getPriceForSingleOrder(order, product).raw;
+        total += getPriceForSingleOrder(order).raw;
     }
     return new Price(total);
 }
 
-export function getPriceForSingleOrder(order: ProductOrder, product: Product): Price {
+export function getPriceForSingleOrder(order: ProductOrder): Price {
     let orderTotal = 0;
-    debugger
+    if (order.options.length === 0) {
+        return order.product.price
+    }
     for (const option of order.options) {
-        const productOption = product.options.find(o => o.id === option.optionId);
-        if (productOption == null) {
-            continue;
-        }
-        const productChoice = productOption.choices.find(c => c.id === option.choiceId)
-        if (productChoice == null) {
-            continue;
-        }
-        orderTotal += productChoice.price.raw;
+        const productOption = order.product.options.find(o => o.id === option.optionId);
+        const productChoice = productOption!.choices.find(c => c.id === option.choiceId)
+        orderTotal += productChoice!.price.raw;
     }
 
     return new Price(orderTotal * order.quantity);
 }
 
-export function useCartState(): [State, Dispatch<UserAction>]  {
-    const [state, dispatch] = useReducer(reducer, initialState);
+export function useCartState( intialState: State): [State, Dispatch<UserAction>]  {
+    const [state, dispatch] = useReducer(reducer, intialState);
     return [state, dispatch]
 }

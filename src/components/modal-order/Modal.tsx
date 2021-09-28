@@ -1,5 +1,5 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment, useState } from 'react'
+import { Fragment, ReactElement, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
 import { Product } from '../../data/products'
@@ -7,18 +7,7 @@ import { getPriceForSingleOrder, OrderOption, ProductOrder, State } from '../../
 import { Price } from '../../lib/price'
 import { ModalContent } from './ModalContent'
 
-export function Modal({ state, open, closeModal, currentProduct }: { currentProduct: ProductOrder, state: State, open: boolean, closeModal: any }) {
-  const defaultOrder = {
-    productId: -1,
-    quantity: -1,
-    options: []
-  }
-
-  const product = state.products[currentProduct.productId]
-
-  const getCurrentPrice = (o: ProductOrder = defaultOrder): Price => {
-    return getPriceForSingleOrder(o, product)
-  }
+export function Modal({ open, closeModal, imageSrc, imageAlt, children }: { children: ReactElement, open: boolean, closeModal: any, imageSrc?: string, imageAlt?: string }) {
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -50,11 +39,11 @@ export function Modal({ state, open, closeModal, currentProduct }: { currentProd
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
             <div className="bg-gray-50 inline-block w-full align-bottom bg-white rounded-lg px-0 pt-0 pb-4 overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6 sm:pt-0 sm:px-0">
-              {product?.imageSrc &&
+              {imageSrc &&
                 <div className="w-full h-52 ml-0 sm:mr-4 flex-shrink-0 sm:m-0  sm:order-first">
                   <img
-                    src={product.imageSrc}
-                    alt={product.imageAlt}
+                    src={imageSrc}
+                    alt={imageAlt}
                     className="w-full h-full object-center object-cover" //
                   />
                 </div>}
@@ -68,21 +57,7 @@ export function Modal({ state, open, closeModal, currentProduct }: { currentProd
                   <XIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
               </div>
-              <div className="sm:flex sm:items-start px-4 pt-1 sm:p-6">
-                <div className="w-full mt-3 text-right sm:mt-0">
-                  <ModalContent product={product} setOrder={(order) => {}} order={currentProduct} />
-                </div>
-              </div>
-              <div className="mx-4 mt-5 sm:mt-1 sm:flex sm:flex-row-reverse">
-
-                <button
-                  type="button"
-                  className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-2 py-1 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:text-sm"
-                  onClick={() => closeModal()}//onAddToCart()}
-                >
-                  أضف إلى الطلب {getCurrentPrice(currentProduct).toFormattedString()}
-                </button>
-              </div>
+                {children}
             </div>
           </Transition.Child>
         </div>

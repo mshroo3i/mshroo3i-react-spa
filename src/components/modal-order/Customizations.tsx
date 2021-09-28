@@ -2,7 +2,9 @@ import { LegacyRef, useRef } from "react";
 import { Product, Option } from "../../data/products";
 import { ProductOrder } from "../../lib/cart-reducer";
 
-export const Customizations = ({ customizations, product, setOrder, order }: { order: ProductOrder, customizations: Option[], product: Product, setOrder: (order: ProductOrder) => void  }) => {
+export const Customizations = ({  order }: { order: ProductOrder,   }) => {
+
+    const product = order.product
     const selectQuantity = useRef() as LegacyRef<HTMLSelectElement> | undefined;
     // const [customization, setCustomization] = useState({
     //   quantity: 1,
@@ -36,7 +38,7 @@ export const Customizations = ({ customizations, product, setOrder, order }: { o
         </select>
 
       </div>
-      {customizations.map(c => (
+      {product.options.map(c => (
         <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline px-1 pb-1 rtl" key={c.id}>
           <div>
             <div

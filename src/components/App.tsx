@@ -7,10 +7,16 @@ import React, { useState } from 'react'
 import { Product, products } from '../data/products'
 import { ProductItem } from './ProductItem'
 import { OrderOption, useCartState, UserActionType } from '../lib/cart-reducer'
+import { ModalContent } from './modal-order/ModalContent'
+import { Customizations } from './modal-order/Customizations'
 
 export default function Example() {
   const [open, setOpen] = useState(false)
-  const [state, dispatch] = useCartState();
+  const [state, dispatch] = useCartState({ products, cart: [], currentProductView: {
+    product: products[0],
+    quantity: 1,
+    productId: products[0].id,
+    options: products[0].options.map(o => ({ optionId: o.id, choiceId: o.choices[0].id}))}});
   const closeModal = () => {
     setOpen(false);
   }
@@ -18,18 +24,19 @@ export default function Example() {
   const onProductClick = (product: Product) => {
     dispatch({
       type: UserActionType.SET_CURRENT_ORDER_VIEW,
-      product,
       productOrder: {
+        product,
         productId: product.id,
         quantity: 1,
         options: product.options.map(o => ({ optionId: o.id, choiceId: o.choices[0].id }))
       }
     })
+    console.log("dispatching " + product.name)
     setOpen(true)
   }
 
   const onAddToCart = (productId: number, options: OrderOption[], quantity: number, product: Product): void => {
-    dispatch({ type: UserActionType.ADD_TO_CART, productOrder: { productId, options, quantity }, product })
+    dispatch({ type: UserActionType.ADD_TO_CART, productOrder: { productId, options, quantity, product } })
     setOpen(false);
   }
 
@@ -70,7 +77,11 @@ export default function Example() {
 
       {state.cart.length > 0 && <Banner />}
 
-      {<Modal open={open} currentProduct={state.currentProductView} closeModal={closeModal} state={state} />}
+      <Modal open={open} closeModal={closeModal} imageSrc={state.currentProductView.product.imageSrc} imageAlt={state.currentProductView.product.imageAlt} >
+        <ModalContent order={state.currentProductView} setOrder={() => {}}>
+          <Customizations order={state.currentProductView}  />
+        </ModalContent>
+      </Modal>
 
     </div>
   )

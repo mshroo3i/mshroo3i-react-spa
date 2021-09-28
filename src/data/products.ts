@@ -17,7 +17,7 @@ export interface Product {
     name: string
     description: string
     price:  Price
-    imageSrc: string | null
+    imageSrc: string | undefined
     imageAlt: string
     options: Option[]
 }
@@ -73,7 +73,7 @@ export const products: Product[] = [
         name: 'زيت زيتون فلسطيني عصره اولى',
         description: "متوفر باللتر",
         price: new Price(5),
-        imageSrc: null,
+        imageSrc: undefined,
         imageAlt: 'زيت زيتون فلسطيني عصره اولى',
         options: []
     },
@@ -82,7 +82,7 @@ export const products: Product[] = [
         name: 'زيت تركي درجه اولى',
         description: "متوفر باللتر",
         price: new Price(3),
-        imageSrc: null,
+        imageSrc: undefined,
         imageAlt: 'زيت تركي درجه اولى',
         options: []
     },
@@ -109,7 +109,7 @@ export const products: Product[] = [
         name: 'سماق ادرني درجه اولى',
         description: "متوفر ربع كيلو أو كيلو كامل",
         price: new Price(1.25),
-        imageSrc: null,
+        imageSrc: undefined,
         imageAlt: 'سماق ادرني درجه اولى',
         options: []
     },
@@ -127,7 +127,7 @@ export const products: Product[] = [
         name: 'مرميه',
         description: "ربع كيلو",
         price: new Price(1.25),
-        imageSrc: null,
+        imageSrc: undefined,
         imageAlt: 'مرميه',
         options: []
     },
