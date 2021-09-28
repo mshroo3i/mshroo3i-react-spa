@@ -1,20 +1,36 @@
 import { Footer } from './Footer'
 import { Banner } from './Banner'
-import { Modal } from './Modal'
+import { Modal } from './modal-order/Modal'
 import { Header } from './Header'
 import { Hero } from './Hero'
 import React, { useState } from 'react'
 import { Product, products } from '../data/products'
 import { ProductItem } from './ProductItem'
-import { useCartState } from '../lib/cart-reducer'
+import { OrderOption, useCartState, UserActionType } from '../lib/cart-reducer'
 
 export default function Example() {
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
   const [state, dispatch] = useCartState();
-  const [activeProduct, setActiveProduct] = useState<Product | undefined>(undefined);
   const closeModal = () => {
     setOpen(false);
-    setActiveProduct(undefined);
+  }
+
+  const onProductClick = (product: Product) => {
+    dispatch({
+      type: UserActionType.SET_CURRENT_ORDER_VIEW,
+      product,
+      productOrder: {
+        productId: product.id,
+        quantity: 1,
+        options: product.options.map(o => ({ optionId: o.id, choiceId: o.choices[0].id }))
+      }
+    })
+    setOpen(true)
+  }
+
+  const onAddToCart = (productId: number, options: OrderOption[], quantity: number, product: Product): void => {
+    dispatch({ type: UserActionType.ADD_TO_CART, productOrder: { productId, options, quantity }, product })
+    setOpen(false);
   }
 
   return (
@@ -38,7 +54,7 @@ export default function Example() {
               <div className="grid gap-2 mb-8 md:grid-cols-1 lg:grid-cols-2 ltr md:rtl">
                 <React.Fragment>
                   {products.map((product) => (
-                    <ProductItem product={product} key={product.id} onClick={() => {setActiveProduct(product); setOpen(true)}} />
+                    <ProductItem product={product} key={product.id} onClick={() => onProductClick(product)} />
                   ))}
                 </React.Fragment>
               </div>
@@ -54,7 +70,7 @@ export default function Example() {
 
       {state.cart.length > 0 && <Banner />}
 
-      <Modal open={activeProduct != null} closeModal={closeModal} product={activeProduct} />
+      {<Modal open={open} currentProduct={state.currentProductView} closeModal={closeModal} state={state} />}
 
     </div>
   )
