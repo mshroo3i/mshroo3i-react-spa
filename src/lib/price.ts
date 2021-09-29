@@ -3,13 +3,8 @@ const enum Language {
     English
 }
 
-const enum Currency {
-    KWD = "د.ك",
-}
-
 export class Price {
     private lang = Language.Arabic
-    private currency = Currency.KWD
     private decimals = 3
 
     constructor(private price: number) {

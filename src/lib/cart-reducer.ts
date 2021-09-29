@@ -5,14 +5,8 @@ import { Price } from "./price";
 export interface ProductOrder {
     productId: number
     quantity: number
-    // options2: OrderOption[],
     product: Product,
     options: { [choiceId: number]: number}
-}
-
-export interface OrderOption {
-    optionId: number
-    choiceId: number
 }
 
 export const enum UserActionType {
@@ -62,12 +56,20 @@ const reducer = (state: State, action: UserAction): State => {
     }
 }
 
-export function selectTotalPrice(state: State): Price {
+export function selectTotalPrice(cart: ProductOrder[]): Price {
     let total = 0;
-    for (const order of state.cart) {
+    for (const order of cart) {
         total += getPriceForSingleOrder(order).raw;
     }
     return new Price(total);
+}
+
+export function getTotalQuantity(cart: ProductOrder[]): number {
+    let quantity = 0;
+    for (const order of cart) {
+        quantity += order.quantity;
+    }
+    return quantity;
 }
 
 export function getPriceForSingleOrder(order: ProductOrder): Price {

@@ -6,7 +6,7 @@ import { Hero } from './Hero'
 import React, { useState } from 'react'
 import { Product, products } from '../data/products'
 import { ProductItem } from './ProductItem'
-import { ProductOrder, useCartState, UserActionType } from '../lib/cart-reducer'
+import { getTotalQuantity, ProductOrder, selectTotalPrice, useCartState, UserActionType } from '../lib/cart-reducer'
 import { ModalContent } from './modal-order/ModalContent'
 import { Customizations } from './modal-order/Customizations'
 
@@ -81,7 +81,7 @@ export default function Example() {
 
       <Footer />
 
-      {state.cart.length > 0 && <Banner />}
+      {state.cart.length > 0 && <Banner price={selectTotalPrice(state.cart)} quantity={getTotalQuantity(state.cart)} />}
 
       <Modal open={open} closeModal={closeModal} imageSrc={state.currentProductView.product.imageSrc} imageAlt={state.currentProductView.product.imageAlt} >
         <ModalContent order={state.currentProductView} onAdd={() => {onAddToCart(state.currentProductView)}}>
