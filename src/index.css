@@ -20,6 +20,10 @@ code {
   max-height: 50vh;
 }
 
+.max-modal-scrollable-height-60vh {
+  max-height: 60vh;
+}
+
 @responsive {
   .ltr {
     direction: ltr;

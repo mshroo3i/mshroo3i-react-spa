@@ -44,10 +44,8 @@ export const products: Product[] = [
                 choices: [
                     { id: 1, text: "علبه ريع كيلو", price: new Price(2)},
                     { id: 2, text: "علبه نص كيلو", price: new Price(4)},
-                    // { text: "علبه نص كيلو", price: new Price(4)},
-                    // { text: "علبه نص كيلو", price: new Price(4)},
                 ]
-            },
+            }
         ]
     },
     {

@@ -34,7 +34,7 @@ export function Modal({ open, closeModal, imageSrc, imageAlt, children }: { chil
             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
-            <div className="bg-gray-50 inline-block w-full align-bottom bg-white rounded-lg px-0 pt-0 pb-4 overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6 sm:pt-0 sm:px-0">
+            <div className=" inline-block w-full align-bottom bg-white rounded-lg px-0 pt-0 pb-4 overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6 sm:pt-0 sm:px-0">
               {imageSrc &&
                 <div className="w-full h-52 ml-0 sm:mr-4 flex-shrink-0 sm:m-0  sm:order-first">
                   <img

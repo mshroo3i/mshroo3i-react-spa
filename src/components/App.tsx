@@ -9,6 +9,7 @@ import { ProductItem } from './ProductItem'
 import { getTotalQuantity, ProductOrder, selectTotalPrice, useCartState, UserActionType } from '../lib/cart-reducer'
 import { ModalProductView } from './modal-order/ModalProductView'
 import { Customizations } from './modal-order/Customizations'
+import { ModalViewCart } from './modal-order/ModalViewCart'
 
 const enum ModalView {
   PRODUCT_VIEW = "PRODUCT_VIEW",
@@ -62,7 +63,7 @@ export default function Example() {
     />
   </ModalProductView>)
 
-  const reviewCart = (<div>wawa wa</div>)
+  const reviewCart = (<ModalViewCart></ModalViewCart>)
 
   let modalView = undefined;
   if (openModal === ModalView.PRODUCT_VIEW) {
