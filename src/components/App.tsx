@@ -7,21 +7,29 @@ import React, { useState } from 'react'
 import { Product, products } from '../data/products'
 import { ProductItem } from './ProductItem'
 import { getTotalQuantity, ProductOrder, selectTotalPrice, useCartState, UserActionType } from '../lib/cart-reducer'
-import { ModalContent } from './modal-order/ModalContent'
+import { ModalProductView } from './modal-order/ModalProductView'
 import { Customizations } from './modal-order/Customizations'
 
+const enum ModalView {
+  PRODUCT_VIEW = "PRODUCT_VIEW",
+  REVIEW_CART = "REVIEW_CART"
+}
+
 export default function Example() {
-  const [open, setOpen] = useState(false)
-  const [state, dispatch] = useCartState({ products, cart: [], currentProductView: {
-    product: products[0],
-    quantity: 1,
-    productId: products[0].id,
-    options: products[0].options.reduce((acc, o) => {
-      acc = { ...acc, [o.id]: o.choices[0].id }
-      return acc
-    }, {})}});
+  const [openModal, setOpenModal] = useState<ModalView | undefined>(undefined)
+  const [state, dispatch] = useCartState({
+    products, cart: [], currentProductView: {
+      product: products[0],
+      quantity: 1,
+      productId: products[0].id,
+      options: products[0].options.reduce((acc, o) => {
+        acc = { ...acc, [o.id]: o.choices[0].id }
+        return acc
+      }, {})
+    }
+  });
   const closeModal = () => {
-    setOpen(false);
+    setOpenModal(undefined);
   }
 
   const onProductClick = (product: Product) => {
@@ -38,12 +46,29 @@ export default function Example() {
       }
     })
     console.log("dispatching " + product.name)
-    setOpen(true)
+    setOpenModal(ModalView.PRODUCT_VIEW)
   }
 
   const onAddToCart = (productOrder: ProductOrder): void => {
     dispatch({ type: UserActionType.ADD_TO_CART, productOrder })
-    setOpen(false);
+    setOpenModal(undefined);
+  }
+
+  const productView = (<ModalProductView order={state.currentProductView} onAdd={() => { onAddToCart(state.currentProductView) }}>
+    <Customizations
+      order={state.currentProductView}
+      updateQuantity={(quantity: number) => dispatch({ type: UserActionType.SET_CURRENT_ORDER_VIEW_QUANTITY, quantity })}
+      updateOption={(optionId, choiceId) => dispatch({ type: UserActionType.SET_CURRENT_ORDER_VIEW_OPTION, optionId, choiceId })}
+    />
+  </ModalProductView>)
+
+  const reviewCart = (<div>wawa wa</div>)
+
+  let modalView = undefined;
+  if (openModal === ModalView.PRODUCT_VIEW) {
+    modalView = productView;
+  } else if (openModal === ModalView.REVIEW_CART) {
+    modalView = reviewCart;
   }
 
   return (
@@ -81,16 +106,10 @@ export default function Example() {
 
       <Footer />
 
-      {state.cart.length > 0 && <Banner price={selectTotalPrice(state.cart)} quantity={getTotalQuantity(state.cart)} />}
+      {state.cart.length > 0 && <Banner onClickHandler={() => { setOpenModal(ModalView.REVIEW_CART)}} price={selectTotalPrice(state.cart)} quantity={getTotalQuantity(state.cart)} />}
 
-      <Modal open={open} closeModal={closeModal} imageSrc={state.currentProductView.product.imageSrc} imageAlt={state.currentProductView.product.imageAlt} >
-        <ModalContent order={state.currentProductView} onAdd={() => {onAddToCart(state.currentProductView)}}>
-          <Customizations
-            order={state.currentProductView}
-            updateQuantity={(quantity: number) => dispatch({ type:UserActionType.SET_CURRENT_ORDER_VIEW_QUANTITY, quantity})}
-            updateOption={(optionId, choiceId) => dispatch({ type: UserActionType.SET_CURRENT_ORDER_VIEW_OPTION, optionId, choiceId})}
-          />
-        </ModalContent>
+      <Modal open={openModal != null} closeModal={closeModal} imageSrc={openModal === ModalView.PRODUCT_VIEW ? state.currentProductView.product.imageSrc : undefined} imageAlt={state.currentProductView.product.imageAlt} >
+        {modalView ?? <div />}
       </Modal>
 
     </div>
