@@ -1,15 +1,8 @@
-import { LegacyRef, useRef } from "react";
-import { Product, Option } from "../../data/products";
 import { ProductOrder } from "../../lib/cart-reducer";
 
-export const Customizations = ({  order }: { order: ProductOrder,   }) => {
+export const Customizations = ({  order, updateQuantity, updateOption }: { updateOption: (optionId: number, choiceId: number) => void, order: ProductOrder, updateQuantity: (n: number)=> void  }) => {
 
     const product = order.product
-    const selectQuantity = useRef() as LegacyRef<HTMLSelectElement> | undefined;
-    // const [customization, setCustomization] = useState({
-    //   quantity: 1,
-    //   options:
-    // })
 
     return (
     <div className="flex flex-col gap-y-5">
@@ -21,9 +14,9 @@ export const Customizations = ({  order }: { order: ProductOrder,   }) => {
           id={`quantity-${product.id}`}
           name={`quantity-${product.id}`}
           className="max-w-full rounded-md border border-gray-300 py-1.5 text-base leading-5 font-medium text-gray-700 text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          ref={selectQuantity}
-          // defaultValue={1}
+          value={order.quantity}
           onChange={(e) => {
+            updateQuantity(Number.parseInt(e.target.value))
             console.log(e.target.value)
           }}
         >
@@ -38,24 +31,26 @@ export const Customizations = ({  order }: { order: ProductOrder,   }) => {
         </select>
 
       </div>
-      {product.options.map(c => (
-        <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline px-1 pb-1 rtl" key={c.id}>
+      {product.options.map(option => (
+        <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline px-1 pb-1 rtl" key={option.id}>
           <div>
             <div
               className="text-base font-medium text-gray-900 sm:text-sm sm:text-gray-700"
               id="label-notifications"
             >
-              {c.description}
+              {option.description}
             </div>
           </div>
           <div className="sm:col-span-2">
             <div className="max-w-lg">
               <div className="mt-4 space-y-4">
-                {c.choices.map(choice => (
+                {option.choices.map(choice => (
                   <div className="flex items-center" key={choice.id}>
                     <input
                       id={choice.id.toString()}
-                      name={c.description}
+                      name={option.description}
+                      checked={choice.id === order.options[option.id]}
+                      onChange={() => {updateOption(option.id, choice.id)}}
                       type="radio"
                       className="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300"
                     />

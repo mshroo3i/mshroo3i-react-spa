@@ -1,11 +1,8 @@
 import { Dialog } from "@headlessui/react";
 import { ReactElement } from "react";
-import { Product } from "../../data/products";
 import { getPriceForSingleOrder, ProductOrder } from "../../lib/cart-reducer";
-import { Price } from "../../lib/price";
-import { Customizations } from "./Customizations";
 
-export const ModalContent = ({  order,children, setOrder }: { children: ReactElement, order: ProductOrder, setOrder: (order: ProductOrder) => void }) => {
+export const ModalContent = ({  order,children, onAdd }: { children: ReactElement, order: ProductOrder, onAdd: (order: ProductOrder) => void }) => {
   const product = order.product
 
   return (
@@ -29,7 +26,7 @@ export const ModalContent = ({  order,children, setOrder }: { children: ReactEle
         <button
           type="button"
           className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-2 py-1 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:text-sm"
-          onClick={() => setOrder(order)}//onAddToCart()}
+          onClick={() => onAdd(order)}//onAddToCart()}
         >
           أضف إلى الطلب {getPriceForSingleOrder(order).toFormattedString()}
         </button>

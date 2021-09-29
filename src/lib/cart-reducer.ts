@@ -1,13 +1,13 @@
-import { Dispatch, ReducerAction, ReducerState, useReducer } from "react";
+import { Dispatch, useReducer } from "react";
 import { Product } from "../data/products";
 import { Price } from "./price";
 
 export interface ProductOrder {
-    // Product: Product
     productId: number
     quantity: number
-    options: OrderOption[],
-    product: Product
+    // options2: OrderOption[],
+    product: Product,
+    options: { [choiceId: number]: number}
 }
 
 export interface OrderOption {
@@ -20,6 +20,8 @@ export const enum UserActionType {
     REMOVE_FROM_CART = "REMOVE_FROM_CART",
     GET_TOTAL_PRICE = "GET_TOTAL_PRICE",
     SET_CURRENT_ORDER_VIEW = "SET_CURRENT_ORDER_VIEW",
+    SET_CURRENT_ORDER_VIEW_QUANTITY = "SET_CURRENT_ORDER_VIEW_QUANTITY",
+    SET_CURRENT_ORDER_VIEW_OPTION = "SET_CURRENT_ORDER_VIEW_OPTION",
 }
 
 type UserAction =
@@ -27,6 +29,8 @@ type UserAction =
     | { type: UserActionType.REMOVE_FROM_CART; productId: number }
     | { type: UserActionType.GET_TOTAL_PRICE }
     | { type: UserActionType.SET_CURRENT_ORDER_VIEW, productOrder: ProductOrder }
+    | { type: UserActionType.SET_CURRENT_ORDER_VIEW_QUANTITY, quantity: number }
+    | { type: UserActionType.SET_CURRENT_ORDER_VIEW_OPTION, optionId: number, choiceId: number }
 
 
 export interface State {
@@ -46,6 +50,13 @@ const reducer = (state: State, action: UserAction): State => {
         case UserActionType.SET_CURRENT_ORDER_VIEW:
             const products2 = { ...state.products, [action.productOrder.productId]: action.productOrder.product }
             return { ...state, currentProductView: action.productOrder, products: products2}
+        case UserActionType.SET_CURRENT_ORDER_VIEW_QUANTITY:
+            const currentProductView = state.currentProductView;
+            return { ...state, currentProductView: { ...currentProductView, quantity: action.quantity}}
+        case UserActionType.SET_CURRENT_ORDER_VIEW_OPTION:
+            const {optionId, choiceId} = action;
+            const { options } = state.currentProductView;
+            return { ...state, currentProductView: {...state.currentProductView,  options: { ...options, [optionId]: choiceId }}}
         default:
             throw new Error();
     }
@@ -61,12 +72,12 @@ export function selectTotalPrice(state: State): Price {
 
 export function getPriceForSingleOrder(order: ProductOrder): Price {
     let orderTotal = 0;
-    if (order.options.length === 0) {
-        return order.product.price
+    if (Object.keys(order.options).length === 0) {
+        return new Price(order.product.price.raw * order.quantity)
     }
-    for (const option of order.options) {
-        const productOption = order.product.options.find(o => o.id === option.optionId);
-        const productChoice = productOption!.choices.find(c => c.id === option.choiceId)
+    for (const optionId of Object.keys(order.options)) {
+        const productOption = order.product.options.find(o => o.id === Number.parseInt(optionId));
+        const productChoice = productOption!.choices.find(c => c.id === order.options[Number.parseInt(optionId)])
         orderTotal += productChoice!.price.raw;
     }
 

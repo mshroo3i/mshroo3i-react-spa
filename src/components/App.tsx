@@ -6,7 +6,7 @@ import { Hero } from './Hero'
 import React, { useState } from 'react'
 import { Product, products } from '../data/products'
 import { ProductItem } from './ProductItem'
-import { OrderOption, useCartState, UserActionType } from '../lib/cart-reducer'
+import { ProductOrder, useCartState, UserActionType } from '../lib/cart-reducer'
 import { ModalContent } from './modal-order/ModalContent'
 import { Customizations } from './modal-order/Customizations'
 
@@ -16,7 +16,10 @@ export default function Example() {
     product: products[0],
     quantity: 1,
     productId: products[0].id,
-    options: products[0].options.map(o => ({ optionId: o.id, choiceId: o.choices[0].id}))}});
+    options: products[0].options.reduce((acc, o) => {
+      acc = { ...acc, [o.id]: o.choices[0].id }
+      return acc
+    }, {})}});
   const closeModal = () => {
     setOpen(false);
   }
@@ -28,15 +31,18 @@ export default function Example() {
         product,
         productId: product.id,
         quantity: 1,
-        options: product.options.map(o => ({ optionId: o.id, choiceId: o.choices[0].id }))
+        options: product.options.reduce((acc, o) => {
+          acc = { ...acc, [o.id]: o.choices[0].id }
+          return acc
+        }, {})
       }
     })
     console.log("dispatching " + product.name)
     setOpen(true)
   }
 
-  const onAddToCart = (productId: number, options: OrderOption[], quantity: number, product: Product): void => {
-    dispatch({ type: UserActionType.ADD_TO_CART, productOrder: { productId, options, quantity, product } })
+  const onAddToCart = (productOrder: ProductOrder): void => {
+    dispatch({ type: UserActionType.ADD_TO_CART, productOrder })
     setOpen(false);
   }
 
@@ -78,8 +84,12 @@ export default function Example() {
       {state.cart.length > 0 && <Banner />}
 
       <Modal open={open} closeModal={closeModal} imageSrc={state.currentProductView.product.imageSrc} imageAlt={state.currentProductView.product.imageAlt} >
-        <ModalContent order={state.currentProductView} setOrder={() => {}}>
-          <Customizations order={state.currentProductView}  />
+        <ModalContent order={state.currentProductView} onAdd={() => {onAddToCart(state.currentProductView)}}>
+          <Customizations
+            order={state.currentProductView}
+            updateQuantity={(quantity: number) => dispatch({ type:UserActionType.SET_CURRENT_ORDER_VIEW_QUANTITY, quantity})}
+            updateOption={(optionId, choiceId) => dispatch({ type: UserActionType.SET_CURRENT_ORDER_VIEW_OPTION, optionId, choiceId})}
+          />
         </ModalContent>
       </Modal>
 

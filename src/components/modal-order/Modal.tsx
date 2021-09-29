@@ -1,11 +1,7 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment, ReactElement, useState } from 'react'
+import { Fragment, ReactElement } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
-import { Product } from '../../data/products'
-import { getPriceForSingleOrder, OrderOption, ProductOrder, State } from '../../lib/cart-reducer'
-import { Price } from '../../lib/price'
-import { ModalContent } from './ModalContent'
 
 export function Modal({ open, closeModal, imageSrc, imageAlt, children }: { children: ReactElement, open: boolean, closeModal: any, imageSrc?: string, imageAlt?: string }) {
 
