@@ -55,7 +55,17 @@ export const products: Product[] = [
         price: new Price(1.5),
         imageSrc: zatarImage,
         imageAlt: 'زعتر ممتاز فلسطيني',
-        options: []
+        options: [
+            {
+                id: 1,
+                description: "الحجم",
+                inputType: CustomizationOptionType.Radio,
+                choices: [
+                    { id: 1, text: "علبه ريع كيلو", price: new Price(1.5)},
+                    { id: 2, text: "علبه نص كيلو", price: new Price(3)},
+                ]
+            }
+        ]
     },
     {
         id: 3,
@@ -64,7 +74,17 @@ export const products: Product[] = [
         price: new Price(1.5),
         imageSrc: do2aImage,
         imageAlt: 'دقه فلسطينيه زعتر احمر',
-        options: []
+        options: [
+            {
+                id: 1,
+                description: "الحجم",
+                inputType: CustomizationOptionType.Radio,
+                choices: [
+                    { id: 1, text: "علبه ريع كيلو", price: new Price(1.5)},
+                    { id: 2, text: "علبه نص كيلو", price: new Price(3)},
+                ]
+            }
+        ]
     },
     {
         id: 4,
@@ -105,28 +125,58 @@ export const products: Product[] = [
     {
         id: 9,
         name: 'سماق ادرني درجه اولى',
-        description: "متوفر ربع كيلو أو كيلو كامل",
+        description: "متوفر ربع كيلو أو نص كيلو",
         price: new Price(1.25),
         imageSrc: undefined,
         imageAlt: 'سماق ادرني درجه اولى',
-        options: []
+        options: [
+            {
+                id: 1,
+                description: "الحجم",
+                inputType: CustomizationOptionType.Radio,
+                choices: [
+                    { id: 1, text: "علبه ريع كيلو", price: new Price(1.25)},
+                    { id: 2, text: "علبه نص كيلو", price: new Price(2.5)},
+                ]
+            }
+        ]
     },
     {
         id: 10,
         name: 'سمسميه اردنيه مغلفه',
-        description: "متوفر ربع كيلو أو كيلو كامل",
+        description: "متوفر ربع كيلو أو نص كيلو",
         price: new Price(1.5),
         imageSrc: simsimiaImage,
         imageAlt: 'سمسميه اردنيه مغلفه',
-        options: []
+        options: [
+            {
+                id: 1,
+                description: "الحجم",
+                inputType: CustomizationOptionType.Radio,
+                choices: [
+                    { id: 1, text: "علبه ريع كيلو", price: new Price(1.5)},
+                    { id: 2, text: "علبه نص كيلو", price: new Price(3)},
+                ]
+            }
+        ]
     },
     {
         id: 11,
         name: 'مرميه',
-        description: "ربع كيلو",
+        description: "متوفر ربع كيلو أو نص كيلو",
         price: new Price(1.25),
         imageSrc: undefined,
         imageAlt: 'مرميه',
-        options: []
+        options: [
+            {
+                id: 1,
+                description: "الحجم",
+                inputType: CustomizationOptionType.Radio,
+                choices: [
+                    { id: 1, text: "علبه ريع كيلو", price: new Price(1.25)},
+                    { id: 2, text: "علبه نص كيلو", price: new Price(2.5)},
+                ]
+            }
+        ]
     },
 ]
