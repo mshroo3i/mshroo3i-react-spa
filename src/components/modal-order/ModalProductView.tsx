@@ -4,6 +4,7 @@ import { getPriceForSingleOrder, ProductOrder } from "../../lib/cart-reducer";
 
 export const ModalProductView = ({  order,children, onAdd }: { children: ReactElement, order: ProductOrder, onAdd: (order: ProductOrder) => void }) => {
   const product = order.product
+  const price = getPriceForSingleOrder(order).toFormattedString();
 
   return (
     <>
@@ -16,19 +17,22 @@ export const ModalProductView = ({  order,children, onAdd }: { children: ReactEl
           <p className="text-sm text-gray-500 mt-1">
             {product.description}
           </p>
+          <p className="text-sm font-medium text-gray-900 mt-1">
+            {price}
+          </p>
           <div className="mt-3 pt-3 border-t max-modal-scrollable-height overflow-y-auto">
             {children}
           </div>
         </div>
       </div>
       <div className="mx-4 mt-5 sm:mt-1 sm:flex sm:flex-row-reverse">
-
         <button
           type="button"
-          className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-2 py-1 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:text-sm"
+          className="w-full inline-flex justify-between rounded-md border border-transparent shadow-sm px-2 py-1 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:text-sm"
           onClick={() => onAdd(order)}//onAddToCart()}
         >
-          أضف إلى الطلب {getPriceForSingleOrder(order).toFormattedString()}
+          <div>{price}</div>
+          <div>أضف للسلة</div>
         </button>
       </div>
     </>

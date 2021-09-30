@@ -11,9 +11,9 @@ export function Banner({price, quantity, onClickHandler}: {price: Price, quantit
                         <span className="text-white" aria-hidden="true">{price.toFormattedString()}</span>
                     </div>
                     <p className="font-medium text-center text-white truncate">
-                        راجع الطلب
+                        راجع السلة
                     </p>
-                    <div className=" border-white absolute inset-y-0 right-0 my-2 mr-2 border rounded-lg px-2">
+                    <div className=" border-white border-2 absolute inset-y-0 right-0 my-2 mr-2 rounded-full px-2">
                         <span className="text-white" aria-hidden="true">{quantity.toLocaleString("ar-EG")}</span>
                     </div>
                 </button>

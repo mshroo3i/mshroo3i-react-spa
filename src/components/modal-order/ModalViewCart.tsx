@@ -75,10 +75,17 @@ export function ModalViewCart() {
                 </ul>
 
 
-                <div className="flex items-center justify-between border-t border-gray-200 text-gray-900 pt-6">
-                    <dt className="text-base">Total</dt>
-                    <dd className="text-base">$86.40</dd>
-                </div>
+                <dl className="text-sm font-medium text-gray-500 space-y-6 border-t border-gray-200 pt-6">
+                    <div className="flex justify-between">
+                        <dt>Subtotal</dt>
+                        <dd className="text-gray-900">$72.00</dd>
+                    </div>
+
+                    <div className="flex items-center justify-between border-t border-gray-200 text-gray-900 pt-6">
+                        <dt className="text-base">Total</dt>
+                        <dd className="text-base">$86.40</dd>
+                    </div>
+                </dl>
 
             </div>
         </div>
