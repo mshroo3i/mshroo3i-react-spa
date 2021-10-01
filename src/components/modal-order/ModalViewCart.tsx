@@ -1,10 +1,7 @@
-import { Product } from "../../data/products"
-import { Price } from "../../lib/price"
 import { TrashIcon } from "@heroicons/react/outline"
 import { Banner } from "../Banner"
 import { WhatsAppIcon } from "../../assets/WhatsappIcon"
-import { getOrderOptions, getPriceForSingleOrder, ProductOrder, ProductOrderInCart, selectTotalPrice, UserAction } from "../../lib/cart-reducer"
-import { Dispatch } from "react"
+import { getOrderOptions, getPriceForSingleOrder, ProductOrderInCart, selectTotalPrice } from "../../lib/cart-reducer"
 
 export function ModalViewCart({cart, removeFromCart}: {cart: ProductOrderInCart[], removeFromCart: any}) {
     const totalPrice = selectTotalPrice(cart);

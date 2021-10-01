@@ -1,6 +1,3 @@
-import { ReactChildren, ReactElement } from "react";
-import { Price } from "../lib/price";
-
 export function Banner({onClickHandler, children}: {children: any, onClickHandler: any}) {
     return (
         <div className="fixed bottom-1 inset-x-0 pb-2 sm:pb-5">
