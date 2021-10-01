@@ -106,8 +106,20 @@ export default function Example() {
       </main>
 
       <Footer />
-
-      {state.cart.length > 0 && <Banner onClickHandler={() => { setOpenModal(ModalView.REVIEW_CART)}} price={selectTotalPrice(state.cart)} quantity={getTotalQuantity(state.cart)} />}
+      {/* price={selectTotalPrice(state.cart)} quantity={getTotalQuantity(state.cart)} */}
+      {state.cart.length > 0
+        && <Banner onClickHandler={() => { setOpenModal(ModalView.REVIEW_CART) }}>
+          <div className="absolute inset-y-0 left-0 pt-2 ml-2">
+            <span className="text-white" aria-hidden="true">{selectTotalPrice(state.cart).toFormattedString()}</span>
+          </div>
+          <p className="font-medium text-center text-white truncate">
+            راجع السلة
+          </p>
+          <div className=" border-white border-2 absolute inset-y-0 right-0 my-2 mr-2 rounded-full px-2">
+            <span className="text-white" aria-hidden="true">{getTotalQuantity(state.cart).toLocaleString("ar-EG")}</span>
+          </div>
+        </Banner>
+      }
 
       <Modal open={openModal != null} closeModal={closeModal} imageSrc={openModal === ModalView.PRODUCT_VIEW ? state.currentProductView.product.imageSrc : undefined} imageAlt={state.currentProductView.product.imageAlt} >
         {modalView ?? <div />}
