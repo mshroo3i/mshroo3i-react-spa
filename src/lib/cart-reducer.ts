@@ -9,6 +9,10 @@ export interface ProductOrder {
     options: { [choiceId: number]: number}
 }
 
+export interface ProductOrderInCart extends ProductOrder {
+    id: number
+}
+
 export const enum UserActionType {
     ADD_TO_CART = "ADD_TO_CART",
     REMOVE_FROM_CART = "REMOVE_FROM_CART",
@@ -18,9 +22,9 @@ export const enum UserActionType {
     SET_CURRENT_ORDER_VIEW_OPTION = "SET_CURRENT_ORDER_VIEW_OPTION",
 }
 
-type UserAction =
+export type UserAction =
     | { type: UserActionType.ADD_TO_CART; productOrder: ProductOrder }
-    | { type: UserActionType.REMOVE_FROM_CART; productId: number }
+    | { type: UserActionType.REMOVE_FROM_CART; id: number }
     | { type: UserActionType.GET_TOTAL_PRICE }
     | { type: UserActionType.SET_CURRENT_ORDER_VIEW, productOrder: ProductOrder }
     | { type: UserActionType.SET_CURRENT_ORDER_VIEW_QUANTITY, quantity: number }
@@ -28,19 +32,21 @@ type UserAction =
 
 
 export interface State {
-    cart: ProductOrder[],
+    cart: ProductOrderInCart[],
     products: { [key: number]: Product },
     currentProductView: ProductOrder
 }
 
+let uniqueId = 0;
 const reducer = (state: State, action: UserAction): State => {
     switch (action.type) {
         case UserActionType.ADD_TO_CART:
-            const cart = [...state.cart, action.productOrder];
+            const order = { ...action.productOrder, id: uniqueId++}
+            const cart = [...state.cart, order];
             const products = { ...state.products, [action.productOrder.productId]: action.productOrder.product }
             return { ...state, cart, products }
         case UserActionType.REMOVE_FROM_CART:
-            return { ...state, cart: state.cart.filter(c => c.productId !== action.productId) }
+            return { ...state, cart: state.cart.filter(c => c.id !== action.id) }
         case UserActionType.SET_CURRENT_ORDER_VIEW:
             const products2 = { ...state.products, [action.productOrder.productId]: action.productOrder.product }
             return { ...state, currentProductView: action.productOrder, products: products2}
@@ -54,6 +60,18 @@ const reducer = (state: State, action: UserAction): State => {
         default:
             throw new Error();
     }
+}
+
+export function getOrderOptions(order: ProductOrder): string[] {
+    const choices = Object.keys(order.options).reduce((acc: string[], key: string) => {
+        const optionId = parseInt(key)
+        const choiceId = order.options[optionId];
+        const choiceString = order.product.options.find(o => o.id === optionId)!.choices.find(c => c.id === choiceId)!.text;
+        acc.push(choiceString);
+        return acc
+    }, [])
+
+    return choices;
 }
 
 export function selectTotalPrice(cart: ProductOrder[]): Price {

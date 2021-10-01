@@ -63,7 +63,13 @@ export default function Example() {
     />
   </ModalProductView>)
 
-  const reviewCart = (<ModalViewCart></ModalViewCart>)
+  const removeFromCart = (id: number) => {
+    if (state.cart.length === 1) {
+      closeModal();
+    }
+    dispatch({type: UserActionType.REMOVE_FROM_CART, id})
+  }
+  const reviewCart = (<ModalViewCart cart={state.cart} removeFromCart={removeFromCart}></ModalViewCart>)
 
   let modalView = undefined;
   if (openModal === ModalView.PRODUCT_VIEW) {
