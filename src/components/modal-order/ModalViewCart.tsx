@@ -2,16 +2,134 @@ import { TrashIcon } from "@heroicons/react/outline"
 import { Banner } from "../Banner"
 import { WhatsAppIcon } from "../../assets/WhatsappIcon"
 import { getOrderOptions, getPriceForSingleOrder, ProductOrderInCart, selectTotalPrice } from "../../lib/cart-reducer"
+import { RadioGroup } from "@headlessui/react";
+import { useState } from "react";
 
-export function ModalViewCart({cart, removeFromCart}: {cart: ProductOrderInCart[], removeFromCart: any}) {
+function classNames(...classes: any[]) {
+    return classes.filter(Boolean).join(' ')
+}
+
+const shippingMethod = ['استلام', 'توصيل']
+const paymentMethod = ['اونلاين', 'كاش']
+
+export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCart[], removeFromCart: any }) {
     const totalPrice = selectTotalPrice(cart);
-    // const productOrders = cart.
+    const [selectedShippingMethod, setSelectedShippingMethod] = useState(shippingMethod[0])
+    const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(shippingMethod[0])
+
 
     return (
         <div className="text-right px-4 pt-4 sm:p-6">
             <div className="lg:col-start-2">
                 <h1 className=" border-b pb-4 text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">السلة</h1>
                 <div className="max-modal-scrollable-height-88vh overflow-y-auto">
+                    <div className="my-4 flex flex-col space-y-3">
+                        <RadioGroup value={selectedPaymentMethod} onChange={setSelectedPaymentMethod}>
+                            <RadioGroup.Label className="my-2 block text-sm font-medium text-gray-700">طريقة الدفع</RadioGroup.Label>
+                            <div className="flex flex-row-reverse space-x-2 space-x-reverse">
+                                {paymentMethod.map((option) => (
+                                    <RadioGroup.Option
+                                        key={option}
+                                        value={option}
+                                        className={({ active }) =>
+                                            classNames(
+                                                active ? 'ring-1 ring-offset-2 ring-green-500' : '',
+                                                'relative block rounded-lg border border-gray-300 bg-white shadow-sm px-4 py-2 cursor-pointer hover:border-gray-400  focus:outline-none'
+                                            )
+                                        }
+                                    >
+                                        {({ checked }) => (
+                                            <>
+                                                <div className="flex items-center">
+                                                    <div className="text-sm">
+                                                        <RadioGroup.Label as="p" className="font-medium text-gray-900">
+                                                            {option}
+                                                        </RadioGroup.Label>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    className={classNames(
+                                                        checked ? 'border-green-500' : 'border-transparent',
+                                                        'absolute -inset-px rounded-lg border-2 pointer-events-none'
+                                                    )}
+                                                    aria-hidden="true"
+                                                />
+                                            </>
+                                        )}
+                                    </RadioGroup.Option>
+                                ))}
+                            </div>
+                        </RadioGroup>
+
+                        <div className="">
+                            <label htmlFor="shippingTime" className="block text-sm font-medium text-gray-700">
+                            اي وقت يناسبكم التوصيل
+                            </label>
+                            <div className="mt-1">
+                                <input
+                                    type="text"
+                                    name="shippingTime"
+                                    id="shippingTime"
+                                    className="text-right shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                                    placeholder=""
+                                    aria-describedby="shippingTime-description"
+                                />
+                            </div>
+                        </div>
+                        <RadioGroup value={selectedShippingMethod} onChange={setSelectedShippingMethod}>
+                            <RadioGroup.Label className="mb-2 block text-sm font-medium text-gray-700">طريقة التوصيل</RadioGroup.Label>
+                            <div className="flex flex-row-reverse space-x-2 space-x-reverse">
+                                {shippingMethod.map((option) => (
+                                    <RadioGroup.Option
+                                        key={option}
+                                        value={option}
+                                        className={({ active }) =>
+                                            classNames(
+                                                active ? 'ring-1 ring-offset-2 ring-green-500' : '',
+                                                'relative block rounded-lg border border-gray-300 bg-white shadow-sm px-4 py-2 cursor-pointer hover:border-gray-400  focus:outline-none'
+                                            )
+                                        }
+                                    >
+                                        {({ checked }) => (
+                                            <>
+                                                <div className="flex items-center">
+                                                    <div className="text-sm">
+                                                        <RadioGroup.Label as="p" className="font-medium text-gray-900">
+                                                            {option}
+                                                        </RadioGroup.Label>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    className={classNames(
+                                                        checked ? 'border-green-500' : 'border-transparent',
+                                                        'absolute -inset-px rounded-lg border-2 pointer-events-none'
+                                                    )}
+                                                    aria-hidden="true"
+                                                />
+                                            </>
+                                        )}
+                                    </RadioGroup.Option>
+                                ))}
+                            </div>
+                        </RadioGroup>
+
+                        {selectedShippingMethod === "توصيل" && <div className="">
+                            <label htmlFor="address" className="block text-sm font-medium text-gray-700">
+                                العنوان
+                            </label>
+                            <div className="mt-1">
+                                <input
+                                    type="text"
+                                    name="address"
+                                    id="address"
+                                    className="text-right shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                                    placeholder=""
+                                    aria-describedby="address-description"
+                                />
+                            </div>
+                        </div>}
+
+                    </div>
                     <ul
                         className="text-sm font-medium text-gray-500 border-gray-200 divide-y divide-gray-200"
                     >
@@ -38,22 +156,6 @@ export function ModalViewCart({cart, removeFromCart}: {cart: ProductOrderInCart[
                             </li>
                         ))}
                     </ul>
-
-                    <div className="mb-4">
-                        <label htmlFor="address" className="block text-sm font-medium text-gray-700">
-                            العنوان
-                        </label>
-                        <div className="mt-1">
-                            <input
-                                type="text"
-                                name="address"
-                                id="address"
-                                className="text-right shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                placeholder=""
-                                aria-describedby="address-description"
-                            />
-                        </div>
-                    </div>
 
                     <dl className="text-sm font-medium text-gray-500 space-y-6 border-t border-gray-200 pt-6">
                         <div className="flex flex-row-reverse justify-between">
