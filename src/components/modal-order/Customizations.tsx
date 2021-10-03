@@ -17,7 +17,6 @@ export const Customizations = ({  order, updateQuantity, updateOption }: { updat
           value={order.quantity}
           onChange={(e) => {
             updateQuantity(Number.parseInt(e.target.value))
-            console.log(e.target.value)
           }}
         >
           <option value={1}>1</option>

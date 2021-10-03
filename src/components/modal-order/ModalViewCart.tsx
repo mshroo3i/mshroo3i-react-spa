@@ -9,13 +9,19 @@ function classNames(...classes: any[]) {
     return classes.filter(Boolean).join(' ')
 }
 
-const shippingMethod = ['استلام', 'توصيل']
-const paymentMethod = ['اونلاين', 'كاش']
+const shippingMethod = [
+    'استلام',
+    'توصيل',
+]
+const paymentMethod = [
+    'كاش',
+    'اونلاين',
+]
 
 export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCart[], removeFromCart: any }) {
     const totalPrice = selectTotalPrice(cart);
     const [selectedShippingMethod, setSelectedShippingMethod] = useState(shippingMethod[0])
-    const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(shippingMethod[0])
+    const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(paymentMethod[0])
 
 
     return (
