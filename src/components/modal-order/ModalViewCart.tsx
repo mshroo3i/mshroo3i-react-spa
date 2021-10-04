@@ -22,6 +22,8 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
     const totalPrice = selectTotalPrice(cart);
     const [selectedShippingMethod, setSelectedShippingMethod] = useState(shippingMethod[0])
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(paymentMethod[0])
+    const [preferredDeliveryTime, setPreferredDeliveryTime] = useState('')
+    const [address, setAddress] = useState('')
 
 
     return (
@@ -78,6 +80,8 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
                                     id="shippingTime"
                                     className="text-right shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md"
                                     placeholder=""
+                                    value={preferredDeliveryTime}
+                                    onChange={e => setPreferredDeliveryTime(e.target.value)}
                                     aria-describedby="shippingTime-description"
                                 />
                             </div>
@@ -130,6 +134,8 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
                                     id="address"
                                     className="text-right shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md"
                                     placeholder=""
+                                    value={address}
+                                    onChange={e => setAddress(e.target.value)}
                                     aria-describedby="address-description"
                                 />
                             </div>
