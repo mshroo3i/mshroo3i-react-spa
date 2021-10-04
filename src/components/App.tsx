@@ -46,7 +46,6 @@ export default function Example() {
         }, {})
       }
     })
-    console.log("dispatching " + product.name)
     setOpenModal(ModalView.PRODUCT_VIEW)
   }
 
