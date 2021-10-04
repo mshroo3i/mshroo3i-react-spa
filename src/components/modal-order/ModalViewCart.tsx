@@ -4,6 +4,7 @@ import { WhatsAppIcon } from "../../assets/WhatsappIcon"
 import { getOrderOptions, getPriceForSingleOrder, ProductOrderInCart, selectTotalPrice } from "../../lib/cart-reducer"
 import { RadioGroup } from "@headlessui/react";
 import { useState } from "react";
+import { encodeCart } from "../../lib/cart-encoder";
 
 function classNames(...classes: any[]) {
     return classes.filter(Boolean).join(' ')
@@ -24,7 +25,13 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(paymentMethod[0])
     const [preferredDeliveryTime, setPreferredDeliveryTime] = useState('')
     const [address, setAddress] = useState('')
-
+    const inqueryEncoded = encodeCart({
+        cart,
+        shippingMethod: selectedShippingMethod,
+        paymentMethod: selectedPaymentMethod,
+        preferredDeliveryTime,
+        address,
+    });
 
     return (
         <div className="text-right px-4 pt-4 sm:p-6">
@@ -183,7 +190,7 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
                     <div className="mb-16" />
 
                 </div>
-                <Banner onClickHandler={() => { }}>
+                <Banner as='a' href={`https://wa.me/15419086876?text=${inqueryEncoded}`}>
                     <div
                         className=" flex  justify-center"
                     >
