@@ -26,14 +26,14 @@ export const Hero = () => (
               <div className="text-xs sm:text-base lg:mt-4 space-x-6 flex justify-end">
                   <a
                     href="https://www.instagram.com/zatarsamar/"
-                    className="text-gray-400 hover:text-gray-500 group flex items-center px-2 py-2 font-medium"
+                    className="text-green-400 hover:text-green-500 group flex items-center px-2 py-2 font-medium"
                     target="_blank" rel="noopener noreferrer"
                   >
                     <InstagramIcon className="mr-1 flex-shrink-0 h-6 w-6" aria-hidden="true" />
                     ZatarSamar
                   </a>
                   <a href="https://wa.me/96565544219"
-                  className="text-gray-400 hover:text-gray-500 group flex items-center px-2 py-2 font-medium"
+                  className="text-green-400 hover:text-green-500 group flex items-center px-2 py-2 font-medium"
                   target="_blank" rel="noopener noreferrer"
                   >
                     <WhatsAppIcon className="mr-1 flex-shrink-0 h-6 w-6" aria-hidden="true" />

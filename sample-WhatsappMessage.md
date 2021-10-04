@@ -1,32 +1,27 @@
-sdfgsdfgsdfghsdfgsdfg
-sdfg asdfgdsfg sdfgdsf g
-dsfg dsafg sdfgdf gsdfgh
-dsfg hdsafgh dafg dsfg dafgdsfg dsafgdf gsdfghdafg
-sdfg asdfgdsfg sdfgdsf g
-dsfg dsafg sdfgdf gsdfgh
-dsfg hdsafgh dafg dsfg dafgdsfg dsafgdf gsdfghdafg
-sdfg asdfgdsfg sdfgdsf g
-dsfg dsafg sdfgdf gsdfgh
-dsfg hdsafgh dafg dsfg dafgdsfg dsafgdf gsdfghdafg
-sdfg asdfgdsfg sdfgdsf g
-dsfg dsafg sdfgdf gsdfgh
-dsfg hdsafgh dafg dsfg dafgdsfg dsafgdf gsdfghdafg
-sdfg asdfgdsfg sdfgdsf g
-dsfg dsafg sdfgdf gsdfgh
-dsfg hdsafgh dafg dsfg dafgdsfg dsafgdf gsdfghdafg
-sdfgsdfgsdfghsdfgsdfg
-sdfg asdfgdsfg sdfgdsf g
-dsfg dsafg sdfgdf gsdfgh
-dsfg hdsafgh dafg dsfg dafgdsfg dsafgdf gsdfghdafg
-sdfg asdfgdsfg sdfgdsf g
-dsfg dsafg sdfgdf gsdfgh
-dsfg hdsafgh dafg dsfg dafgdsfg dsafgdf gsdfghdafg
-sdfg asdfgdsfg sdfgdsf g
-dsfg dsafg sdfgdf gsdfgh
-dsfg hdsafgh dafg dsfg dafgdsfg dsafgdf gsdfghdafg
-sdfg asdfgdsfg sdfgdsf g
-dsfg dsafg sdfgdf gsdfgh
-dsfg hdsafgh dafg dsfg dafgdsfg dsafgdf gsdfghdafg
-sdfg asdfgdsfg sdfgdsf g
-dsfg dsafg sdfgdf gsdfgh
-dsfg hdsafgh dafg dsfg dafgdsfg dsafgdf gsdfghdafg
+*السلة*
+---------
+
+*زعتر فاخر فلسطيني*
+ربع كيلو | الكمية: 4
+٢٫٠٠٠ د.ك.‏
+
+*زعتر فاخر فلسطيني*
+ربع كيلو | الكمية: 4
+٢٫٠٠٠ د.ك.‏
+
+*زعتر فاخر فلسطيني*
+ربع كيلو | الكمية: 4
+٢٫٠٠٠ د.ك.‏
+
+*زعتر فاخر فلسطيني*
+ربع كيلو | الكمية: 4
+٢٫٠٠٠ د.ك.‏
+
+*العنوان*
+---------
+العصور ق4 ش5 م3
+
+
+*التوقيت*
+---------
+الاسبوع الجاي
