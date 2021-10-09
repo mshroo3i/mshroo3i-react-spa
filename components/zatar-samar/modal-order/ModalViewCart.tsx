@@ -1,10 +1,10 @@
 import { TrashIcon } from "@heroicons/react/outline"
 import { Banner } from "../Banner"
-import { WhatsAppIcon } from "../../assets/WhatsappIcon"
-import { getOrderOptions, getPriceForSingleOrder, ProductOrderInCart, selectTotalPrice } from "../../lib/cart-reducer"
+import { WhatsAppIcon } from "../../WhatsappIcon"
+import { getOrderOptions, getPriceForSingleOrder, ProductOrderInCart, selectTotalPrice } from "../../../lib/cart-reducer"
 import { RadioGroup } from "@headlessui/react";
 import { useState } from "react";
-import { encodeCart } from "../../lib/cart-encoder";
+import { encodeCart } from "../../../lib/cart-encoder";
 
 function classNames(...classes: any[]) {
     return classes.filter(Boolean).join(' ')

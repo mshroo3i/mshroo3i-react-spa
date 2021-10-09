@@ -4,9 +4,9 @@ import { Modal } from './modal-order/Modal'
 import { Header } from './Header'
 import { Hero } from './Hero'
 import React, { useState } from 'react'
-import { Product, products } from '../data/products'
+import { Product } from '../../data/products'
 import { ProductItem } from './ProductItem'
-import { getTotalQuantity, ProductOrder, selectTotalPrice, useCartState, UserActionType } from '../lib/cart-reducer'
+import { getTotalQuantity, ProductOrder, selectTotalPrice, useCartState, UserActionType } from '../../lib/cart-reducer'
 import { ModalProductView } from './modal-order/ModalProductView'
 import { Customizations } from './modal-order/Customizations'
 import { ModalViewCart } from './modal-order/ModalViewCart'
@@ -16,7 +16,7 @@ const enum ModalView {
   REVIEW_CART = "REVIEW_CART"
 }
 
-export default function Example() {
+export default function Example({ products }) {
   const [openModal, setOpenModal] = useState<ModalView | undefined>(undefined)
   const [state, dispatch] = useCartState({
     products, cart: [], currentProductView: {
@@ -79,9 +79,9 @@ export default function Example() {
 
   return (
     <div className="bg-white">
-      <Header />
+      {/* <Header /> */}
 
-      <main>
+      <div>
         {/* Hero */}
         <Hero />
 
@@ -108,9 +108,7 @@ export default function Example() {
             </div>
           </div>
         </section>
-      </main>
-
-      <Footer />
+      </div>
       {/* price={selectTotalPrice(state.cart)} quantity={getTotalQuantity(state.cart)} */}
       {state.cart.length > 0
         && <Banner onClickHandler={() => { setOpenModal(ModalView.REVIEW_CART) }}>
