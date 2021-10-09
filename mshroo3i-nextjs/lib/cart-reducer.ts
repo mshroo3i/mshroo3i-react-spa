@@ -93,12 +93,12 @@ export function getTotalQuantity(cart: ProductOrder[]): number {
 export function getPriceForSingleOrder(order: ProductOrder): Price {
     let orderTotal = 0;
     if (Object.keys(order.options).length === 0) {
-        return new Price(order.product.price.raw * order.quantity)
+        return new Price(order.product.price * order.quantity)
     }
     for (const optionId of Object.keys(order.options)) {
         const productOption = order.product.options.find(o => o.id === Number.parseInt(optionId));
         const productChoice = productOption!.choices.find(c => c.id === order.options[Number.parseInt(optionId)])
-        orderTotal += productChoice!.price.raw;
+        orderTotal += productChoice!.price;
     }
 
     return new Price(orderTotal * order.quantity);
