@@ -1,5 +1,3 @@
-import Image from 'next/image'
-
 export const Header = () => (<header className="relative z-10">
   <nav aria-label="Top">
 
@@ -12,12 +10,9 @@ export const Header = () => (<header className="relative z-10">
             <div className="lg:flex lg:items-center">
               <a href="/">
                 <span className="sr-only">ZatarSamar</span>
-                <Image
-                  priority
+                <img
                   src="/assets/leaf-logo.png"
                   className="h-8 w-auto"
-                  height={144}
-                  width={144}
                   alt="Logo"
                 />
               </a>

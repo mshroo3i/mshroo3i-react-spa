@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { InstagramIcon } from '../instagram'
 import { WhatsAppIcon } from '../WhatsappIcon'
 
@@ -11,11 +10,9 @@ export const Hero = () => (
 
       <div className="w-full h-52 sm:h-64 lg:absolute lg:top-0 lg:right-0 lg:w-1/2 lg:h-full">
         <div className="relative w-full h-full">
-        <Image
-          priority
+        <img
           src="/assets/header-zatar.jpeg"
           className="w-full h-full object-center object-cover"
-          layout='fill'
           // height={144}
           // width={144}
           alt=""
