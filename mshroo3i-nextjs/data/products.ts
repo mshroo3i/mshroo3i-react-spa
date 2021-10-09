@@ -1,9 +1,10 @@
-import zatarImage from '../assets/products-pics/zatar-2.jpeg';
-import do2aImage from '../assets/products-pics/do2a-2.jpeg';
-import zaytoonMixImg from '../assets/products-pics/zaytoon-mix-1.jpeg';
-import magdoosImage from '../assets/products-pics/magdoos-1.jpeg';
-import simsimiaImage from '../assets/products-pics/simsimya-2.jpeg';
 import { Price } from '../lib/price';
+
+const zatarImage = '/assets/products-pics/zatar-2.jpeg';
+const do2aImage = '/assets/products-pics/do2a-2.jpeg';
+const zaytoonMixImg = '/assets/products-pics/zaytoon-mix-1.jpeg';
+const magdoosImage = '/assets/products-pics/magdoos-1.jpeg';
+const simsimiaImage = '/assets/products-pics/simsimya-2.jpeg';
 
 export interface Option {
     id: number,
