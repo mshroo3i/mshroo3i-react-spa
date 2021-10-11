@@ -5,7 +5,7 @@ interface Inquery {
     cart: ProductOrder[],
     paymentMethod: string,
     shippingMethod: string,
-    preferredDeliveryTime: string,
+    preferredDeliveryDay: string,
     address: string,
 }
 
@@ -50,7 +50,7 @@ export function encodeCart(inquery: Inquery): string {
 
     result += '\n*التوقيت*\n'
     result += '--------------\n'
-    result += inquery.preferredDeliveryTime + '\n\n'
+    result += inquery.preferredDeliveryDay + '\n\n'
 
     result += '\n*الاجمالي قبل رسوم التوصيل*\n'
     result += '--------------\n'
