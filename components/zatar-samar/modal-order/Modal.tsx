@@ -46,11 +46,12 @@ export function Modal({ open, closeModal, imageSrc, imageAlt, children }: { chil
               <div className="absolute top-0 left-0 pt-4 pl-4">
                 <button
                   type="button"
-                  className="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  className="py-1 px-2 bg-white font-bold rounded-md text-red-400 hover:text-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                   onClick={() => closeModal()}
                 >
                   <span className="sr-only">Close</span>
-                  <XIcon className="h-6 w-6" aria-hidden="true" />
+                  <span>الرجوع</span>
+                  {/* <XIcon className="h-6 w-6" aria-hidden="true" /> */}
                 </button>
               </div>
                 {children}

@@ -21,7 +21,7 @@ code {
 }
 
 .max-modal-scrollable-height-88vh {
-  max-height: 80vh;
+  max-height: 75vh;
 }
 
 @responsive {

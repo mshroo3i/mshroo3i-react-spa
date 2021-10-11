@@ -19,17 +19,48 @@ const paymentMethod = [
     'اونلاين',
 ]
 
+const shippingTime = Date.now().toLocaleString('ar-EG')
+
+const options: Intl.DateTimeFormatOptions = {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric'
+}
+// date.toLocaleDateString('ar-EG', options)
+
+const date = new Date();
+const tomorrow = new Date()
+const twoDaysAfter = new Date()
+const threeDaysAfter = new Date()
+
+tomorrow.setDate(date.getDate() + 1)
+twoDaysAfter.setDate(date.getDate() + 2)
+threeDaysAfter.setDate(date.getDate() + 3)
+
+const deliveryDay = [
+    'أسرع يوم',
+    date.toLocaleDateString('ar-EG', options),
+    tomorrow.toLocaleDateString('ar-EG', options),
+    twoDaysAfter.toLocaleDateString('ar-EG', options),
+    threeDaysAfter.toLocaleDateString('ar-EG', options),
+    'يوم اخر'
+]
+
+const deliveryTime = [
+
+]
+
 export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCart[], removeFromCart: any }) {
     const totalPrice = selectTotalPrice(cart);
     const [selectedShippingMethod, setSelectedShippingMethod] = useState(shippingMethod[0])
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(paymentMethod[0])
-    const [preferredDeliveryTime, setPreferredDeliveryTime] = useState('')
+    const [preferredDeliveryDay, setPreferredDeliveryDay] = useState(deliveryDay[0])
     const [address, setAddress] = useState('')
     const inqueryEncoded = encodeCart({
         cart,
         shippingMethod: selectedShippingMethod,
         paymentMethod: selectedPaymentMethod,
-        preferredDeliveryTime,
+        preferredDeliveryDay: preferredDeliveryDay,
         address,
     });
 
@@ -48,7 +79,7 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
                                         value={option}
                                         className={({ active }) =>
                                             classNames(
-                                                active ? 'ring-1 ring-offset-2 ring-green-500' : '',
+                                                active ? 'ring-1 ring-offset-2 ring-green-500 bg-green-50' : '',
                                                 'relative block rounded-lg border border-gray-300 bg-white shadow-sm px-4 py-2 cursor-pointer hover:border-gray-400  focus:outline-none'
                                             )
                                         }
@@ -76,23 +107,44 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
                             </div>
                         </RadioGroup>
 
-                        <div className="">
-                            <label htmlFor="shippingTime" className="block text-sm font-medium text-gray-700">
-                            اي وقت يناسبكم التوصيل
-                            </label>
-                            <div className="mt-1">
-                                <input
-                                    type="text"
-                                    name="shippingTime"
-                                    id="shippingTime"
-                                    className="text-right shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                    placeholder=""
-                                    value={preferredDeliveryTime}
-                                    onChange={e => setPreferredDeliveryTime(e.target.value)}
-                                    aria-describedby="shippingTime-description"
-                                />
+                        <RadioGroup value={preferredDeliveryDay} onChange={setPreferredDeliveryDay}>
+                            <RadioGroup.Label className="mb-2 block text-sm font-medium text-gray-700">يوم التوصيل</RadioGroup.Label>
+                            <div className="text-right rtl grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))]  gap-1">
+                                {deliveryDay.map((option) => (
+                                    <RadioGroup.Option
+                                        key={option}
+                                        value={option}
+                                        className={({ active }) =>
+                                            classNames(
+                                                active ? 'ring-1 ring-offset-2 ring-green-500 bg-green-50' : '',
+                                                'relative block rounded-lg border border-gray-300 bg-white shadow-sm px-4 py-2 cursor-pointer hover:border-gray-400  focus:outline-none'
+                                            )
+                                        }
+                                    >
+                                        {({ checked }) => (
+                                            <>
+                                                <div className="flex items-center">
+                                                    <div className="text-sm">
+                                                        <RadioGroup.Label as="p" className="text-xs font-medium text-gray-900">
+                                                            {option}
+                                                        </RadioGroup.Label>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    className={classNames(
+                                                        checked ? 'border-green-500' : 'border-transparent',
+                                                        'absolute -inset-px rounded-lg border-2 pointer-events-none'
+                                                    )}
+                                                    aria-hidden="true"
+                                                />
+                                            </>
+                                        )}
+                                    </RadioGroup.Option>
+                                ))}
                             </div>
-                        </div>
+                        </RadioGroup>
+
+
                         <RadioGroup value={selectedShippingMethod} onChange={setSelectedShippingMethod}>
                             <RadioGroup.Label className="mb-2 block text-sm font-medium text-gray-700">طريقة التوصيل</RadioGroup.Label>
                             <div className="flex flex-row-reverse space-x-2 space-x-reverse">
@@ -102,7 +154,7 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
                                         value={option}
                                         className={({ active }) =>
                                             classNames(
-                                                active ? 'ring-1 ring-offset-2 ring-green-500' : '',
+                                                active ? 'ring-1 ring-offset-2 ring-green-500 bg-green-50' : '',
                                                 'relative block rounded-lg border border-gray-300 bg-white shadow-sm px-4 py-2 cursor-pointer hover:border-gray-400  focus:outline-none'
                                             )
                                         }
@@ -190,7 +242,7 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
                     <div className="mb-16" />
 
                 </div>
-                <Banner as='a' href={`https://wa.me/15419086876?text=${inqueryEncoded}`}>
+                <Banner as='a' href={`https://wa.me/96590005243?text=${inqueryEncoded}`}>
                     <div
                         className=" flex  justify-center"
                     >
