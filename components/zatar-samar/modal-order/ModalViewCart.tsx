@@ -242,7 +242,7 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
                     <div className="mb-16" />
 
                 </div>
-                <Banner as='a' href={`https://wa.me/15419086876?text=${inqueryEncoded}`}>
+                <Banner as='a' href={`https://wa.me/96590005243?text=${inqueryEncoded}`}>
                     <div
                         className=" flex  justify-center"
                     >

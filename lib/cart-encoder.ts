@@ -11,7 +11,7 @@ interface Inquery {
 
 export function encodeCart(inquery: Inquery): string {
     let result = '*السلة*\n'
-    result += '--------------\n\n'
+    result += 'ـــــــــــــــــــــــ\n\n'
 
     for (const order of inquery.cart) {
         const productName = order.product.name
@@ -35,25 +35,25 @@ export function encodeCart(inquery: Inquery): string {
     }
 
     result += '\n*طريقة التوصيل*\n'
-    result += '--------------\n'
+    result += 'ـــــــــــــــــــــــ\n'
     result += inquery.shippingMethod + '\n\n'
 
     if (inquery.shippingMethod === 'توصيل') {
         result += '\n*العنوان*\n'
-        result += '--------------\n'
+        result += 'ـــــــــــــــــــــــ\n'
         result += inquery.address + '\n\n'
     }
 
     result += '\n*طريقة الدفع*\n'
-    result += '--------------\n'
+    result += 'ـــــــــــــــــــــــ\n'
     result += inquery.paymentMethod + '\n\n'
 
     result += '\n*التوقيت*\n'
-    result += '--------------\n'
+    result += 'ـــــــــــــــــــــــ\n'
     result += inquery.preferredDeliveryDay + '\n\n'
 
     result += '\n*الاجمالي قبل رسوم التوصيل*\n'
-    result += '--------------\n'
+    result += 'ـــــــــــــــــــــــ\n'
     result += selectTotalPrice(inquery.cart).toFormattedString()
 
 
