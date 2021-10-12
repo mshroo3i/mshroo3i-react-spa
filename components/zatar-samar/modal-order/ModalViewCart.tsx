@@ -38,7 +38,7 @@ twoDaysAfter.setDate(date.getDate() + 2)
 threeDaysAfter.setDate(date.getDate() + 3)
 
 const deliveryDay = [
-    'أسرع يوم',
+    'أقرب يوم',
     date.toLocaleDateString('ar-EG', options),
     tomorrow.toLocaleDateString('ar-EG', options),
     twoDaysAfter.toLocaleDateString('ar-EG', options),
@@ -47,20 +47,27 @@ const deliveryDay = [
 ]
 
 const deliveryTime = [
-
+    'الصباح',
+    'المساء',
 ]
+
+function getTimeString(desiredTime: string) {
+    const time = new Date(`2021-01-01 ${desiredTime}`).toLocaleTimeString('ar-EG',{hour: '2-digit', minute:'2-digit'})
+}
 
 export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCart[], removeFromCart: any }) {
     const totalPrice = selectTotalPrice(cart);
     const [selectedShippingMethod, setSelectedShippingMethod] = useState(shippingMethod[0])
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(paymentMethod[0])
     const [preferredDeliveryDay, setPreferredDeliveryDay] = useState(deliveryDay[0])
+    const [preferredDeliveryTime, setPreferredDeliveryTime] = useState(deliveryTime[0])
     const [address, setAddress] = useState('')
     const inqueryEncoded = encodeCart({
         cart,
         shippingMethod: selectedShippingMethod,
         paymentMethod: selectedPaymentMethod,
         preferredDeliveryDay: preferredDeliveryDay,
+        preferredDeliveryTime: preferredDeliveryTime,
         address,
     });
 
@@ -109,8 +116,45 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
 
                         <RadioGroup value={preferredDeliveryDay} onChange={setPreferredDeliveryDay}>
                             <RadioGroup.Label className="mb-2 block text-sm font-medium text-gray-700">يوم التوصيل</RadioGroup.Label>
-                            <div className="text-right rtl grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))]  gap-1">
+                            <div className="text-right rtl grid grid-cols-[repeat(auto-fill,minmax(75px,1fr))]  gap-1">
                                 {deliveryDay.map((option) => (
+                                    <RadioGroup.Option
+                                        key={option}
+                                        value={option}
+                                        className={({ active }) =>
+                                            classNames(
+                                                active ? 'ring-1 ring-offset-2 ring-green-500 bg-green-50' : '',
+                                                'relative block rounded-lg border border-gray-300 bg-white shadow-sm px-4 py-2 cursor-pointer hover:border-gray-400  focus:outline-none'
+                                            )
+                                        }
+                                    >
+                                        {({ checked }) => (
+                                            <>
+                                                <div className="flex items-center">
+                                                    <div className="text-sm">
+                                                        <RadioGroup.Label as="p" className="text-xs font-medium text-gray-900">
+                                                            {option}
+                                                        </RadioGroup.Label>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    className={classNames(
+                                                        checked ? 'border-green-500' : 'border-transparent',
+                                                        'absolute -inset-px rounded-lg border-2 pointer-events-none'
+                                                    )}
+                                                    aria-hidden="true"
+                                                />
+                                            </>
+                                        )}
+                                    </RadioGroup.Option>
+                                ))}
+                            </div>
+                        </RadioGroup>
+
+                        <RadioGroup value={preferredDeliveryTime} onChange={setPreferredDeliveryTime}>
+                            <RadioGroup.Label className="mb-2 block text-sm font-medium text-gray-700">وقت التوصيل</RadioGroup.Label>
+                            <div className="text-right rtl grid grid-cols-[repeat(auto-fill,minmax(70px,1fr))]  gap-1">
+                                {deliveryTime.map((option) => (
                                     <RadioGroup.Option
                                         key={option}
                                         value={option}

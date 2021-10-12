@@ -36,13 +36,13 @@ export const Hero = () => (
                   <InstagramIcon className="mr-1 flex-shrink-0 h-6 w-6" aria-hidden="true" />
                   ZatarSamar
                 </a>
-                <a href="https://wa.me/96565544219"
+                {/* <a href="https://wa.me/96565544219"
                   className="text-green-400 hover:text-green-500 group flex items-center px-2 py-2 font-medium"
                   target="_blank" rel="noopener noreferrer"
                 >
                   <WhatsAppIcon className="mr-1 flex-shrink-0 h-6 w-6" aria-hidden="true" />
                   wa.me/96565544219
-                </a>
+                </a> */}
               </div>
               <hr className="mt-4 hidden lg:block" />
               <p className="mt-4 text-sm sm:text-xl text-gray-600">
