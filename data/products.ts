@@ -116,7 +116,7 @@ export const products: Product[] = [
         id: 8,
         name: 'مقدوس حبه صغيره قرشة اقل من نص',
         description: "",
-        price: 2.25,
+        price: 2.5,
         imageSrc: magdoosImage,
         imageAlt: 'مقدوس حبه صغيره قرشة اقل من نص',
         options: []
