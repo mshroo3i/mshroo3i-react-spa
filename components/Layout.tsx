@@ -21,12 +21,6 @@ export function Layout({ children, home = false, mainClassName = '' }) {
                 <meta property="og:image" content="/favicon-16x16.png" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <link rel="manifest" href="/manifest.json" />
-                <Script
-                    id="analytics-heap"
-                    type="text/javascript"
-                    >
-                        {process.env.ANALYTICS_SCRIPT}
-                </Script>
             </Head>
             <TopNav />
             <main className={className}>{children}</main>
