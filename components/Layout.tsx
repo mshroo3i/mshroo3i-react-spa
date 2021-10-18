@@ -1,6 +1,5 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
+import Script from 'next/script'
 import { Footer } from './zatar-samar/Footer'
 import { TopNav } from './TopNav'
 
@@ -22,6 +21,12 @@ export function Layout({ children, home = false, mainClassName = '' }) {
                 <meta property="og:image" content="/favicon-16x16.png" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <link rel="manifest" href="/manifest.json" />
+                <Script
+                    strategy="afterInteractive"
+                    type="text/javascript"
+                    dangerouslySetInnerHTML={{
+                        __html: process.env.ANALYTICS_SCRIPT
+                    }} />
             </Head>
             <TopNav />
             <main className={className}>{children}</main>
