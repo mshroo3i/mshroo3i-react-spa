@@ -22,11 +22,11 @@ export function Layout({ children, home = false, mainClassName = '' }) {
                 <meta name="twitter:card" content="summary_large_image" />
                 <link rel="manifest" href="/manifest.json" />
                 <Script
-                    strategy="afterInteractive"
+                    id="analytics-heap"
                     type="text/javascript"
-                    dangerouslySetInnerHTML={{
-                        __html: process.env.ANALYTICS_SCRIPT
-                    }} />
+                    >
+                        {process.env.ANALYTICS_SCRIPT}
+                </Script>
             </Head>
             <TopNav />
             <main className={className}>{children}</main>
