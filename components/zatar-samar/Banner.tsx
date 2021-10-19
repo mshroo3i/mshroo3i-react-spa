@@ -1,15 +1,23 @@
-import React, { ReactNode } from "react"
 
-export function Banner({onClickHandler, children, as = "button", href}: {children: ReactNode, onClickHandler?: any, href?: string, as?: 'button' | 'a' | undefined}) {
-    const props: any = { className: 'relative block w-full p-1 rounded bg-green-600 shadow-lg py-2 px-3 font-medium text-white'}
+import React, { AnchorHTMLAttributes, ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react"
+
+interface BannerProps extends  React.HTMLAttributes<HTMLAttributes<any>> {
+    children: ReactNode,
+    onClickHandler?: any,
+    as?: 'button' | 'a' | undefined,
+    href?: string
+}
+
+export function Banner({onClickHandler, children, as = "button", href, ...props}:  BannerProps) {
+    const myProps: any = { className: 'relative block w-full p-1 rounded bg-green-600 shadow-lg py-2 px-3 font-medium text-white'}
     if (as === 'button') {
-        props.onClick = onClickHandler
+        myProps.onClick = onClickHandler
     } else {
-        props.href = href
-        props.target = "_blank"
-        props.rel = "noopener noreferrer"
+        myProps.href = href
+        myProps.target = "_blank"
+        myProps.rel = "noopener noreferrer"
     }
-    const element = React.createElement(as, props, children)
+    const element = React.createElement(as, { ...myProps, ...props }, children)
     return (
         <div className="fixed bottom-1 inset-x-0 pb-2 sm:pb-5">
             <div className="max-w-xl mx-auto px-2 sm:px-6 lg:px-8">
