@@ -27,11 +27,7 @@ export function encodeCart(inquery: Inquery): string {
 
         result += `*${productName}*\n`
         result += options.map(o => `${o.text}: ${o.choice}`).join('\n')
-        if (options.length > 0) {
-            result += `\nالكمية: ${order.quantity}\n`
-        } else {
-            result += `الكمية: ${order.quantity}`
-        }
+        result += `\nالكمية: ${order.quantity}\n`
         result += price.toFormattedString() + '\n\n';
     }
 
