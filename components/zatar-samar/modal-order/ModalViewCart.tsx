@@ -56,6 +56,7 @@ function getTimeString(desiredTime: string) {
 }
 
 export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCart[], removeFromCart: any }) {
+    const [recipient, setRecipient] = useState('')
     const totalPrice = selectTotalPrice(cart);
     const [selectedShippingMethod, setSelectedShippingMethod] = useState(shippingMethod[0])
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(paymentMethod[0])
@@ -69,6 +70,7 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
         preferredDeliveryDay: preferredDeliveryDay,
         preferredDeliveryTime: preferredDeliveryTime,
         address,
+        recipient
     });
 
     return (
@@ -77,6 +79,23 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
                 <h1 className=" border-b pb-4 text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">السلة</h1>
                 <div className="scrollbar-hide max-modal-scrollable-height-88vh overflow-y-auto">
                     <div className="my-4 flex flex-col space-y-3">
+                    <div className="">
+                            <label htmlFor="recipient" className="block text-sm font-medium text-gray-700">
+                                الفاتورة باسم من؟
+                            </label>
+                            <div className="mt-1">
+                                <input
+                                    type="text"
+                                    name="recipient"
+                                    id="recipient"
+                                    className="text-right shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                                    placeholder=""
+                                    value={recipient}
+                                    onChange={e => setRecipient(e.target.value)}
+                                    aria-describedby="recipient-description"
+                                />
+                            </div>
+                        </div>
                         <RadioGroup value={selectedPaymentMethod} onChange={setSelectedPaymentMethod}>
                             <RadioGroup.Label className="my-2 block text-sm font-medium text-gray-700">طريقة الدفع</RadioGroup.Label>
                             <div className="flex flex-row-reverse space-x-2 space-x-reverse">

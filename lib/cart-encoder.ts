@@ -8,6 +8,7 @@ interface Inquery {
     preferredDeliveryDay: string,
     preferredDeliveryTime: string,
     address: string,
+    recipient: string
 }
 
 export function encodeCart(inquery: Inquery): string {
@@ -57,6 +58,9 @@ export function encodeCart(inquery: Inquery): string {
     result += 'ـــــــــــــــــــــــ\n'
     result += selectTotalPrice(inquery.cart).toFormattedString()
 
+    result += '\n*الفاتورة باسم*\n'
+    result += 'ـــــــــــــــــــــــ\n'
+    result += inquery.recipient + '\n\n'
 
     return customEncodeUri(result)
 }

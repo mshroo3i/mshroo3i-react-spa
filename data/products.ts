@@ -89,7 +89,7 @@ export const products: Product[] = [
         id: 4,
         name: 'زيت زيتون فلسطيني عصره اولى',
         description: "متوفر باللتر",
-        price: 5,
+        price: 5.5,
         imageSrc: null,
         imageAlt: 'زيت زيتون فلسطيني عصره اولى',
         options: []

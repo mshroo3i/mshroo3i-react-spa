@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export const Header = () => (<header className="relative z-10">
   <nav aria-label="Top">
 
@@ -8,7 +10,8 @@ export const Header = () => (<header className="relative z-10">
           <div className="h-16 flex items-center justify-between">
             {/* Logo (lg+) */}
             <div className="lg:flex lg:items-center">
-              <a href="/">
+              <Link href="/">
+              <a>
                 <span className="sr-only">ZatarSamar</span>
                 <img
                   src="/assets/leaf-logo.png"
@@ -16,6 +19,7 @@ export const Header = () => (<header className="relative z-10">
                   alt="Logo"
                 />
               </a>
+              </Link>
             </div>
 
             {/* <div className="flex-1 flex items-center justify-end">
