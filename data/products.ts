@@ -123,7 +123,7 @@ export const products: Product[] = [
     },
     {
         id: 9,
-        name: 'سماق ادرني درجه اولى',
+        name: 'سماق اردني درجه اولى',
         description: "متوفر ربع كيلو أو نص كيلو",
         price: 1.25,
         imageSrc: null,
