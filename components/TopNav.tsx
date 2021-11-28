@@ -1,17 +1,19 @@
 /* This example requires Tailwind CSS v2.0+ */
-import Link from 'next/link'
 import { Fragment } from 'react'
+import Link from 'next/link'
+import { useUser } from '@auth0/nextjs-auth0';
 import { Popover, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 
 const navigation = [
-  { name: 'Product', href: '#' },
-  { name: 'Features', href: '#' },
-  { name: 'Marketplace', href: '#' },
-  { name: 'Company', href: '#' },
+  // { name: 'Product', href: '#' },
+  // { name: 'Features', href: '#' },
+  // { name: 'Marketplace', href: '#' },
+  // { name: 'Company', href: '#' },
 ]
 
 export function TopNav() {
+  const { user, isLoading } = useUser();
   return (
     <div className="relative bg-gray-50">
 
@@ -32,31 +34,43 @@ export function TopNav() {
                       <div className="ml-2 text-green-600 font-bold">مشروعي</div>
                     </a>
                   </Link>
-                  {/* <div className="-mr-2 flex items-center md:hidden">
+                  <div className="-mr-2 flex items-center md:hidden">
                     <Popover.Button className="bg-gray-50 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                       <span className="sr-only">Open main menu</span>
                       <MenuIcon className="h-6 w-6" aria-hidden="true" />
                     </Popover.Button>
-                  </div> */}
+                  </div>
                 </div>
               </div>
-              {/* <div className="hidden md:flex md:space-x-10">
+              <div className="hidden md:flex md:space-x-10">
                 {navigation.map((item) => (
                   <a key={item.name} href={item.href} className="font-medium text-gray-500 hover:text-gray-900">
                     {item.name}
                   </a>
                 ))}
-              </div> */}
-              {/* <div className="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
+              </div>
+              <div className="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
                 <span className="inline-flex rounded-md shadow">
+                {!isLoading && (!user ?
+                  <Link href="/api/auth/login">
                   <a
-                    href="#"
                     className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50"
                   >
                     Log in
                   </a>
+                  </Link>
+                  :
+                  <Link href="/api/auth/logout">
+                  <a
+                    className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50"
+                  >
+                    Log out
+                  </a>
+                  </Link>
+                )
+                }
                 </span>
-              </div> */}
+              </div>
             </nav>
           </div>
 
@@ -100,12 +114,24 @@ export function TopNav() {
                     </a>
                   ))}
                 </div>
-                <a
-                  href="#"
-                  className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100"
-                >
-                  Log in
-                </a>
+                {!isLoading && (!user ?
+                  <Link href="/api/auth/login">
+                  <a
+                    className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100"
+                  >
+                    Log in
+                  </a>
+                  </Link>
+                  :
+                  <Link href="/api/auth/logout">
+                  <a
+                    className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100"
+                  >
+                    Log out
+                  </a>
+                  </Link>
+                )
+                }
               </div>
             </Popover.Panel>
           </Transition>
