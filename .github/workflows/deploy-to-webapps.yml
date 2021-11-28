@@ -1,0 +1,40 @@
+name: deploy_to_webapps
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: 'Checkout GitHub Action'
+      uses: actions/checkout@main
+
+    - name: 'Login via Azure CLI'
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: 'Build and push image'
+      uses: azure/docker-login@v1
+      with:
+        login-server: ${{ secrets.REGISTRY }}
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+    - run: |
+        docker build . -t ${{ secrets.REGISTRY }}/mshroo3i-nextjs:${{ github.sha }}
+        docker push ${{ secrets.REGISTRY }}/mshroo3i-nextjs:${{ github.sha }}
+
+    - name: 'Deploy to Staging'
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'mshroo3i-frontend-staging'
+        images: '${{ secrets.REGISTRY }}/mshroo3i-nextjs:${{ github.sha }}'

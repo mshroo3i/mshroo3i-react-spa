@@ -38,4 +38,7 @@ EXPOSE 3000
 # Uncomment the following line in case you want to disable telemetry.
 ENV NEXT_TELEMETRY_DISABLED 1
 
+# https://github.com/vercel/next.js/issues/30078
+ENV NODE_OPTIONS --openssl-legacy-provider
+
 CMD ["npm", "start"]
