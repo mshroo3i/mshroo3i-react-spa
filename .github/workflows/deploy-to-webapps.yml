@@ -36,5 +36,6 @@ jobs:
     - name: 'Deploy to Staging'
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'mshroo3i-frontend/staging'
+        app-name: 'mshroo3i-frontend'
+        slot-name: mshroo3i-frontend-staging
         images: '${{ secrets.REGISTRY }}/mshroo3i-nextjs:${{ github.sha }}'
