@@ -1,6 +1,6 @@
 import { TrashIcon } from "@heroicons/react/outline"
 import { Banner } from "../Banner"
-import { WhatsAppIcon } from "../../WhatsappIcon"
+import { WhatsAppIcon } from "../../svg/WhatsappIcon"
 import { getOrderOptions, getPriceForSingleOrder, ProductOrderInCart, selectTotalPrice } from "../../../lib/cart-reducer"
 import { RadioGroup } from "@headlessui/react";
 import { useState } from "react";
