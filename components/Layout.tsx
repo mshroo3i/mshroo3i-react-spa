@@ -1,12 +1,11 @@
 import Head from 'next/head'
-import Script from 'next/script'
 import { Footer } from './zatar-samar/Footer'
-import { TopNav } from './TopNav'
+import { Navbar } from './Navbar'
 
 export const siteTitle = 'Mshroo3i'
 export const siteDescription = 'انشأ مترجك لمشروعك بسهولة مع الحفاظ على الجانب الاجتماعي'
 
-export function Layout({ children, home = false, mainClassName = '' }) {
+export function Layout({ children, currentPage = '', mainClassName = '' }) {
     const className = 'flex-grow ' + mainClassName
     return (
         <div className="flex flex-col h-screen">
@@ -22,7 +21,7 @@ export function Layout({ children, home = false, mainClassName = '' }) {
                 <meta name="twitter:card" content="summary_large_image" />
                 <link rel="manifest" href="/manifest.json" />
             </Head>
-            <TopNav />
+            <Navbar></Navbar>
             <main className={className}>{children}</main>
             <Footer />
         </div>

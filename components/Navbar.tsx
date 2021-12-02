@@ -1,30 +1,44 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Children, Fragment } from 'react'
+import React, { Fragment } from 'react'
 import Link from 'next/link';
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import { Mshroo3iLogoFull } from './svg/Mshroo3iLogoFull';
 
-const navItems = [
-  {
-    href: '#',
-    text: 'Dashboard'
-  },
-  {
-    href: '#',
-    text: 'Team'
-  },
-  {
-    href: '#',
-    text: 'Projects'
-  },
-  {
-    href: '#',
-    text: 'Calendar'
-  }
+interface LinkData {
+  href: string
+  text: string
+}
+
+const navItems: LinkData[] = [
+  // {
+  //   href: '#',
+  //   text: 'Dashboard'
+  // },
+  // {
+  //   href: '#',
+  //   text: 'Team'
+  // },
+  // {
+  //   href: '#',
+  //   text: 'Projects'
+  // },
+  // {
+  //   href: '#',
+  //   text: 'Calendar'
+  // }
 ]
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+const navData: {navItems: LinkData[], login: LinkData, logout: LinkData} = {
+  navItems,
+  login: {
+    text: "تسجيل الدخول",
+    href: "#"
+  },
+  logout: {
+    text: "تسجيل الخروج",
+    href: "#"
+  },
 }
 
 const NavItem = (props: { href: string, children: any }) => {
@@ -66,8 +80,9 @@ export function Navbar() {
                 </Disclosure.Button>
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex-shrink-0 flex items-center">
-                  <img
+                <Link href="/">
+                <a className="flex-shrink-0 flex items-center">
+                  {/* <img
                     className="block lg:hidden h-8 w-auto"
                     src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
                     alt="Workflow"
@@ -76,24 +91,25 @@ export function Navbar() {
                     className="hidden lg:block h-8 w-auto"
                     src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
                     alt="Workflow"
-                  />
-                </div>
+                  /> */}
+                  <Mshroo3iLogoFull className=" h-auto w-40 md:w-48" />
+                </a>
+                </Link>
                 <div className="hidden sm:mx-6 sm:flex">
-                  {navItems.map(item => (
+                  {navData.navItems.map(item => (
                     <NavItem href={item.href} key={item.text}>{item.text}</NavItem>
                   ))}
                 </div>
               </div>
               <div className="absolute inset-y-0 left-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <button
+                <NavItem href={navData.login.href}>{navData.login.text}</NavItem>
+                {/* <button
                   type="button"
                   className="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                   <span className="sr-only">View notifications</span>
                   <BellIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
-
-                {/* Profile dropdown */}
                 <Menu as="div" className="mx-3 relative">
                   <div>
                     <Menu.Button className="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
@@ -147,14 +163,14 @@ export function Navbar() {
                       </Menu.Item>
                     </Menu.Items>
                   </Transition>
-                </Menu>
+                </Menu> */}
               </div>
             </div>
           </div>
 
           <Disclosure.Panel className="sm:hidden rtl">
             <div className="pt-2 pb-4 space-y-1">
-              {navItems.map(item => (
+              {navData.navItems.map(item => (
                 <Disclosure.Button
                   as={Fragment}
                   key={item.text}
