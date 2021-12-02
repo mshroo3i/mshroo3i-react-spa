@@ -5,7 +5,7 @@ import { Fearures } from '../components/home/Features';
 
 export default function Home() {
   return (
-    <Layout home mainClassName="flex-grow">
+    <Layout mainClassName="flex-grow">
       <main>
       <Hero />
       <Fearures />

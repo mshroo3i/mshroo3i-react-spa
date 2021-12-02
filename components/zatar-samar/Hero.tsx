@@ -1,5 +1,5 @@
 import { InstagramIcon } from '../instagram'
-import { WhatsAppIcon } from '../WhatsappIcon'
+import { WhatsAppIcon } from '../svg/WhatsappIcon'
 
 
 export const Hero = () => (

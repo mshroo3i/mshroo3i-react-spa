@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { MailIcon, MenuIcon, PhoneIcon, XIcon } from '@heroicons/react/outline'
 import { Layout } from "../components/Layout";
-import { WhatsAppIcon } from '../components/WhatsappIcon';
+import { WhatsAppIcon } from '../components/svg/WhatsappIcon';
 
 export default function SignUp() {
     return (
