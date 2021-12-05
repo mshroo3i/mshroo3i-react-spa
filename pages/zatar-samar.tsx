@@ -7,7 +7,7 @@ import { GetStaticPropsResult } from 'next';
 export default function ZatarSamar() {
     return (<Layout>
         <Head>
-            <title>{siteTitle + ' - Zatar Samar'}</title>
+            <title>{'Zatar Samar - ' + siteTitle}</title>
         </Head>
         <App products={products} />
 
