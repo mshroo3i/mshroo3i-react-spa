@@ -92,7 +92,7 @@ export function Navbar() {
                     src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
                     alt="Workflow"
                   /> */}
-                  <Mshroo3iLogoFull className=" h-auto w-40 md:w-48" />
+                  <Mshroo3iLogoFull className=" h-auto w-40 md:w-56" />
                 </a>
                 </Link>
                 <div className="hidden sm:mx-6 sm:flex">
