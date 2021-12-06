@@ -33,9 +33,8 @@ jobs:
         docker build . -t ${{ secrets.REGISTRY }}/mshroo3i-nextjs:${{ github.sha }}
         docker push ${{ secrets.REGISTRY }}/mshroo3i-nextjs:${{ github.sha }}
 
-    - name: 'Deploy to Staging'
+    - name: 'Deploy to Prod'
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'mshroo3i-frontend'
-        # slot-name: staging
         images: '${{ secrets.REGISTRY }}/mshroo3i-nextjs:${{ github.sha }}'
