@@ -1,12 +1,8 @@
 import Link from 'next/link'
-import { ChevronRightIcon } from '@heroicons/react/solid'
+import Image from 'next/image'
 
-const navigation = [
-  { name: 'Product', href: '#' },
-  { name: 'Features', href: '#' },
-  { name: 'Marketplace', href: '#' },
-  { name: 'Company', href: '#' },
-]
+import HeroImage from '../../public/assets/hero.png'
+
 
 export function Hero() {
   return (
@@ -19,17 +15,17 @@ export function Hero() {
             </span>
           </h1>
           <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-          خلال خطوات بسيطة فقط وسيكون متجرك الإلكتروني جاهزًا. استقبل طلباتك ببساطة عن طريق وسيلة تواصل اجتماعي كالواتساب.
+            خلال خطوات بسيطة فقط وسيكون متجرك الإلكتروني جاهزًا. استقبل طلباتك ببساطة عن طريق وسيلة تواصل اجتماعي كالواتساب.
           </p>
           <div className="sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
             <div className="mt-3 sm:flex justify-center lg:justify-start">
+              <Link href="/sign-up">
               <a
-                href=""
-                type="submit"
                 className="mt-3 w-full px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto"
               >
-                Notify me
+                انشأ مشروعك مجانا
               </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -38,10 +34,9 @@ export function Hero() {
             <div
               className="relative block w-full bg-white rounded-lg overflow-hidden"
             >
-              <img
-                className="w-full"
-                src="https://images.unsplash.com/photo-1556740758-90de374c12ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                alt=""
+              <Image
+                src={HeroImage}
+                alt="استقبل طلباتك ببساطة عن طريق وسيلة تواصل اجتماعي كالواتساب."
               />
             </div>
           </div>
