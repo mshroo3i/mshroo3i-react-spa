@@ -94,7 +94,7 @@ export function Fearures() {
           تعرف على التسهيلات الكثيرة التي يقدمها مشروعي لمشروعك!
           </p>
         </div>
-        <dl className="mt-12 space-y-10 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 lg:grid-cols-4 lg:gap-x-8 rtl">
+        <dl className="mt-12 space-y-10 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 lg:grid-cols-4 lg:gap-x-8">
           {transferFeatures.map((feature) => (
             <div key={feature.name} className="relative">
               <dt>
@@ -113,7 +113,7 @@ export function Fearures() {
 
 // export function Fearures() {
 //   return (
-//     <div className="py-8 bg-gray-50 overflow-hidden rtl">
+//     <div className="py-8 bg-gray-50 overflow-hidden">
 //       <div className="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
 
 //         <div className="relative">

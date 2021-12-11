@@ -23,13 +23,3 @@ code {
 .max-modal-scrollable-height-88vh {
   max-height: 75vh;
 }
-
-@responsive {
-  .ltr {
-    direction: ltr;
-  }
-
-  .rtl {
-    direction: rtl;
-  }
-}

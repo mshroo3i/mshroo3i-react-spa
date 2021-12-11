@@ -1,7 +1,7 @@
 import { Product } from "../../data/products";
 
 export const ProductItem = ({ product, onClick }: { product: Product, onClick: any}) => (
-    <button onClick={onClick} key={product.id} className="text-right relative flex flex-row-reverse md:flex-row lg:flex shadow-sm rounded border hover:shadow-md ltr">
+    <button onClick={onClick} key={product.id} className="text-right relative flex md:flex-row lg:flex shadow-sm rounded border hover:shadow-md">
         <div className="px-2 py-4 sm:py-10 min-w-0 flex-1 lg:flex lg:flex-col">
             <div className="lg:flex-1">
                 <div>

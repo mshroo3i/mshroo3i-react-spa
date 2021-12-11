@@ -40,7 +40,7 @@ export function Footer() {
         <p className="mt-4 text-base text-gray-500">
           تواصل معنا لفتح متجرك الالكتروني لمشورعك
         </p>
-        <form className="mt-4 sm:flex flex-row-reverse">
+        <form className="mt-4 sm:flex">
           <div className="rounded-md sm:mt-0  sm:flex-shrink-0">
             <Link href={`/sign-up`}>
               <a
@@ -52,7 +52,7 @@ export function Footer() {
           </div>
         </form>
         <div className="mt-8 border-t border-gray-200 pt-8 md:flex md:items-center md:justify-between">
-          <div className="flex flex-row-reverse space-x-6 space-x-reverse md:order-1">
+          <div className="flex space-x-6 space-x-reverse md:order-1">
             {navigation.social.map((item) => (
               <a key={item.name} href={item.href} className="text-gray-400 hover:text-gray-500">
                 <span className="sr-only">{item.name}</span>

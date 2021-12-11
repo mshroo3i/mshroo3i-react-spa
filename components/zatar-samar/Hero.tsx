@@ -22,12 +22,12 @@ export const Hero = () => (
 
       <div className="relative bg-white lg:bg-transparent text-right">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:grid lg:grid-cols-2">
-          <div className="max-w-2xl mx-auto py-5 lg:py-32 lg:max-w-none">
+          <div className="max-w-2xl mx-auto py-5 lg:py-32 lg:max-w-none col-end-3">
             <div className="lg:pr-16">
               <h1 className="text-3xl sm:text-5xl xl:text-6xl font-extrabold tracking-tight text-gray-900">
                 زعتر سمر
               </h1>
-              <div className="text-xs sm:text-base lg:mt-4 space-x-6 flex justify-end">
+              <div className="text-xs sm:text-base lg:mt-4 space-x-6 flex justify-start">
                 <a
                   href="https://www.instagram.com/zatarsamar/"
                   className="text-green-400 hover:text-green-500 group flex items-center px-2 py-2 font-medium"

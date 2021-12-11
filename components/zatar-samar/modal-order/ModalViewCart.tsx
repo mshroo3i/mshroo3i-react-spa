@@ -98,7 +98,7 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
                         </div>
                         <RadioGroup value={selectedPaymentMethod} onChange={setSelectedPaymentMethod}>
                             <RadioGroup.Label className="my-2 block text-sm font-medium text-gray-700">طريقة الدفع</RadioGroup.Label>
-                            <div className="flex flex-row-reverse space-x-2 space-x-reverse">
+                            <div className="flex space-x-2 space-x-reverse">
                                 {paymentMethod.map((option) => (
                                     <RadioGroup.Option
                                         key={option}
@@ -135,7 +135,7 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
 
                         <RadioGroup value={preferredDeliveryDay} onChange={setPreferredDeliveryDay}>
                             <RadioGroup.Label className="mb-2 block text-sm font-medium text-gray-700">يوم التوصيل</RadioGroup.Label>
-                            <div className="text-right rtl grid grid-cols-[repeat(auto-fill,minmax(75px,1fr))]  gap-1">
+                            <div className="text-right grid grid-cols-[repeat(auto-fill,minmax(75px,1fr))]  gap-1">
                                 {deliveryDay.map((option) => (
                                     <RadioGroup.Option
                                         key={option}
@@ -172,7 +172,7 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
 
                         <RadioGroup value={preferredDeliveryTime} onChange={setPreferredDeliveryTime}>
                             <RadioGroup.Label className="mb-2 block text-sm font-medium text-gray-700">وقت التوصيل</RadioGroup.Label>
-                            <div className="text-right rtl grid grid-cols-[repeat(auto-fill,minmax(70px,1fr))]  gap-1">
+                            <div className="text-right grid grid-cols-[repeat(auto-fill,minmax(70px,1fr))]  gap-1">
                                 {deliveryTime.map((option) => (
                                     <RadioGroup.Option
                                         key={option}
@@ -210,7 +210,7 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
 
                         <RadioGroup value={selectedShippingMethod} onChange={setSelectedShippingMethod}>
                             <RadioGroup.Label className="mb-2 block text-sm font-medium text-gray-700">طريقة التوصيل</RadioGroup.Label>
-                            <div className="flex flex-row-reverse space-x-2 space-x-reverse">
+                            <div className="flex space-x-2 space-x-reverse">
                                 {shippingMethod.map((option) => (
                                     <RadioGroup.Option
                                         key={option}
@@ -292,12 +292,12 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
                     </ul>
 
                     <dl className="text-sm font-medium text-gray-500 space-y-6 border-t border-gray-200 pt-6">
-                        <div className="flex flex-row-reverse justify-between">
+                        <div className="flex justify-between">
                             <dt>رسوم التوصيل</dt>
                             <dd className="text-gray-900">حسب المنطقة</dd>
                         </div>
 
-                        <div className="flex flex-row-reverse items-center justify-between border-t border-gray-200 text-gray-900 pt-6">
+                        <div className="flex items-center justify-between border-t border-gray-200 text-gray-900 pt-6">
                             <dt className="text-base">الاجمالي قبل التوصيل</dt>
                             <dd className="text-base">{totalPrice.toFormattedString()}</dd>
                         </div>

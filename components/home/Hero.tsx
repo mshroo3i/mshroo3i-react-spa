@@ -6,7 +6,7 @@ import HeroImage from '../../public/assets/hero.png'
 
 export function Hero() {
   return (
-    <div className="relative overflow-hidden mt-14 mx-auto max-w-7xl px-4 sm:mt-24 sm:px-6 lg:mt-28 rtl">
+    <div className="relative overflow-hidden mt-14 mx-auto max-w-7xl px-4 sm:mt-24 sm:px-6 lg:mt-28">
       <div className="lg:grid lg:grid-cols-12 lg:gap-8">
         <div className="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-right">
           <h1>
