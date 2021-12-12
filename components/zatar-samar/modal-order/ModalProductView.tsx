@@ -1,6 +1,7 @@
 import { Dialog } from "@headlessui/react";
 import { ReactElement } from "react";
-import { getPriceForSingleOrder, ProductOrder } from "../../../lib/cart-reducer";
+import { getPriceForSingleOrder } from "../../../lib/cart-reducer";
+import { ProductOrder } from "../../../types";
 
 export const ModalProductView = ({  order,children, onAdd }: { children: ReactElement, order: ProductOrder, onAdd: (order: ProductOrder) => void }) => {
   const product = order.product

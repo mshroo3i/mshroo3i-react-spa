@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Head from 'next/head'
 import { Layout, siteTitle } from "../components/Layout";
-import { Product, products } from '../data/products';
+import { products } from '../data/zatar-samar/products';
 import { GetStaticPropsResult } from 'next';
 import { Banner } from '../components/zatar-samar/Banner'
 import { Modal } from '../components/zatar-samar/modal-order/Modal'
@@ -10,7 +10,8 @@ import { ProductItem } from '../components/zatar-samar/ProductItem'
 import { ModalProductView } from '../components/zatar-samar/modal-order/ModalProductView'
 import { Customizations } from '../components/zatar-samar/modal-order/Customizations'
 import { ModalViewCart } from '../components/zatar-samar/modal-order/ModalViewCart'
-import { getTotalQuantity, ProductOrder, selectTotalPrice, useCartState, UserActionType } from '../lib/cart-reducer'
+import { getTotalQuantity, selectTotalPrice, useCartState, UserActionType } from '../lib/cart-reducer'
+import { Product, ProductOrder } from '../types';
 
 const enum ModalView {
   PRODUCT_VIEW = "PRODUCT_VIEW",

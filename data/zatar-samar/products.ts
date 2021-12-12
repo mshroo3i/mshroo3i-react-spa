@@ -1,31 +1,10 @@
+import { Product, CustomizationOptionType } from "../../types";
+
 const zatarImage = '/assets/products-pics/zatar-2.jpeg';
 const do2aImage = '/assets/products-pics/do2a-2.jpeg';
 const zaytoonMixImg = '/assets/products-pics/zaytoon-mix-1.jpeg';
 const magdoosImage = '/assets/products-pics/magdoos-1.jpeg';
 const simsimiaImage = '/assets/products-pics/simsimya-2.jpeg';
-
-export interface Option {
-    id: number,
-    description: string,
-    inputType: CustomizationOptionType
-    choices: Array<{ id: number, text: string, price: number }>
-}
-
-export interface Product {
-    id: number
-    name: string
-    description: string
-    price:  number
-    imageSrc: string | null
-    imageAlt: string
-    options: Option[]
-}
-
-const enum CustomizationOptionType {
-    Radio = "Radio",
-    Checkbox = "Checkbox",
-    Text = "Text"
-}
 
 export const products: Product[] = [
     {
