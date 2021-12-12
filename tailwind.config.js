@@ -1,5 +1,6 @@
 const plugin = require('tailwindcss/plugin')
 const colors = require('tailwindcss/colors')
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 const scrollbarHide = plugin(function ({ addUtilities }) {
   addUtilities({
@@ -26,6 +27,9 @@ module.exports = {
         'warm-gray': colors.warmGray,
         teal: colors.teal,
       },
+      fontFamily: {
+        tajawal: ["Tajawal", ...defaultTheme.fontFamily.sans]
+      }
     },
   },
   variants: {

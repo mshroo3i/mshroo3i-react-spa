@@ -10,7 +10,7 @@ export function Hero() {
       <div className="lg:grid lg:grid-cols-12 lg:gap-8">
         <div className="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-right">
           <h1>
-            <span className="mt-1 block text-3xl tracking-wide leading-10 font-extrabold xl:text-4xl">
+            <span className="mt-1 block text-3xl leading-10 font-extrabold xl:text-4xl">
               <span className="block text-gray-900">لن تحتاج إلى مبرمج لإنشاء متجرك الالكتروني</span>
             </span>
           </h1>
