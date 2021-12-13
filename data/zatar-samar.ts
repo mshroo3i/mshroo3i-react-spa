@@ -1,10 +1,19 @@
-import { Product, CustomizationOptionType } from "../../types";
+import { Product, CustomizationOptionType, StoreInfo } from "../types";
+import ZatarSamarHero from '../public/assets/header-zatar.jpeg'
 
 const zatarImage = '/assets/products-pics/zatar-2.jpeg';
 const do2aImage = '/assets/products-pics/do2a-2.jpeg';
 const zaytoonMixImg = '/assets/products-pics/zaytoon-mix-1.jpeg';
 const magdoosImage = '/assets/products-pics/magdoos-1.jpeg';
 const simsimiaImage = '/assets/products-pics/simsimya-2.jpeg';
+
+export const storeInfo: StoreInfo = {
+    storeNameAr: 'زعتر سمر',
+    storeDescriptionAr: 'مشروع كويتي - زعتر أصلي درجة أولى - دُقة (زعتر أحمر) أجود أنواع الزعتر الفلسطيني',
+    heroImage: ZatarSamarHero,
+    instagramLink: 'https://www.instagram.com/zatarsamar/',
+    whatsappLink: 'https://wa.me/96565544219'
+  }
 
 export const products: Product[] = [
     {

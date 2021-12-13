@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Head from 'next/head'
 import { Layout, siteTitle } from "../components/Layout";
-import { products } from '../data/zatar-samar/products';
+import { products } from '../data/zatar-samar';
 import { GetStaticPropsResult } from 'next';
 import { Banner } from '../components/zatar-samar/Banner'
 import { Modal } from '../components/zatar-samar/modal-order/Modal'

@@ -27,3 +27,11 @@ export interface ProductOrder {
   product: Product,
   options: { [choiceId: number]: number}
 }
+
+export interface StoreInfo {
+  storeNameAr: string
+  storeDescriptionAr: string
+  heroImage: string | StaticImageData
+  instagramLink: string
+  whatsappLink: string
+}

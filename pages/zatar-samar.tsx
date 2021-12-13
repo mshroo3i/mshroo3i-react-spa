@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 import Head from 'next/head'
 import { Layout, siteTitle } from "../components/Layout";
-import { products } from '../data/zatar-samar/products';
+import { products, storeInfo } from '../data/zatar-samar';
 import { GetStaticPropsResult } from 'next';
 import { Banner } from '../components/zatar-samar/Banner'
 import { Modal } from '../components/zatar-samar/modal-order/Modal'
-import { Hero } from '../components/zatar-samar/Hero'
 import { ProductItem } from '../components/zatar-samar/ProductItem'
 import { ModalProductView } from '../components/zatar-samar/modal-order/ModalProductView'
 import { Customizations } from '../components/zatar-samar/modal-order/Customizations'
 import { ModalViewCart } from '../components/zatar-samar/modal-order/ModalViewCart'
 import { getTotalQuantity, selectTotalPrice, useCartState, UserActionType } from '../lib/cart-reducer'
 import { Product, ProductOrder } from '../types';
+import { StoreHero } from '../components/store/StoreHero';
 
 const enum ModalView {
   PRODUCT_VIEW = "PRODUCT_VIEW",
@@ -88,7 +88,7 @@ export default function ZatarSamar() {
 
       <div>
         {/* Hero */}
-        <Hero />
+        <StoreHero storeInfo={storeInfo} /> 
 
         {/* Products */}
         <section aria-labelledby="trending-heading" className="">
