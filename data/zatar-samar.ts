@@ -8,12 +8,13 @@ const magdoosImage = '/assets/products-pics/magdoos-1.jpeg';
 const simsimiaImage = '/assets/products-pics/simsimya-2.jpeg';
 
 export const storeInfo: StoreInfo = {
+    storeNameEn: 'Zatar Samar',
     storeNameAr: 'زعتر سمر',
     storeDescriptionAr: 'مشروع كويتي - زعتر أصلي درجة أولى - دُقة (زعتر أحمر) أجود أنواع الزعتر الفلسطيني',
     heroImage: ZatarSamarHero,
     instagramLink: 'https://www.instagram.com/zatarsamar/',
     whatsappLink: 'https://wa.me/96565544219'
-  }
+}
 
 export const products: Product[] = [
     {
@@ -29,8 +30,8 @@ export const products: Product[] = [
                 description: "الحجم",
                 inputType: CustomizationOptionType.Radio,
                 choices: [
-                    { id: 1, text: "علبه ريع كيلو", price: 2},
-                    { id: 2, text: "علبه نص كيلو", price: 4},
+                    { id: 1, text: "علبه ريع كيلو", price: 2 },
+                    { id: 2, text: "علبه نص كيلو", price: 4 },
                 ]
             }
         ]
@@ -48,8 +49,8 @@ export const products: Product[] = [
                 description: "الحجم",
                 inputType: CustomizationOptionType.Radio,
                 choices: [
-                    { id: 1, text: "علبه ريع كيلو", price: 1.5},
-                    { id: 2, text: "علبه نص كيلو", price: 3},
+                    { id: 1, text: "علبه ريع كيلو", price: 1.5 },
+                    { id: 2, text: "علبه نص كيلو", price: 3 },
                 ]
             }
         ]
@@ -67,8 +68,8 @@ export const products: Product[] = [
                 description: "الحجم",
                 inputType: CustomizationOptionType.Radio,
                 choices: [
-                    { id: 1, text: "علبه ريع كيلو", price: 1.5},
-                    { id: 2, text: "علبه نص كيلو", price: 3},
+                    { id: 1, text: "علبه ريع كيلو", price: 1.5 },
+                    { id: 2, text: "علبه نص كيلو", price: 3 },
                 ]
             }
         ]
@@ -122,8 +123,8 @@ export const products: Product[] = [
                 description: "الحجم",
                 inputType: CustomizationOptionType.Radio,
                 choices: [
-                    { id: 1, text: "علبه ريع كيلو", price: 1.25},
-                    { id: 2, text: "علبه نص كيلو", price: 2.5},
+                    { id: 1, text: "علبه ريع كيلو", price: 1.25 },
+                    { id: 2, text: "علبه نص كيلو", price: 2.5 },
                 ]
             }
         ]
@@ -141,8 +142,8 @@ export const products: Product[] = [
                 description: "الحجم",
                 inputType: CustomizationOptionType.Radio,
                 choices: [
-                    { id: 1, text: "علبه ريع كيلو", price: 1.5},
-                    { id: 2, text: "علبه نص كيلو", price: 3},
+                    { id: 1, text: "علبه ريع كيلو", price: 1.5 },
+                    { id: 2, text: "علبه نص كيلو", price: 3 },
                 ]
             }
         ]
@@ -160,8 +161,8 @@ export const products: Product[] = [
                 description: "الحجم",
                 inputType: CustomizationOptionType.Radio,
                 choices: [
-                    { id: 1, text: "علبه ريع كيلو", price: 1.25},
-                    { id: 2, text: "علبه نص كيلو", price: 2.5},
+                    { id: 1, text: "علبه ريع كيلو", price: 1.25 },
+                    { id: 2, text: "علبه نص كيلو", price: 2.5 },
                 ]
             }
         ]

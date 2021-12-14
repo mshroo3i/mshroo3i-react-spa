@@ -30,6 +30,7 @@ export interface ProductOrder {
 
 export interface StoreInfo {
   storeNameAr: string
+  storeNameEn: string
   storeDescriptionAr: string
   heroImage: string | StaticImageData
   instagramLink: string

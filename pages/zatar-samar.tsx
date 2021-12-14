@@ -81,7 +81,7 @@ export default function ZatarSamar() {
 
   return (<Layout>
     <Head>
-      <title>{'Zatar Samar - ' + siteTitle}</title>
+      <title>{`${storeInfo.storeNameEn} - ${siteTitle}`}</title>
     </Head>
     <div className="bg-white">
       {/* <Header /> */}

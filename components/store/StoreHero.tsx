@@ -41,7 +41,8 @@ export function StoreHero({ storeInfo }: { storeInfo: StoreInfo}) {
             >
               <Image
                 src={storeInfo.heroImage}
-                className='object-center object-cover'
+                objectFit='cover'
+                layout='fill'
                 alt={`${storeInfo.storeNameAr} - ${storeInfo.storeDescriptionAr}`}
               />
             </div>
