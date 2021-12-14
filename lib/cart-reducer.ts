@@ -1,13 +1,6 @@
 import { Dispatch, useReducer } from "react";
-import { Product } from "../data/products";
+import { Product, ProductOrder } from "../types";
 import { Price } from "./price";
-
-export interface ProductOrder {
-    productId: number
-    quantity: number
-    product: Product,
-    options: { [choiceId: number]: number}
-}
 
 export interface ProductOrderInCart extends ProductOrder {
     id: number

@@ -1,4 +1,5 @@
-import { getPriceForSingleOrder, ProductOrder, selectTotalPrice } from "./cart-reducer";
+import { ProductOrder } from "../types";
+import { getPriceForSingleOrder, selectTotalPrice } from "./cart-reducer";
 import { customEncodeUri } from "./custom-url-encode";
 
 interface Inquery {

@@ -1,4 +1,4 @@
-import { Product } from "../../data/products";
+import { Product } from "../../types";
 
 export const ProductItem = ({ product, onClick }: { product: Product, onClick: any}) => (
     <button onClick={onClick} key={product.id} className="text-right relative flex md:flex-row lg:flex shadow-sm rounded border hover:shadow-md">
