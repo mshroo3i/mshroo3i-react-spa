@@ -1,5 +1,5 @@
-import { ProductOrder } from "../../../lib/cart-reducer";
 import { Price } from "../../../lib/price";
+import { ProductOrder } from "../../../types";
 
 export const Customizations = ({  order, updateQuantity, updateOption }: { updateOption: (optionId: number, choiceId: number) => void, order: ProductOrder, updateQuantity: (n: number)=> void  }) => {
 
