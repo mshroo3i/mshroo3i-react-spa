@@ -309,7 +309,7 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
                     <div
                         className=" flex  justify-center"
                     >
-                        <WhatsAppIcon className="mr-2 flex-shrink-0 h-6 w-6" aria-hidden="true" />
+                        <WhatsAppIcon className="ml-2 flex-shrink-0 h-6 w-6" aria-hidden="true" />
                         أرسل الطلب عبر الواتساب
                     </div>
                 </Banner>
