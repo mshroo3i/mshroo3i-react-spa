@@ -268,7 +268,7 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
                         className="text-sm font-medium text-gray-500 border-gray-200 divide-y divide-gray-200"
                     >
                         {cart.map((order) => (
-                            <li key={order.id} className="flex py-6 space-x-2">
+                            <li key={order.id} className="flex py-6 space-x-2 space-x-reverse">
                                 {order.product.imageSrc && <img
                                     src={order.product.imageSrc}
                                     alt={order.product.imageAlt}
