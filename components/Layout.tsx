@@ -3,7 +3,7 @@ import { Footer } from './zatar-samar/Footer'
 import { Navbar } from './Navbar'
 
 export const siteTitle = 'Mshroo3i'
-export const siteDescription = 'انشأ مترجك لمشروعك بسهولة مع الحفاظ على الجانب الاجتماعي'
+export const siteDescription = 'استقبل طلباتك ببساطة عن طريق وسيلة تواصل اجتماعي كالواتساب'
 
 export function Layout({ children, currentPage = '', mainClassName = '' }) {
     const className = 'flex-grow ' + mainClassName
