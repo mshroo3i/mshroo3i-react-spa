@@ -13,16 +13,18 @@ export const ProductItem = ({ product, onClick, displayPrice = false }: { produc
   }
 
   return (
-      <button onClick={onClick} key={product.id} className="text-right mt-6 text-sm font-medium text-gray-500 border rounded border-gray-200 divide-y divide-gray-200  min-h-full">
-        <li key={product.id} className="grid grid-cols-12 p-2 space-x-3 space-x-reverse h-full">
-          {product.imageSrc && <div className="relative w-full col-span-3"><Image
+      <button onClick={onClick} key={product.id} className="text-right mt-6 text-sm font-medium text-gray-500 border rounded border-gray-200 divide-y divide-gray-200">
+        <li key={product.id} className="grid grid-cols-12 p-2 space-x-3 space-x-reverse">
+          {product.imageSrc && <div className="col-span-3"><Image
             src={product.imageSrc}
             alt={product.imageAlt}
             objectFit='cover'
-            layout="fill"
+            layout="responsive"
+            height={500}
+            width={500}
             className="rounded-md"
           /></div>}
-          <div className={`flex-auto space-y-2 py-4 ${productAndNameColSpan}`}>
+          <div className={`flex-auto space-y-2 pt-4 ${productAndNameColSpan}`}>
             <h3 className="text-gray-900 font-medium">{product.name}</h3>
             <p>{product.description}</p>
           </div>
