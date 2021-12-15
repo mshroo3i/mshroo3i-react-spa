@@ -1,22 +1,34 @@
+import Image from "next/image";
+import { Price } from "../../lib/price";
 import { Product } from "../../types";
 
-export const ProductItem = ({ product, onClick }: { product: Product, onClick: any}) => (
-    <button onClick={onClick} key={product.id} className="text-right relative flex md:flex-row lg:flex shadow-sm rounded border hover:shadow-md">
-        <div className="px-2 py-4 sm:py-10 min-w-0 flex-1 lg:flex lg:flex-col">
-            <div className="lg:flex-1">
-                <div>
-                    <h4 className="font-medium text-gray-900">{product.name}</h4>
-                    <p className="mt-2 text-sm text-gray-500">{product.description}</p>
-                </div>
-            </div>
-        </div>
-        <div className="ml-0 sm:mr-4 flex-shrink-0 sm:m-0  sm:order-first">
-            {product.imageSrc && <img
-                src={product.imageSrc}
-                alt={product.imageAlt}
-                className="col-start-2 col-end-3 sm:col-start-1 sm:row-start-1 sm:row-span-2 object-center object-cover h-full max-h-32 md:max-h-40" //
-            />}
-        </div>
+export const ProductItem = ({ product, onClick, displayPrice = false }: { product: Product, onClick: any, displayPrice?: boolean }) => {
+  let productAndNameColSpan = 'col-span-6'
+  if ((product.imageSrc && !displayPrice) || (!product.imageSrc && displayPrice)) {
+    productAndNameColSpan = 'col-span-9'
+  } else if (product.imageSrc && displayPrice) {
+    productAndNameColSpan = 'col-span-6'
+  } else {
+    productAndNameColSpan = 'col-span-12'
+  }
+
+  return (
+      <button onClick={onClick} key={product.id} className="text-right mt-6 text-sm font-medium text-gray-500 border rounded border-gray-200 divide-y divide-gray-200  min-h-full">
+        <li key={product.id} className="grid grid-cols-12 p-2 space-x-3 space-x-reverse h-full">
+          {product.imageSrc && <div className="relative w-full col-span-3"><Image
+            src={product.imageSrc}
+            alt={product.imageAlt}
+            objectFit='cover'
+            layout="fill"
+            className="rounded-md"
+          /></div>}
+          <div className={`flex-auto space-y-2 py-4 ${productAndNameColSpan}`}>
+            <h3 className="text-gray-900 font-medium">{product.name}</h3>
+            <p>{product.description}</p>
+          </div>
+          {displayPrice && <p className={`flex-none font-medium text-gray-900 py-4 text-left col-span-3`}>{(new Price(product.price)).toFormattedString()}</p>}
+        </li>
         {/* <div className="absolute top-2 left-2 py-1 px-1 text-sm lg:text-base font-bold bg-white text-gray-800 rounded bg-opacity-75">{product.price.toFormattedString()}</div> */}
-    </button>
-)
+      </button>
+  )
+}

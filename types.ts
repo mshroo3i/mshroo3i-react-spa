@@ -10,7 +10,7 @@ export interface Product {
   name: string
   description: string
   price:  number
-  imageSrc: string | null
+  imageSrc: string | null | StaticImageData
   imageAlt: string
   options: Option[]
 }

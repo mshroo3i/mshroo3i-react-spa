@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import Head from 'next/head'
 import { Layout, siteTitle } from "../components/Layout";
-import { storeInfo } from '../data/ebtesam-cuisine';
-import { products } from '../data/zatar-samar';
+import { storeInfo, products } from '../data/ebtesam-cuisine';
 import { GetStaticPropsResult } from 'next';
 import { Banner } from '../components/zatar-samar/Banner'
 import { Modal } from '../components/zatar-samar/modal-order/Modal'
@@ -101,7 +100,7 @@ export default function ZatarSamar() {
             </div>
 
             <div className="pt-4">
-              <div className="grid gap-2 mb-8 md:grid-cols-1 lg:grid-cols-2 ltr md:rtl">
+            <div className="grid gap-2 mb-8 md:grid-cols-1 lg:grid-cols-2 ltr md:rtl">
                 <React.Fragment>
                   {products.map((product) => (
                     <ProductItem product={product} key={product.id} onClick={() => onProductClick(product)} />
