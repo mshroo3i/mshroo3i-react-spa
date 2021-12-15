@@ -30,7 +30,6 @@ export const ProductItem = ({ product, onClick, displayPrice = false }: { produc
           </div>
           {displayPrice && <p className={`font-medium text-gray-900 py-4 text-left col-span-3`}>{(new Price(product.price)).toFormattedString()}</p>}
         </li>
-        {/* <div className="absolute top-2 left-2 py-1 px-1 text-sm lg:text-base font-bold bg-white text-gray-800 rounded bg-opacity-75">{product.price.toFormattedString()}</div> */}
       </button>
   )
 }
