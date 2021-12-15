@@ -270,7 +270,7 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
                         {cart.map((order) => (
                             <li key={order.id} className="flex py-6 space-x-2 space-x-reverse">
                                 {order.product.imageSrc && <img
-                                    src={order.product.imageSrc}
+                                    src={order.product.imageSrc as string}
                                     alt={order.product.imageAlt}
                                     className="flex-none w-20 h-20 bg-gray-100 rounded-md object-center object-cover"
                                 />}

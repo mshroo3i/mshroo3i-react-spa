@@ -1,6 +1,6 @@
 import { CustomizationOptionType, Product, StoreInfo } from "../types";
 import EbtesamCuisineHero from '../public/assets/header-ebtesam2.png'
-import zatarImage from '../public/assets/products-pics/zatar-2.jpeg';
+import mansaf from '../public/assets/products-pics/mansaf.jpeg';
 
 export const storeInfo: StoreInfo = {
   storeNameAr: 'ابتسام كوزين',
@@ -17,7 +17,7 @@ export const products: Product[] = [
       name: 'المنسف',
       description: "متسف بالطريقة الفلسطينية. تأتي مع صلصة اللبن و سلطة.",
       price: 26,
-      imageSrc: zatarImage,
+      imageSrc: mansaf,
       imageAlt: 'المنسف',
       options: [
           {
