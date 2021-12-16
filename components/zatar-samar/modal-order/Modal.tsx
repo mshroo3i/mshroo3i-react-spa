@@ -7,7 +7,7 @@ export function Modal({ open, closeModal, imageSrc, imageAlt, children }: { chil
 
   return (
     <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="fixed z-10 inset-0" onClose={closeModal}>
+      <Dialog as="div" className="fixed z-10 inset-0 z-40" onClose={closeModal}>
         <div className="flex items-start justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
           <Transition.Child
             as={Fragment}
