@@ -1,6 +1,7 @@
 import { Dialog } from "@headlessui/react";
 import { ReactElement } from "react";
-import { getPriceForSingleOrder, ProductOrder } from "../../../lib/cart-reducer";
+import { getPriceForSingleOrder } from "../../../lib/cart-reducer";
+import { ProductOrder } from "../../../types";
 
 export const ModalProductView = ({  order,children, onAdd }: { children: ReactElement, order: ProductOrder, onAdd: (order: ProductOrder) => void }) => {
   const product = order.product
@@ -25,7 +26,7 @@ export const ModalProductView = ({  order,children, onAdd }: { children: ReactEl
           </div>
         </div>
       </div>
-      <div className="mx-4 mt-5 sm:mt-1 sm:flex sm:flex-row-reverse">
+      <div className="mx-4 mt-5 sm:mt-1 sm:flex">
         <button
           type="button"
           className="w-full inline-flex justify-between rounded-md border border-transparent shadow-sm px-2 py-1 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:text-sm"

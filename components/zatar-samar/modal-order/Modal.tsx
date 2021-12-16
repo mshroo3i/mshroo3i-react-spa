@@ -3,11 +3,11 @@ import { Fragment, ReactElement } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
 
-export function Modal({ open, closeModal, imageSrc, imageAlt, children }: { children: ReactElement, open: boolean, closeModal: any, imageSrc?: string, imageAlt?: string }) {
+export function Modal({ open, closeModal, imageSrc, imageAlt, children }: { children: ReactElement, open: boolean, closeModal: any, imageSrc?: string | StaticImageData, imageAlt?: string }) {
 
   return (
     <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="fixed z-10 inset-0" onClose={closeModal}>
+      <Dialog as="div" className="fixed inset-0 z-40" onClose={closeModal}>
         <div className="flex items-start justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
           <Transition.Child
             as={Fragment}
@@ -38,7 +38,7 @@ export function Modal({ open, closeModal, imageSrc, imageAlt, children }: { chil
               {imageSrc &&
                 <div className="w-full h-52 ml-0 sm:mr-4 flex-shrink-0 sm:m-0  sm:order-first">
                   <img
-                    src={imageSrc}
+                    src={imageSrc as string}
                     alt={imageAlt}
                     className="w-full h-full object-center object-cover" //
                   />

@@ -4,14 +4,18 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    types: [closed]
-    branches:
-      - main
+  # pull_request:
+  #   types: [closed]
+  #   branches:
+  #     - main
+
+concurrency: 
+  group: ${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build-and-deploy:
-    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
+    # if: github.event_name == 'push' || github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
 
@@ -33,9 +37,8 @@ jobs:
         docker build . -t ${{ secrets.REGISTRY }}/mshroo3i-nextjs:${{ github.sha }}
         docker push ${{ secrets.REGISTRY }}/mshroo3i-nextjs:${{ github.sha }}
 
-    - name: 'Deploy to Staging'
+    - name: 'Deploy to Prod'
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'mshroo3i-frontend'
-        slot-name: staging
         images: '${{ secrets.REGISTRY }}/mshroo3i-nextjs:${{ github.sha }}'

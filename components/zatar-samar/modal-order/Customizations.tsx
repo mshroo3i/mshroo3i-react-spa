@@ -1,5 +1,5 @@
-import { ProductOrder } from "../../../lib/cart-reducer";
 import { Price } from "../../../lib/price";
+import { ProductOrder } from "../../../types";
 
 export const Customizations = ({  order, updateQuantity, updateOption }: { updateOption: (optionId: number, choiceId: number) => void, order: ProductOrder, updateQuantity: (n: number)=> void  }) => {
 
@@ -7,7 +7,7 @@ export const Customizations = ({  order, updateQuantity, updateOption }: { updat
 
     return (
     <div className="flex flex-col gap-y-5">
-      <div className="mt-4 mb-1 sm:mt-0 flex justify-start flex-row-reverse items-center text-base font-medium text-gray-900 sm:text-sm sm:text-gray-700">
+      <div className="mt-4 mb-1 sm:mt-0 flex justify-start items-center text-base font-medium text-gray-900 sm:text-sm sm:text-gray-700">
         <label htmlFor={`quantity-${product.id}`} className="block ml-4">
           الكمية
         </label>
@@ -32,7 +32,7 @@ export const Customizations = ({  order, updateQuantity, updateOption }: { updat
 
       </div>
       {product.options.map(option => (
-        <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline px-1 pb-1 rtl" key={option.id}>
+        <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline px-1 pb-1" key={option.id}>
           <div>
             <div
               className="text-base font-medium text-gray-900 sm:text-sm sm:text-gray-700"

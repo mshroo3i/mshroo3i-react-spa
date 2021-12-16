@@ -1,22 +1,24 @@
-import { Footer } from './Footer'
-import { Banner } from './Banner'
-import { Modal } from './modal-order/Modal'
-import { Header } from './Header'
-import { Hero } from './Hero'
 import React, { useState } from 'react'
-import { Product } from '../../data/products'
-import { ProductItem } from './ProductItem'
-import { getTotalQuantity, ProductOrder, selectTotalPrice, useCartState, UserActionType } from '../../lib/cart-reducer'
-import { ModalProductView } from './modal-order/ModalProductView'
-import { Customizations } from './modal-order/Customizations'
-import { ModalViewCart } from './modal-order/ModalViewCart'
+import Head from 'next/head'
+import { Layout, siteTitle } from "../components/Layout";
+import { storeInfo, products } from '../data/ebtesam-cuisine';
+import { GetStaticPropsResult } from 'next';
+import { Banner } from '../components/zatar-samar/Banner'
+import { Modal } from '../components/zatar-samar/modal-order/Modal'
+import { ProductItem } from '../components/zatar-samar/ProductItem'
+import { ModalProductView } from '../components/zatar-samar/modal-order/ModalProductView'
+import { Customizations } from '../components/zatar-samar/modal-order/Customizations'
+import { ModalViewCart } from '../components/zatar-samar/modal-order/ModalViewCart'
+import { getTotalQuantity, selectTotalPrice, useCartState, UserActionType } from '../lib/cart-reducer'
+import { Product, ProductOrder } from '../types';
+import { StoreHero } from '../components/store/StoreHero';
 
 const enum ModalView {
   PRODUCT_VIEW = "PRODUCT_VIEW",
   REVIEW_CART = "REVIEW_CART"
 }
 
-export default function Example({ products }) {
+export default function ZatarSamar() {
   const [openModal, setOpenModal] = useState<ModalView | undefined>(undefined)
   const [state, dispatch] = useCartState({
     products, cart: [], currentProductView: {
@@ -66,7 +68,7 @@ export default function Example({ products }) {
     if (state.cart.length === 1) {
       closeModal();
     }
-    dispatch({type: UserActionType.REMOVE_FROM_CART, id})
+    dispatch({ type: UserActionType.REMOVE_FROM_CART, id })
   }
   const reviewCart = (<ModalViewCart cart={state.cart} removeFromCart={removeFromCart}></ModalViewCart>)
 
@@ -77,25 +79,28 @@ export default function Example({ products }) {
     modalView = reviewCart;
   }
 
-  return (
+  return (<Layout>
+    <Head>
+      <title>{`${storeInfo.storeNameEn} - ${siteTitle}`}</title>
+    </Head>
     <div className="bg-white">
       {/* <Header /> */}
 
       <div>
         {/* Hero */}
-        <Hero />
+        <StoreHero storeInfo={storeInfo} /> 
 
         {/* Products */}
         <section aria-labelledby="trending-heading" className="">
           <div className="text-right pt-8  sm:py-9 lg:max-w-7xl lg:mx-auto lg:px-8">
-            <div className="pb-4 px-4 flex items-center justify-end sm:px-6 lg:px-0">
+            <div className="pb-4 px-4 flex items-center justify-start sm:px-6 lg:px-0">
               <h2 id="trending-heading" className="text-3xl sm:text-5xl font-extrabold tracking-tight text-gray-900">
                 منتجاتنا
               </h2>
             </div>
 
             <div className="pt-4">
-              <div className="grid gap-2 mb-8 md:grid-cols-1 lg:grid-cols-2 ltr md:rtl">
+            <div className="grid gap-2 mb-8 md:grid-cols-1 lg:grid-cols-2 ltr md:rtl">
                 <React.Fragment>
                   {products.map((product) => (
                     <ProductItem product={product} key={product.id} onClick={() => onProductClick(product)} />
@@ -129,5 +134,13 @@ export default function Example({ products }) {
       </Modal>
 
     </div>
-  )
+  </Layout>)
+}
+
+export function getStaticProps(): GetStaticPropsResult<{ products: Product[] }> {
+  return {
+    props: {
+      products,
+    },
+  }
 }

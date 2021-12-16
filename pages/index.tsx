@@ -2,15 +2,16 @@ import Head from 'next/head'
 import { Layout } from '../components/Layout';
 import { Hero } from '../components/home/Hero';
 import { Fearures } from '../components/home/Features';
+import { GetStaticPropsResult } from 'next';
 
-export default function Home() {
+export default function Home(props: PageProps) {
   return (
-    <Layout home mainClassName="flex-grow">
+    <Layout mainClassName="flex-grow">
       <main>
-      <Hero />
-      <Fearures />
-      <div className="flex flex-col items-center justify-center  py-2">
-        {/* <main className="flex flex-col items-center  w-full flex-1 px-20 text-center">
+        <Hero title={props.title} subtitle={props.subtitle} />
+        {/* <Fearures /> */}
+        <div className="flex flex-col items-center justify-center  py-2">
+          {/* <main className="flex flex-col items-center  w-full flex-1 px-20 text-center">
           <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
             <a
               href="https://nextjs.org/docs"
@@ -53,8 +54,22 @@ export default function Home() {
             </a>
           </div>
         </main> */}
-      </div>
+        </div>
       </main>
     </Layout>
   )
+}
+
+interface PageProps {
+  title: string
+  subtitle: string
+}
+
+export function getStaticProps(): GetStaticPropsResult<PageProps> {
+  return {
+    props: {
+      title: "لا تضيع  وقتك و استقبل طلبات مشروعك من الانستقرام الى الواتساب بسهولة",
+      subtitle: "خلال خطوات بسيطة فقط وسيكون مشروعك جاهزًا. استقبل طلباتك ببساطة عن طريق الواتساب."
+    },
+  }
 }
