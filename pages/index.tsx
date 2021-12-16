@@ -2,12 +2,13 @@ import Head from 'next/head'
 import { Layout } from '../components/Layout';
 import { Hero } from '../components/home/Hero';
 import { Fearures } from '../components/home/Features';
+import { GetStaticPropsResult } from 'next';
 
-export default function Home() {
+export default function Home(props: PageProps) {
   return (
     <Layout mainClassName="flex-grow">
       <main>
-        <Hero />
+        <Hero title={props.title} subtitle={props.subtitle} />
         {/* <Fearures /> */}
         <div className="flex flex-col items-center justify-center  py-2">
           {/* <main className="flex flex-col items-center  w-full flex-1 px-20 text-center">
@@ -57,4 +58,20 @@ export default function Home() {
       </main>
     </Layout>
   )
+}
+
+interface PageProps {
+  title: string
+  subtitle: string
+}
+
+export function getStaticProps(): GetStaticPropsResult<PageProps> {
+  return {
+    props: {
+      subtitle: "خلال خطوات بسيطة فقط وسيكون مشروعك جاهزًا. استقبل طلباتك ببساطة عن طريق الواتساب.",
+      // subtitle: "لا تضيعين وقتج و خلي الزباين يطلبون منج بسهولة من غير عوار راس"
+      // subtitle: "لا تضيعون وقتكم و استقبلو الطلبات بسهولة من غير عوار راس"
+      title: "لا تضيع  وقتك و استقبل طلبات مشروعك من الانستقرام الى الواتساب بسهولة"
+    },
+  }
 }
