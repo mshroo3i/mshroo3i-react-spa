@@ -29,7 +29,7 @@ const navItems: LinkData[] = [
   // }
 ]
 
-const navData: {navItems: LinkData[], login: LinkData, logout: LinkData} = {
+const navData: { navItems: LinkData[], login: LinkData, logout: LinkData } = {
   navItems,
   login: {
     text: "تسجيل الدخول",
@@ -54,10 +54,10 @@ const NavItem = (props: { href: string, children: any }) => {
 const NavItemMobile = (props: { href: string, children: any }) => {
   return (
     <Link href={props.href}>
-    <a className="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block px-3 py-2 border-l-4 text-base font-medium">
-      {props.children}
-    </a>
-  </Link>
+      <a className="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block px-3 py-2 border-l-4 text-base font-medium">
+        {props.children}
+      </a>
+    </Link>
   )
 }
 
@@ -81,8 +81,8 @@ export function Navbar() {
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <Link href="/">
-                <a className="flex-shrink-0 flex items-center">
-                  {/* <img
+                  <a className="flex-shrink-0 flex items-center">
+                    {/* <img
                     className="block lg:hidden h-8 w-auto"
                     src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
                     alt="Workflow"
@@ -92,8 +92,8 @@ export function Navbar() {
                     src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
                     alt="Workflow"
                   /> */}
-                  <Mshroo3iLogoFull className=" h-auto w-40 md:w-56" />
-                </a>
+                    <Mshroo3iLogoFull className=" h-auto w-40 md:w-56" />
+                  </a>
                 </Link>
                 <div className="hidden sm:mx-6 sm:flex">
                   {navData.navItems.map(item => (
@@ -101,7 +101,7 @@ export function Navbar() {
                   ))}
                 </div>
               </div>
-              <div className="absolute inset-y-0 left-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              <div className="hidden sm:flex absolute inset-y-0 left-0 items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <NavItem href={navData.login.href}>{navData.login.text}</NavItem>
                 {/* <button
                   type="button"
@@ -180,6 +180,14 @@ export function Navbar() {
                   </NavItemMobile>
                 </Disclosure.Button>
               ))}
+              <Disclosure.Button
+                as={Fragment}
+                key={navData.login.text}
+              >
+                <NavItemMobile href={navData.login.href}>
+                  {navData.login.text}
+                </NavItemMobile>
+              </Disclosure.Button>
             </div>
           </Disclosure.Panel>
         </>
