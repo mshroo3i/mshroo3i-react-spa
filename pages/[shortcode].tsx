@@ -149,7 +149,6 @@ export const getServerSideProps: GetServerSideProps<Params> = async (context) =>
   }
 
   const storeInfo = (await res.json()) as StoreInfo;
-  console.log(storeInfo);
 
   return {
     props: {
