@@ -13,8 +13,8 @@ export const ProductItem = ({ product, onClick, displayPrice = false }: { produc
   }
 
   return (
-      <button onClick={onClick} key={product.id} className="flex text-right mt-2 text-sm font-medium text-gray-500 border rounded border-gray-200">
-        <li key={product.id} className="grow grid grid-cols-12 p-2 space-x-3 space-x-reverse">
+      <li key={product.id} className="flex text-sm font-medium text-gray-500 border rounded border-gray-200">
+        <button onClick={onClick} key={product.id} className="text-right grow grid grid-cols-12 p-2 space-x-3 space-x-reverse">
           {product.imageSrc && <div className="col-span-3"><Image
             src={product.imageSrc}
             alt={product.imageAlt}
@@ -29,7 +29,7 @@ export const ProductItem = ({ product, onClick, displayPrice = false }: { produc
             <p>{product.description}</p>
           </div>
           {displayPrice && <p className={`font-medium text-gray-900 py-4 text-left col-span-3`}>{(new Price(product.price)).toFormattedString()}</p>}
-        </li>
-      </button>
+        </button>
+      </li>
   )
 }

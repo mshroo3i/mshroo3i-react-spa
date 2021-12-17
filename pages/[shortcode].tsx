@@ -4,7 +4,7 @@ import { Layout, siteTitle } from "../components/Layout";
 import { products } from '../data/zatar-samar';
 import { GetServerSideProps } from 'next';
 import { Banner } from '../components/store/Banner'
-import { Modal } from '../components/store/modal-order/Modal'
+import { Modal } from '../components/store/Modal'
 import { ProductItem } from '../components/store/ProductItem'
 import { ModalProductView } from '../components/store/modal-order/ModalProductView'
 import { Customizations } from '../components/store/modal-order/Customizations'
@@ -100,13 +100,13 @@ export default function Store({products, storeInfo}: { products: Product[], stor
             </div>
 
             <div className="pt-4">
-              <div className="grid gap-2 mb-8 md:grid-cols-1 lg:grid-cols-2 ltr md:rtl">
+              <ul className="grid gap-2 mb-8 md:grid-cols-1 lg:grid-cols-2 ltr md:rtl">
                 <React.Fragment>
                   {products.map((product) => (
                     <ProductItem product={product} key={product.id} onClick={() => onProductClick(product)} />
                   ))}
                 </React.Fragment>
-              </div>
+              </ul>
             </div>
 
             <div className="mt-8 relative">

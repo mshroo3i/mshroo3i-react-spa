@@ -4,7 +4,7 @@ import { Layout, siteTitle } from "../components/Layout";
 import { storeInfo, products } from '../data/ebtesam-cuisine';
 import { GetStaticPropsResult } from 'next';
 import { Banner } from '../components/store/Banner'
-import { Modal } from '../components/store/modal-order/Modal'
+import { Modal } from '../components/store/Modal'
 import { ProductItem } from '../components/store/ProductItem'
 import { ModalProductView } from '../components/store/modal-order/ModalProductView'
 import { Customizations } from '../components/store/modal-order/Customizations'

@@ -83,7 +83,7 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
                             <label htmlFor="recipient" className="block text-sm font-medium text-gray-700">
                                 الفاتورة باسم من؟
                             </label>
-                            <div className="mt-1">
+                            <div className="mt-1 mx-1">
                                 <input
                                     type="text"
                                     name="recipient"
@@ -98,7 +98,7 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
                         </div>
                         <RadioGroup value={selectedPaymentMethod} onChange={setSelectedPaymentMethod}>
                             <RadioGroup.Label className="my-2 block text-sm font-medium text-gray-700">طريقة الدفع</RadioGroup.Label>
-                            <div className="flex space-x-2 space-x-reverse">
+                            <div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-1">
                                 {paymentMethod.map((option) => (
                                     <RadioGroup.Option
                                         key={option}
@@ -113,11 +113,9 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
                                         {({ checked }) => (
                                             <>
                                                 <div className="flex items-center">
-                                                    <div className="text-sm">
-                                                        <RadioGroup.Label as="p" className="font-medium text-gray-900">
+                                                        <RadioGroup.Label as="p" className="text-xs font-medium text-gray-900">
                                                             {option}
                                                         </RadioGroup.Label>
-                                                    </div>
                                                 </div>
                                                 <div
                                                     className={classNames(
@@ -134,8 +132,8 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
                         </RadioGroup>
 
                         <RadioGroup value={preferredDeliveryDay} onChange={setPreferredDeliveryDay}>
-                            <RadioGroup.Label className="mb-2 block text-sm font-medium text-gray-700">يوم التوصيل</RadioGroup.Label>
-                            <div className="text-right grid grid-cols-[repeat(auto-fill,minmax(75px,1fr))]  gap-1">
+                            <RadioGroup.Label className="mb-2 block font-medium text-gray-700">يوم التوصيل</RadioGroup.Label>
+                            <div className="text-right grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))]  gap-1">
                                 {deliveryDay.map((option) => (
                                     <RadioGroup.Option
                                         key={option}
@@ -150,11 +148,9 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
                                         {({ checked }) => (
                                             <>
                                                 <div className="flex items-center">
-                                                    <div className="text-sm">
-                                                        <RadioGroup.Label as="p" className="text-xs font-medium text-gray-900">
-                                                            {option}
-                                                        </RadioGroup.Label>
-                                                    </div>
+                                                    <RadioGroup.Label as="p" className="text-xs font-medium text-gray-900">
+                                                        {option}
+                                                    </RadioGroup.Label>
                                                 </div>
                                                 <div
                                                     className={classNames(
@@ -172,7 +168,7 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
 
                         <RadioGroup value={preferredDeliveryTime} onChange={setPreferredDeliveryTime}>
                             <RadioGroup.Label className="mb-2 block text-sm font-medium text-gray-700">وقت التوصيل</RadioGroup.Label>
-                            <div className="text-right grid grid-cols-[repeat(auto-fill,minmax(70px,1fr))]  gap-1">
+                            <div className="text-right grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-1">
                                 {deliveryTime.map((option) => (
                                     <RadioGroup.Option
                                         key={option}
@@ -187,11 +183,9 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
                                         {({ checked }) => (
                                             <>
                                                 <div className="flex items-center">
-                                                    <div className="text-sm">
-                                                        <RadioGroup.Label as="p" className="text-xs font-medium text-gray-900">
-                                                            {option}
-                                                        </RadioGroup.Label>
-                                                    </div>
+                                                    <RadioGroup.Label as="p" className="text-xs font-medium text-gray-900">
+                                                        {option}
+                                                    </RadioGroup.Label>
                                                 </div>
                                                 <div
                                                     className={classNames(
@@ -210,7 +204,7 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
 
                         <RadioGroup value={selectedShippingMethod} onChange={setSelectedShippingMethod}>
                             <RadioGroup.Label className="mb-2 block text-sm font-medium text-gray-700">طريقة التوصيل</RadioGroup.Label>
-                            <div className="flex space-x-2 space-x-reverse">
+                            <div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-1">
                                 {shippingMethod.map((option) => (
                                     <RadioGroup.Option
                                         key={option}
@@ -225,11 +219,9 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
                                         {({ checked }) => (
                                             <>
                                                 <div className="flex items-center">
-                                                    <div className="text-sm">
-                                                        <RadioGroup.Label as="p" className="font-medium text-gray-900">
-                                                            {option}
-                                                        </RadioGroup.Label>
-                                                    </div>
+                                                    <RadioGroup.Label as="p" className="text-xs font-medium text-gray-900">
+                                                        {option}
+                                                    </RadioGroup.Label>
                                                 </div>
                                                 <div
                                                     className={classNames(
@@ -249,7 +241,7 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
                             <label htmlFor="address" className="block text-sm font-medium text-gray-700">
                                 العنوان
                             </label>
-                            <div className="mt-1">
+                            <div className="mt-1 mx-1">
                                 <input
                                     type="text"
                                     name="address"
