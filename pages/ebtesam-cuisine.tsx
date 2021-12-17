@@ -3,12 +3,12 @@ import Head from 'next/head'
 import { Layout, siteTitle } from "../components/Layout";
 import { storeInfo, products } from '../data/ebtesam-cuisine';
 import { GetStaticPropsResult } from 'next';
-import { Banner } from '../components/zatar-samar/Banner'
-import { Modal } from '../components/zatar-samar/modal-order/Modal'
-import { ProductItem } from '../components/zatar-samar/ProductItem'
-import { ModalProductView } from '../components/zatar-samar/modal-order/ModalProductView'
-import { Customizations } from '../components/zatar-samar/modal-order/Customizations'
-import { ModalViewCart } from '../components/zatar-samar/modal-order/ModalViewCart'
+import { Banner } from '../components/store/Banner'
+import { Modal } from '../components/store/modal-order/Modal'
+import { ProductItem } from '../components/store/ProductItem'
+import { ModalProductView } from '../components/store/modal-order/ModalProductView'
+import { Customizations } from '../components/store/modal-order/Customizations'
+import { ModalViewCart } from '../components/store/modal-order/ModalViewCart'
 import { getTotalQuantity, selectTotalPrice, useCartState, UserActionType } from '../lib/cart-reducer'
 import { Product, ProductOrder } from '../types';
 import { StoreHero } from '../components/store/StoreHero';

@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { Footer } from './zatar-samar/Footer'
+import { Footer } from './Footer'
 import { Navbar } from './Navbar'
 
 export const siteTitle = 'Mshroo3i'

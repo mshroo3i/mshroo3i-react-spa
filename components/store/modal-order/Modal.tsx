@@ -1,7 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment, ReactElement } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { XIcon } from '@heroicons/react/outline'
 
 export function Modal({ open, closeModal, imageSrc, imageAlt, children }: { children: ReactElement, open: boolean, closeModal: any, imageSrc?: string | StaticImageData, imageAlt?: string }) {
 
