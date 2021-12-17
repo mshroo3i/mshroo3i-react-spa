@@ -44,6 +44,7 @@ export function StoreHero({ storeInfo }: { storeInfo: StoreInfo}) {
                 objectFit='cover'
                 layout='fill'
                 alt={`${storeInfo.nameAr} - ${storeInfo.description}`}
+                priority
               />
             </div>
           </div>

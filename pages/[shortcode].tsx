@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import Head from 'next/head'
 import { Layout, siteTitle } from "../components/Layout";
-import { products, storeInfo } from '../data/zatar-samar';
-import { GetStaticPropsResult } from 'next';
+import { products } from '../data/zatar-samar';
+import { GetServerSideProps } from 'next';
 import { Banner } from '../components/zatar-samar/Banner'
 import { Modal } from '../components/zatar-samar/modal-order/Modal'
 import { ProductItem } from '../components/zatar-samar/ProductItem'
@@ -10,7 +10,7 @@ import { ModalProductView } from '../components/zatar-samar/modal-order/ModalPro
 import { Customizations } from '../components/zatar-samar/modal-order/Customizations'
 import { ModalViewCart } from '../components/zatar-samar/modal-order/ModalViewCart'
 import { getTotalQuantity, selectTotalPrice, useCartState, UserActionType } from '../lib/cart-reducer'
-import { Product, ProductOrder } from '../types';
+import { Product, ProductOrder, StoreInfo } from '../types';
 import { StoreHero } from '../components/store/StoreHero';
 
 const enum ModalView {
@@ -18,7 +18,7 @@ const enum ModalView {
   REVIEW_CART = "REVIEW_CART"
 }
 
-export default function ZatarSamar() {
+export default function Store({products, storeInfo}: { products: Product[], storeInfo: StoreInfo}) {
   const [openModal, setOpenModal] = useState<ModalView | undefined>(undefined)
   const [state, dispatch] = useCartState({
     products, cart: [], currentProductView: {
@@ -114,7 +114,6 @@ export default function ZatarSamar() {
           </div>
         </section>
       </div>
-      {/* price={selectTotalPrice(state.cart)} quantity={getTotalQuantity(state.cart)} */}
       {state.cart.length > 0
         && <Banner onClickHandler={() => { setOpenModal(ModalView.REVIEW_CART) }}>
           <div className="absolute inset-y-0 left-0 pt-2 ml-2">
@@ -137,10 +136,25 @@ export default function ZatarSamar() {
   </Layout>)
 }
 
-export function getStaticProps(): GetStaticPropsResult<{ products: Product[] }> {
+interface Params {
+  products: Product[],
+  storeInfo: StoreInfo
+}
+
+export const getServerSideProps: GetServerSideProps<Params> = async (context) => {
+  const shortcode = context.params!.shortcode;
+  const res = await fetch(`${process.env.API_BASE}/api/stores/${shortcode}`);
+  if (!res.ok) {
+    throw new Error(`${process.env.API_BASE}/api/stores/${shortcode}: ${res.status} - ${res.statusText}`)
+  }
+
+  const storeInfo = (await res.json()) as StoreInfo;
+  console.log(storeInfo);
+
   return {
     props: {
       products,
-    },
+      storeInfo
+    }
   }
 }
