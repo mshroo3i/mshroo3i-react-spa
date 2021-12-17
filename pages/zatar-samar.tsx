@@ -81,7 +81,7 @@ export default function ZatarSamar() {
 
   return (<Layout>
     <Head>
-      <title>{`${storeInfo.storeNameEn} - ${siteTitle}`}</title>
+      <title>{`${storeInfo.nameEn} - ${siteTitle}`}</title>
     </Head>
     <div className="bg-white">
       {/* <Header /> */}

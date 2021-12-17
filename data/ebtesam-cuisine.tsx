@@ -3,12 +3,13 @@ import EbtesamCuisineHero from '../public/assets/header-ebtesam2.png'
 import mansaf from '../public/assets/products-pics/mansaf.jpeg';
 
 export const storeInfo: StoreInfo = {
-  storeNameAr: 'ابتسام كوزين',
-  storeNameEn: 'ُEbtesam Cuisine',
-  storeDescriptionAr: 'إدارة الشيف / ابتسام المطوع - نتميز بالمأكولات الكويتية والفلسطينية و المقبلات والسلطات المعمول بأنواعة والكعك',
-  heroImage: EbtesamCuisineHero,
-  instagramLink: 'https://www.instagram.com/ebtesam_cuisine/',
-  whatsappLink: 'https://api.whatsapp.com/send/?phone=96599622320&text&app_absent=0'
+  nameAr: 'ابتسام كوزين',
+  nameEn: 'ُEbtesam Cuisine',
+  shortcode: 'ebtesam-cuisine',
+  description: 'إدارة الشيف / ابتسام المطوع - نتميز بالمأكولات الكويتية والفلسطينية و المقبلات والسلطات المعمول بأنواعة والكعك',
+  heroImg: EbtesamCuisineHero,
+  InstagramHandle: 'https://www.instagram.com/ebtesam_cuisine/',
+  WhatsAppUri: 'https://api.whatsapp.com/send/?phone=96599622320&text&app_absent=0'
 }
 
 export const products: Product[] = [
