@@ -31,9 +31,9 @@ export function Example() {
                                 </dt>
                                 <dd>
                                     <Link href="https://wa.me/96590005243">
-                                        <a className="flex justify-end text-base text-green-700">
-                                            <span className="mr-3">+965 9000 5243</span>
+                                        <a className="flex text-base text-green-700">
                                             <WhatsAppIcon className="flex-shrink-0 w-6 h-6 text-green-700" aria-hidden="true" />
+                                            <span className="mr-3">96590005243+</span>
                                         </a>
                                     </Link>
                                 </dd>
@@ -42,9 +42,9 @@ export function Example() {
                                 </dt>
                                 <dd>
                                     <Link href="mailto:support@mshroo3i.com">
-                                        <a className="flex justify-end text-base text-green-700">
-                                            <span className="mr-3">support@mshroo3i.com</span>
+                                        <a className="flex text-base text-green-700">
                                             <MailIcon className="flex-shrink-0 w-6 h-6 text-green-700" aria-hidden="true" />
+                                            <span className="mr-3">support@mshroo3i.com</span>
                                         </a>
                                     </Link>
                                 </dd>
@@ -52,9 +52,7 @@ export function Example() {
                         </div>
                     </div>
                 </div>
-
             </main>
-
         </div>
     )
 }
