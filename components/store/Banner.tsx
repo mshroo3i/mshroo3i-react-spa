@@ -19,8 +19,8 @@ export function Banner({onClickHandler, children, as = "button", href, ...props}
     }
     const element = React.createElement(as, { ...myProps, ...props }, children)
     return (
-        <div className="flex items-center fixed bottom-1 inset-x-0 pb-2 sm:pb-5">
-            <div className="w-full px-2 sm:px-6 lg:px-8">
+        <div className="fixed bottom-1 inset-x-0 pb-2 sm:pb-5">
+            <div className="max-w-xl mx-auto px-2 sm:px-6 lg:px-8">
                 {element}
             </div>
         </div>
