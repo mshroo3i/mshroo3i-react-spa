@@ -84,7 +84,7 @@ export function getTotalQuantity(cart: ProductOrder[]): number {
 }
 
 export function getPriceForSingleOrder(order: ProductOrder): Price {
-    let orderTotal = 0;
+    let orderTotal = order.product.price;
     if (Object.keys(order.productOptions).length === 0) {
         return new Price(order.product.price * order.quantity)
     }

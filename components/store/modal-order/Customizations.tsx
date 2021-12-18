@@ -55,7 +55,7 @@ export const Customizations = ({  order, updateQuantity, updateOption }: { updat
                       className="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300"
                     />
                     <label htmlFor={choice.id.toString()} className="mx-3 block text-sm  font-normal text-gray-700">
-                      {choice.name} {Price.toFormattedString(choice.priceIncrement)}
+                      {choice.name} <span className="font-bold">{choice.priceIncrement ? `(+ ${Price.toFormattedString(choice.priceIncrement)})` : ''}</span>
                     </label>
                   </div>
                 ))}
