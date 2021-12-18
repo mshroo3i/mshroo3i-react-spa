@@ -7,6 +7,11 @@ export class Price {
     private lang = Language.Arabic
     private decimals = 3
 
+    public static toFormattedString(price: number): string {
+        const p = new Price(price)
+        return p.toFormattedString();
+    }
+
     constructor(private price: number) {
         // this.price = price.toFixed(3)
     }

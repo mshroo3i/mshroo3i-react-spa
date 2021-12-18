@@ -49,13 +49,13 @@ export const Customizations = ({  order, updateQuantity, updateOption }: { updat
                     <input
                       id={choice.id.toString()}
                       name={option.optionName}
-                      checked={choice.id === order.options[option.id]}
+                      checked={choice.id === order.productOptions[option.id]}
                       onChange={() => {updateOption(option.id, choice.id)}}
                       type="radio"
                       className="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300"
                     />
                     <label htmlFor={choice.id.toString()} className="mx-3 block text-sm  font-normal text-gray-700">
-                      {choice.name} {(new Price(choice.priceIncrement)).toFormattedString()}
+                      {choice.name} {Price.toFormattedString(choice.priceIncrement)}
                     </label>
                   </div>
                 ))}

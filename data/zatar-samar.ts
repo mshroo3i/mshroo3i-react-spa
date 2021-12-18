@@ -21,8 +21,8 @@ export const products: Product[] = [
         optionName: "الحجم",
         optionType: CustomizationOptionType.Radio,
         options: [
-          { id: 1, name: "علبه ريع كيلو", priceIncrement: 2 },
-          { id: 2, name: "علبه نص كيلو", priceIncrement: 4 },
+          { id: 1, name: "علبه ريع كيلو", priceIncrement: 0 },
+          { id: 2, name: "علبه نص كيلو", priceIncrement: 2 },
         ]
       }
     ]
@@ -40,8 +40,8 @@ export const products: Product[] = [
         optionName: "الحجم",
         optionType: CustomizationOptionType.Radio,
         options: [
-          { id: 1, name: "علبه ريع كيلو", priceIncrement: 1.5 },
-          { id: 2, name: "علبه نص كيلو", priceIncrement: 3 },
+          { id: 1, name: "علبه ريع كيلو", priceIncrement: 0 },
+          { id: 2, name: "علبه نص كيلو", priceIncrement: 1.5 },
         ]
       }
     ]
@@ -59,8 +59,8 @@ export const products: Product[] = [
         optionName: "الحجم",
         optionType: CustomizationOptionType.Radio,
         options: [
-          { id: 1, name: "علبه ريع كيلو", priceIncrement: 1.5 },
-          { id: 2, name: "علبه نص كيلو", priceIncrement: 3 },
+          { id: 1, name: "علبه ريع كيلو", priceIncrement: 0 },
+          { id: 2, name: "علبه نص كيلو", priceIncrement: 1.5 },
         ]
       }
     ]
@@ -114,8 +114,8 @@ export const products: Product[] = [
         optionName: "الحجم",
         optionType: CustomizationOptionType.Radio,
         options: [
-          { id: 1, name: "علبه ريع كيلو", priceIncrement: 1.25 },
-          { id: 2, name: "علبه نص كيلو", priceIncrement: 2.5 },
+          { id: 1, name: "علبه ريع كيلو", priceIncrement: 0 },
+          { id: 2, name: "علبه نص كيلو", priceIncrement: 1.25 },
         ]
       }
     ]
@@ -133,8 +133,8 @@ export const products: Product[] = [
         optionName: "الحجم",
         optionType: CustomizationOptionType.Radio,
         options: [
-          { id: 1, name: "علبه ريع كيلو", priceIncrement: 1.5 },
-          { id: 2, name: "علبه نص كيلو", priceIncrement: 3 },
+          { id: 1, name: "علبه ريع كيلو", priceIncrement: 0 },
+          { id: 2, name: "علبه نص كيلو", priceIncrement: 1.5 },
         ]
       }
     ]
@@ -152,30 +152,10 @@ export const products: Product[] = [
         optionName: "الحجم",
         optionType: CustomizationOptionType.Radio,
         options: [
-          { id: 1, name: "علبه ريع كيلو", priceIncrement: 1.25 },
-          { id: 2, name: "علبه نص كيلو", priceIncrement: 2.5 },
+          { id: 1, name: "علبه ريع كيلو", priceIncrement: 0 },
+          { id: 2, name: "علبه نص كيلو", priceIncrement: 1.25 },
         ]
       }
     ]
   },
 ]
-
-// {
-//   id: 1,
-//   name: 'زعتر فاخر فلسطيني',
-//   description: "متوفر علبه ريع كيلو أو علبه نص كيلو",
-//   price: 2,
-//   imageSrc: zatarImage,
-//   imageAlt: 'زعتر فاخر فلسطيني',
-//   options: [
-//     {
-//       id: 1,
-//       description: "الحجم",
-//       inputType: CustomizationOptionType.Radio,
-//       choices: [
-//         { id: 1, text: "علبه ريع كيلو", price: 2 },
-//         { id: 2, text: "علبه نص كيلو", price: 4 },
-//       ]
-//     }
-//   ]
-// },
