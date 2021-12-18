@@ -31,7 +31,7 @@ export interface ProductOrder {
   productId: number
   quantity: number
   product: Product,
-  options: { [choiceId: number]: number}
+  productOptions: { [optionId: number]: number}
 }
 
 export interface StoreInfo {

@@ -2,11 +2,11 @@ import Image from "next/image";
 import { Price } from "../../lib/price";
 import { Product } from "../../types";
 
-export const ProductItem = ({ product, onClick, displayPrice = false }: { product: Product, onClick: any, displayPrice?: boolean }) => {
+export const ProductItem = ({ product, onClick, displayPrice: showPrice = false }: { product: Product, onClick: any, displayPrice?: boolean }) => {
   let productAndNameColSpan = 'col-span-6'
-  if ((product.imageSrc && !displayPrice) || (!product.imageSrc && displayPrice)) {
+  if ((product.imageSrc && !showPrice) || (!product.imageSrc && showPrice)) {
     productAndNameColSpan = 'col-span-9'
-  } else if (product.imageSrc && displayPrice) {
+  } else if (product.imageSrc && showPrice) {
     productAndNameColSpan = 'col-span-6'
   } else {
     productAndNameColSpan = 'col-span-12'
@@ -28,7 +28,7 @@ export const ProductItem = ({ product, onClick, displayPrice = false }: { produc
             <h3 className="text-gray-900 font-medium">{product.name}</h3>
             <p>{product.description}</p>
           </div>
-          {displayPrice && <p className={`font-medium text-gray-900 py-4 text-left col-span-3`}>{(new Price(product.price)).toFormattedString()}</p>}
+          {showPrice && <p className={`font-medium text-gray-900 py-4 text-left col-span-3`}>{Price.toFormattedString(product.price)}</p>}
         </button>
       </li>
   )

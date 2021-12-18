@@ -18,7 +18,7 @@ export const ModalProductView = ({  order,children, onAdd }: { children: ReactEl
           <p className="text-sm text-gray-500 mt-1">
             {product.description}
           </p>
-          <p className="text-sm font-medium text-gray-900 mt-1">
+          <p className="text-sm font-bold text-gray-900 mt-2">
             {price}
           </p>
           <div className="mt-3 pt-3 border-t max-modal-scrollable-height overflow-y-auto">
