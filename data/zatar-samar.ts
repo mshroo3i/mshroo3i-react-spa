@@ -7,16 +7,6 @@ const zaytoonMixImg = '/assets/products-pics/zaytoon-mix-1.jpeg';
 const magdoosImage = '/assets/products-pics/magdoos-1.jpeg';
 const simsimiaImage = '/assets/products-pics/simsimya-2.jpeg';
 
-export const storeInfo: StoreInfo = {
-  shortcode: 'zatar-samar',
-  nameEn: 'Zatar Samar',
-  nameAr: 'زعتر سمر',
-  description: 'مشروع كويتي - زعتر أصلي درجة أولى - دُقة (زعتر أحمر) أجود أنواع الزعتر الفلسطيني',
-  heroImg: ZatarSamarHero,
-  InstagramHandle: 'https://www.instagram.com/zatarsamar/',
-  WhatsAppUri: 'https://wa.me/96565544219'
-}
-
 export const products: Product[] = [
   {
     id: 1,
@@ -25,14 +15,14 @@ export const products: Product[] = [
     price: 2,
     imageSrc: zatarImage,
     imageAlt: 'زعتر فاخر فلسطيني',
-    options: [
+    productOptions: [
       {
         id: 1,
-        description: "الحجم",
-        inputType: CustomizationOptionType.Radio,
-        choices: [
-          { id: 1, text: "علبه ريع كيلو", price: 2 },
-          { id: 2, text: "علبه نص كيلو", price: 4 },
+        optionName: "الحجم",
+        optionType: CustomizationOptionType.Radio,
+        options: [
+          { id: 1, name: "علبه ريع كيلو", priceIncrement: 2 },
+          { id: 2, name: "علبه نص كيلو", priceIncrement: 4 },
         ]
       }
     ]
@@ -44,14 +34,14 @@ export const products: Product[] = [
     price: 1.5,
     imageSrc: zatarImage,
     imageAlt: 'زعتر ممتاز فلسطيني',
-    options: [
+    productOptions: [
       {
         id: 1,
-        description: "الحجم",
-        inputType: CustomizationOptionType.Radio,
-        choices: [
-          { id: 1, text: "علبه ريع كيلو", price: 1.5 },
-          { id: 2, text: "علبه نص كيلو", price: 3 },
+        optionName: "الحجم",
+        optionType: CustomizationOptionType.Radio,
+        options: [
+          { id: 1, name: "علبه ريع كيلو", priceIncrement: 1.5 },
+          { id: 2, name: "علبه نص كيلو", priceIncrement: 3 },
         ]
       }
     ]
@@ -63,14 +53,14 @@ export const products: Product[] = [
     price: 1.5,
     imageSrc: do2aImage,
     imageAlt: 'دقه فلسطينيه زعتر احمر',
-    options: [
+    productOptions: [
       {
         id: 1,
-        description: "الحجم",
-        inputType: CustomizationOptionType.Radio,
-        choices: [
-          { id: 1, text: "علبه ريع كيلو", price: 1.5 },
-          { id: 2, text: "علبه نص كيلو", price: 3 },
+        optionName: "الحجم",
+        optionType: CustomizationOptionType.Radio,
+        options: [
+          { id: 1, name: "علبه ريع كيلو", priceIncrement: 1.5 },
+          { id: 2, name: "علبه نص كيلو", priceIncrement: 3 },
         ]
       }
     ]
@@ -82,7 +72,7 @@ export const products: Product[] = [
     price: 6,
     imageSrc: null,
     imageAlt: 'زيت زيتون فلسطيني عصره اولى',
-    options: []
+    productOptions: []
   },
   {
     id: 5,
@@ -91,7 +81,7 @@ export const products: Product[] = [
     price: 3,
     imageSrc: null,
     imageAlt: 'زيت تركي درجه اولى',
-    options: []
+    productOptions: []
   },
   {
     id: 6,
@@ -100,7 +90,7 @@ export const products: Product[] = [
     price: 2,
     imageSrc: zaytoonMixImg,
     imageAlt: 'زيتون بالخلطه',
-    options: []
+    productOptions: []
   },
   {
     id: 8,
@@ -109,7 +99,7 @@ export const products: Product[] = [
     price: 2.5,
     imageSrc: magdoosImage,
     imageAlt: 'مقدوس حبه صغيره قرشة اقل من نص',
-    options: []
+    productOptions: []
   },
   {
     id: 9,
@@ -118,14 +108,14 @@ export const products: Product[] = [
     price: 1.25,
     imageSrc: null,
     imageAlt: 'سماق ادرني درجه اولى',
-    options: [
+    productOptions: [
       {
         id: 1,
-        description: "الحجم",
-        inputType: CustomizationOptionType.Radio,
-        choices: [
-          { id: 1, text: "علبه ريع كيلو", price: 1.25 },
-          { id: 2, text: "علبه نص كيلو", price: 2.5 },
+        optionName: "الحجم",
+        optionType: CustomizationOptionType.Radio,
+        options: [
+          { id: 1, name: "علبه ريع كيلو", priceIncrement: 1.25 },
+          { id: 2, name: "علبه نص كيلو", priceIncrement: 2.5 },
         ]
       }
     ]
@@ -137,14 +127,14 @@ export const products: Product[] = [
     price: 1.5,
     imageSrc: simsimiaImage,
     imageAlt: 'سمسميه اردنيه مغلفه',
-    options: [
+    productOptions: [
       {
         id: 1,
-        description: "الحجم",
-        inputType: CustomizationOptionType.Radio,
-        choices: [
-          { id: 1, text: "علبه ريع كيلو", price: 1.5 },
-          { id: 2, text: "علبه نص كيلو", price: 3 },
+        optionName: "الحجم",
+        optionType: CustomizationOptionType.Radio,
+        options: [
+          { id: 1, name: "علبه ريع كيلو", priceIncrement: 1.5 },
+          { id: 2, name: "علبه نص كيلو", priceIncrement: 3 },
         ]
       }
     ]
@@ -156,14 +146,14 @@ export const products: Product[] = [
     price: 1.25,
     imageSrc: null,
     imageAlt: 'مرميه',
-    options: [
+    productOptions: [
       {
         id: 1,
-        description: "الحجم",
-        inputType: CustomizationOptionType.Radio,
-        choices: [
-          { id: 1, text: "علبه ريع كيلو", price: 1.25 },
-          { id: 2, text: "علبه نص كيلو", price: 2.5 },
+        optionName: "الحجم",
+        optionType: CustomizationOptionType.Radio,
+        options: [
+          { id: 1, name: "علبه ريع كيلو", priceIncrement: 1.25 },
+          { id: 2, name: "علبه نص كيلو", priceIncrement: 2.5 },
         ]
       }
     ]

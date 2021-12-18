@@ -31,31 +31,31 @@ export const Customizations = ({  order, updateQuantity, updateOption }: { updat
         </select>
 
       </div>
-      {product.options.map(option => (
+      {product.productOptions.map(option => (
         <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline px-1 pb-1" key={option.id}>
           <div>
             <div
               className="text-base font-medium text-gray-900 sm:text-sm sm:text-gray-700"
               id="label-notifications"
             >
-              {option.description}
+              {option.optionName}
             </div>
           </div>
           <div className="sm:col-span-2">
             <div className="max-w-lg">
               <div className="mt-4 space-y-4">
-                {option.choices.map(choice => (
+                {option.options.map(choice => (
                   <div className="flex items-center" key={choice.id}>
                     <input
                       id={choice.id.toString()}
-                      name={option.description}
+                      name={option.optionName}
                       checked={choice.id === order.options[option.id]}
                       onChange={() => {updateOption(option.id, choice.id)}}
                       type="radio"
                       className="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300"
                     />
                     <label htmlFor={choice.id.toString()} className="mx-3 block text-sm  font-normal text-gray-700">
-                      {choice.text} {(new Price(choice.price)).toFormattedString()}
+                      {choice.name} {(new Price(choice.priceIncrement)).toFormattedString()}
                     </label>
                   </div>
                 ))}

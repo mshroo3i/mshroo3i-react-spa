@@ -21,9 +21,9 @@ export function encodeCart(inquery: Inquery): string {
         const options: {text: string, choice: string}[] = []
         for (let key of Object.keys(order.options)) {
             const id = parseInt(key)
-            const option = order.product.options.find(o => o.id === id)
-            const choice = option?.choices.find(c => c.id === order.options[id])
-            options.push({ text: option!.description, choice: choice!.text })
+            const option = order.product.productOptions.find(o => o.id === id)
+            const choice = option?.options.find(c => c.id === order.options[id])
+            options.push({ text: option!.optionName, choice: choice!.name })
         }
         const price = getPriceForSingleOrder(order)
 

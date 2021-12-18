@@ -1,8 +1,14 @@
 export interface Option {
   id: number,
-  description: string,
-  inputType: CustomizationOptionType
-  choices: Array<{ id: number, text: string, price: number }>
+  name: string
+  priceIncrement: number
+}
+
+export interface ProductOption {
+  id: number
+  optionName: string
+  optionType: CustomizationOptionType
+  options: Option[]
 }
 
 export interface Product {
@@ -12,7 +18,7 @@ export interface Product {
   price:  number
   imageSrc: string | null | StaticImageData
   imageAlt: string
-  options: Option[]
+  productOptions: ProductOption[]
 }
 
 export const enum CustomizationOptionType {

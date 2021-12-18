@@ -25,8 +25,8 @@ export default function ZatarSamar() {
       product: products[0],
       quantity: 1,
       productId: products[0].id,
-      options: products[0].options.reduce((acc, o) => {
-        acc = { ...acc, [o.id]: o.choices[0].id }
+      options: products[0].productOptions.reduce((acc, o) => {
+        acc = { ...acc, [o.id]: o.options[0].id }
         return acc
       }, {})
     }
@@ -42,8 +42,8 @@ export default function ZatarSamar() {
         product,
         productId: product.id,
         quantity: 1,
-        options: product.options.reduce((acc, o) => {
-          acc = { ...acc, [o.id]: o.choices[0].id }
+        options: product.productOptions.reduce((acc, o) => {
+          acc = { ...acc, [o.id]: o.options[0].id }
           return acc
         }, {})
       }

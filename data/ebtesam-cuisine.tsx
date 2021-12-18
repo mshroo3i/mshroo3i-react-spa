@@ -20,14 +20,14 @@ export const products: Product[] = [
       price: 26,
       imageSrc: mansaf,
       imageAlt: 'المنسف',
-      options: [
+      productOptions: [
           {
               id: 1,
-              description: "عدد الأشخاص",
-              inputType: CustomizationOptionType.Radio,
-              choices: [
-                  { id: 1, text: "4 أشخاص", price: 26 },
-                  { id: 2, text: "علبه نص كيلو", price: 4 },
+              optionName: "عدد الأشخاص",
+              optionType: CustomizationOptionType.Radio,
+              options: [
+                  { id: 1, name: "4 أشخاص", priceIncrement: 26 },
+                  { id: 2, name: "علبه نص كيلو", priceIncrement: 4 },
               ]
           }
       ]
