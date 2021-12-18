@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Price } from "../../lib/price";
 import { Product } from "../../types";
 
-export const ProductItem = ({ product, onClick, displayPrice: showPrice = false }: { product: Product, onClick: any, displayPrice?: boolean }) => {
+export const ProductItem = ({ product, onClick, displayPrice: showPrice = true }: { product: Product, onClick: any, displayPrice?: boolean }) => {
   let productAndNameColSpan = 'col-span-6'
   if ((product.imageSrc && !showPrice) || (!product.imageSrc && showPrice)) {
     productAndNameColSpan = 'col-span-9'
@@ -11,6 +11,8 @@ export const ProductItem = ({ product, onClick, displayPrice: showPrice = false 
   } else {
     productAndNameColSpan = 'col-span-12'
   }
+
+  const hasVariant = product.productOptions.some(po => po.options.some(o => o.priceIncrement > 0))
 
   return (
       <li key={product.id} className="flex text-sm font-medium text-gray-500 border rounded border-gray-200">
@@ -28,7 +30,7 @@ export const ProductItem = ({ product, onClick, displayPrice: showPrice = false 
             <h3 className="text-gray-900 font-medium">{product.name}</h3>
             <p>{product.description}</p>
           </div>
-          {showPrice && <p className={`font-medium text-gray-900 py-4 text-left col-span-3`}>{Price.toFormattedString(product.price)}</p>}
+          {showPrice && <p className={`font-medium text-gray-900 py-4 text-left col-span-3`}>{`${hasVariant ? '+ ' : ''}${Price.toFormattedString(product.price)}`}</p>}
         </button>
       </li>
   )
