@@ -22,8 +22,8 @@ export interface Product {
 }
 
 export const enum CustomizationOptionType {
-  Radio = "Radio",
-  Checkbox = "Checkbox",
+  SingleSelect = "singleSelect",
+  MultiSelect = "multiSelect",
   Text = "Text"
 }
 
@@ -42,4 +42,5 @@ export interface StoreInfo {
   heroImg: string | StaticImageData
   InstagramHandle: string
   WhatsAppUri: string
+  products: Product[]
 }

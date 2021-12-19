@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Head from 'next/head'
 import { Layout, siteTitle } from "../components/Layout";
-import { products } from '../data/zatar-samar';
 import { GetServerSideProps } from 'next';
 import { Banner } from '../components/store/Banner'
 import { Modal } from '../components/store/Modal'
@@ -18,7 +17,8 @@ const enum ModalView {
   REVIEW_CART = "REVIEW_CART"
 }
 
-export default function Store({products, storeInfo}: { products: Product[], storeInfo: StoreInfo}) {
+export default function Store({storeInfo}: Params) {
+  const { products } = storeInfo;
   const [openModal, setOpenModal] = useState<ModalView | undefined>(undefined)
   const [state, dispatch] = useCartState({
     products, cart: [], currentProductView: {
@@ -137,7 +137,6 @@ export default function Store({products, storeInfo}: { products: Product[], stor
 }
 
 interface Params {
-  products: Product[],
   storeInfo: StoreInfo
 }
 
@@ -152,7 +151,6 @@ export const getServerSideProps: GetServerSideProps<Params> = async (context) =>
 
   return {
     props: {
-      products,
       storeInfo
     }
   }
