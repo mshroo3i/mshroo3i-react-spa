@@ -16,14 +16,14 @@ export function StoreHero({ storeInfo }: { storeInfo: StoreInfo}) {
           </h1>
           <div className="text-xs sm:text-base my-2 lg:my-4 space-x-2 space-x-reverse flex justify-start">
             <a
-              href={storeInfo.InstagramHandle}
+              href={'https://www.instagram.com/' + storeInfo.instagramHandle}
               className="text-customred-400 hover:text-customred-500 group flex items-center py-2 font-medium"
               target="_blank" rel="noopener noreferrer"
             >
               <InstagramColoredIcon className="mr-1 flex-shrink-0 h-6 w-6" aria-hidden="true" />
             </a>
             <a
-              href={storeInfo.WhatsAppUri}
+              href={storeInfo.whatsAppUri}
               className="text-customred-400 hover:text-customred-500 group flex items-center py-2 font-medium"
               target="_blank" rel="noopener noreferrer"
             >

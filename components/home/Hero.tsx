@@ -34,6 +34,8 @@ export function Hero(props: { title: string, subtitle }) {
             >
               <Image
                 src={getImagePathForHero('/assets/hero.png')}
+                objectFit='cover'
+                layout='fill'
                 alt="استقبل طلباتك ببساطة عن طريق وسيلة تواصل اجتماعي كالواتساب."
               />
             </div>

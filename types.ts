@@ -40,7 +40,7 @@ export interface StoreInfo {
   nameEn: string
   description: string
   heroImg: string | StaticImageData
-  InstagramHandle: string
-  WhatsAppUri: string
+  instagramHandle: string
+  whatsAppUri: string
   products: Product[]
 }
