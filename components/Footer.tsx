@@ -40,17 +40,18 @@ export function Footer() {
         <p className="mt-4 text-base text-gray-500">
           تواصل معنا لفتح لمشورعك
         </p>
-        <form className="mt-4 sm:flex">
+        <div className="mt-4 sm:flex">
           <div className="rounded-md sm:mt-0  sm:flex-shrink-0">
-            <Link href={`/sign-up`}>
               <a
+                href="https://kturqc0z67s.typeform.com/to/MZwt9vwe" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full flex items-center justify-center bg-white mt-6 py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:w-auto sm:mt-0"
               >
                 تواصل الآن
               </a>
-            </Link>
           </div>
-        </form>
+        </div>
         <div className="mt-8 border-t border-gray-200 pt-8 md:flex md:items-center md:justify-between">
           <p className="mt-8 text-base text-gray-400 md:mt-0">
             &copy; 2021 مشروعي, Inc. All rights reserved.
