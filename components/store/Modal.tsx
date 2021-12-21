@@ -1,6 +1,7 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment, ReactElement } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
+import { getImagePathForHero } from '../../lib/imagePath'
 
 export function Modal({ open, closeModal, imageSrc, imageAlt, children }: { children: ReactElement, open: boolean, closeModal: any, imageSrc?: string | StaticImageData, imageAlt?: string }) {
 
@@ -37,7 +38,7 @@ export function Modal({ open, closeModal, imageSrc, imageAlt, children }: { chil
               {imageSrc &&
                 <div className="w-full h-52 ml-0 flex-shrink-0 sm:m-0  sm:order-first">
                   <img
-                    src={imageSrc as string}
+                    src={getImagePathForHero(imageSrc as string)}
                     alt={imageAlt}
                     className="w-full h-full object-center object-cover" //
                   />

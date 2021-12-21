@@ -1,7 +1,5 @@
 import Image from 'next/image'
-
-import HeroImage from '../../public/assets/hero.png'
-
+import { getImagePathForHero } from '../../lib/imagePath'
 
 export function Hero(props: { title: string, subtitle }) {
   return (
@@ -35,7 +33,7 @@ export function Hero(props: { title: string, subtitle }) {
               className="relative block w-full bg-white rounded-lg overflow-hidden"
             >
               <Image
-                src={HeroImage}
+                src={getImagePathForHero('/assets/hero.png')}
                 alt="استقبل طلباتك ببساطة عن طريق وسيلة تواصل اجتماعي كالواتساب."
               />
             </div>

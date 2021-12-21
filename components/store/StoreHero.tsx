@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { InstagramColoredIcon } from '../svg/InstagramColor';
 import { WhatsAppColoredIcon } from '../svg/WhatsappColored';
 import { StoreInfo } from '../../types';
+import { getImagePathForHero } from '../../lib/imagePath';
 
 export function StoreHero({ storeInfo }: { storeInfo: StoreInfo}) {
   return (
@@ -40,7 +41,7 @@ export function StoreHero({ storeInfo }: { storeInfo: StoreInfo}) {
               className="w-full h-52 sm:h-64 relative block bg-white rounded-lg overflow-hidden"
             >
               <Image
-                src={storeInfo.heroImg}
+                src={getImagePathForHero(storeInfo.heroImg as string)}
                 objectFit='cover'
                 layout='fill'
                 alt={`${storeInfo.nameAr} - ${storeInfo.description}`}

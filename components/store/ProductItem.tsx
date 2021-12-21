@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { getImagePathForThumbnail } from "../../lib/imagePath";
 import { Price } from "../../lib/price";
 import { Product } from "../../types";
 
@@ -18,7 +19,7 @@ export const ProductItem = ({ product, onClick, displayPrice: showPrice = true }
       <li key={product.id} className="flex text-sm font-medium text-gray-500 border rounded border-gray-200">
         <button onClick={onClick} key={product.id} className="text-right grow grid grid-cols-12 p-2 space-x-3 space-x-reverse">
           {product.imageSrc && <div className="col-span-3"><Image
-            src={product.imageSrc}
+            src={getImagePathForThumbnail(product.imageSrc as string)}
             alt={product.imageAlt}
             objectFit='cover'
             layout="responsive"

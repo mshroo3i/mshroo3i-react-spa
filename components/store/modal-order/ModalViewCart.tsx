@@ -5,6 +5,7 @@ import { getOrderOptions, getPriceForSingleOrder, ProductOrderInCart, selectTota
 import { RadioGroup } from "@headlessui/react";
 import { useState } from "react";
 import { encodeCart } from "../../../lib/cart-encoder";
+import { getImagePathForThumbnail } from "../../../lib/imagePath";
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ')
@@ -264,7 +265,7 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
             {cart.map((order) => (
               <li key={order.id} className="flex py-6 space-x-2 space-x-reverse">
                 {order.product.imageSrc && <img
-                  src={order.product.imageSrc as string}
+                  src={getImagePathForThumbnail(order.product.imageSrc as string) as string}
                   alt={order.product.imageAlt}
                   className="flex-none w-20 h-20 bg-gray-100 rounded-md object-center object-cover"
                 />}
