@@ -36,7 +36,7 @@ export function StoreHero({ storeInfo }: { storeInfo: StoreInfo}) {
           </p>
         </div>
         <div className="relative sm:max-w-lg lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
-          <div className="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
+          <div className="relative mx-auto w-full rounded-lg  shadow-md lg:mb-2 lg:max-w-md">
             <div className="w-full h-52 sm:h-64 relative block bg-white rounded-lg overflow-hidden">
               <Image
                 src={getImagePathForHero(storeInfo.heroImg as string)}
