@@ -135,6 +135,13 @@ interface Params {
 export const getServerSideProps: GetServerSideProps<Params> = async (context) => {
   const shortcode = context.params!.shortcode;
   const res = await fetch(`${process.env.API_BASE}/api/stores/${shortcode}`);
+
+  if (res.status == 404) {
+    return {
+      notFound: true
+    }
+  }
+
   if (!res.ok) {
     throw new Error(`${process.env.API_BASE}/api/stores/${shortcode}: ${res.status} - ${res.statusText}`)
   }
