@@ -27,7 +27,7 @@ export type UserAction =
 export interface State {
     cart: ProductOrderInCart[],
     products: { [key: number]: Product },
-    currentProductView: ProductOrder
+    currentProductView?: ProductOrder
 }
 
 let uniqueId = 0;

@@ -21,15 +21,7 @@ export default function Store({storeInfo}: Params) {
   const { products } = storeInfo;
   const [openModal, setOpenModal] = useState<ModalView | undefined>(undefined)
   const [state, dispatch] = useCartState({
-    products, cart: [], currentProductView: {
-      product: products[0],
-      quantity: 1,
-      productId: products[0].id,
-      productOptions: products[0].productOptions.reduce((acc, o) => {
-        acc = { ...acc, [o.id]: o.options[0].id }
-        return acc
-      }, {})
-    }
+    products, cart: [], currentProductView: null
   });
   const closeModal = () => {
     setOpenModal(undefined);
@@ -128,7 +120,7 @@ export default function Store({storeInfo}: Params) {
         </Banner>
       }
 
-      <Modal open={openModal != null} closeModal={closeModal} imageSrc={openModal === ModalView.PRODUCT_VIEW ? state.currentProductView.product.imageSrc : undefined} imageAlt={state.currentProductView.product.imageAlt} >
+      <Modal open={openModal != null} closeModal={closeModal} imageSrc={openModal === ModalView.PRODUCT_VIEW ? state.currentProductView?.product?.imageSrc : undefined} imageAlt={state.currentProductView?.product?.imageAlt} >
         {modalView ?? <div />}
       </Modal>
 
