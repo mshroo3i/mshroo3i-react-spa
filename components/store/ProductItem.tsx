@@ -13,7 +13,7 @@ export const ProductItem = ({ product, onClick, displayPrice: showPrice = true }
     productAndNameColSpan = 'col-span-12'
   }
 
-  const hasVariant = product.productOptions.some(po => po.options.some(o => o.priceIncrement > 0))
+  const hasVariant = product.productFields.some(po => po.options.some(o => o.priceIncrement > 0))
 
   return (
       <li key={product.id} className="flex text-sm font-medium text-gray-500 border rounded border-gray-200">

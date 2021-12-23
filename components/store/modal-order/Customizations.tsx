@@ -31,7 +31,7 @@ export const Customizations = ({  order, updateQuantity, updateOption }: { updat
         </select>
 
       </div>
-      {product.productOptions.map(option => (
+      {product.productFields.map(option => (
         <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline px-1 pb-1" key={option.id}>
           <div>
             <div

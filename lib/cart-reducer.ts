@@ -59,7 +59,7 @@ export function getOrderOptions(order: ProductOrder): string[] {
     const choices = Object.keys(order.productOptions).reduce((acc: string[], key: string) => {
         const optionId = parseInt(key)
         const choiceId = order.productOptions[optionId];
-        const choiceString = order.product.productOptions.find(o => o.id === optionId)!.options.find(c => c.id === choiceId)!.name;
+        const choiceString = order.product.productFields.find(o => o.id === optionId)!.options.find(c => c.id === choiceId)!.name;
         acc.push(choiceString);
         return acc
     }, [])
@@ -89,7 +89,7 @@ export function getPriceForSingleOrder(order: ProductOrder): Price {
         return new Price(order.product.price * order.quantity)
     }
     for (const optionId of Object.keys(order.productOptions)) {
-        const productOption = order.product.productOptions.find(o => o.id === Number.parseInt(optionId));
+        const productOption = order.product.productFields.find(o => o.id === Number.parseInt(optionId));
         const productChoice = productOption!.options.find(c => c.id === order.productOptions[Number.parseInt(optionId)])
         orderTotal += productChoice!.priceIncrement;
     }

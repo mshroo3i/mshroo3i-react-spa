@@ -4,7 +4,7 @@ export interface Option {
   priceIncrement: number
 }
 
-export interface ProductOption {
+export interface ProductField {
   id: number
   optionName: string
   optionType: CustomizationOptionType
@@ -18,7 +18,7 @@ export interface Product {
   price:  number
   imageSrc: string | null | StaticImageData
   imageAlt: string
-  productOptions: ProductOption[]
+  productFields: ProductField[]
 }
 
 export const enum CustomizationOptionType {

@@ -34,7 +34,7 @@ export default function Store({storeInfo}: Params) {
         product,
         productId: product.id,
         quantity: 1,
-        productOptions: product.productOptions.reduce((acc, o) => {
+        productOptions: product.productFields.reduce((acc, o) => {
           acc = { ...acc, [o.id]: o.options[0].id }
           return acc
         }, {})
