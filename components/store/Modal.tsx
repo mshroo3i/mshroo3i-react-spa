@@ -38,7 +38,7 @@ export function Modal({ open, closeModal, imageSrc, imageAlt, children }: { chil
           >
             <div className=" inline-block w-full align-bottom bg-white rounded-lg pb-4 overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6 sm:pt-0 sm:px-0">
               <div className='flex flex-col items-end px-4 pt-2'>
-                <nav className="mb-2" aria-label="Back">
+                <nav className="my-2" aria-label="Back">
                   <button onClick={() => closeModal()} className="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700">
                     الرجوع
                     <ChevronLeftIcon className="flex-shrink-0 -ml-1 mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
