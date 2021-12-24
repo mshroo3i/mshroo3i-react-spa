@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { getImagePathForHero } from '../../lib/imagePath';
 import { StoreInfo } from "../../types"
 
@@ -36,10 +37,12 @@ export function StoresShowcase() {
                 />
               </div>
               <h3 className="mt-4 text-sm text-gray-700">
-                <a href={`/${store.shortcode}`}>
-                  <span className="absolute inset-0" />
-                  {store.nameAr}
-                </a>
+                <Link href={`/${store.shortcode}`}>
+                  <a>
+                    <span className="absolute inset-0" />
+                    {store.nameAr}
+                  </a>
+                </Link>
               </h3>
               <p className="mt-1 text-sm text-gray-500">{store.description}</p>
             </div>
