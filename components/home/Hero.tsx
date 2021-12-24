@@ -3,7 +3,7 @@ import { getImagePathForHero } from '../../lib/imagePath'
 
 export function Hero(props: { title: string, subtitle }) {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-8 relative overflow-hidden mt-14 sm:mt-24 mx-auto px-4 sm:px-6 lg:mt-28">  
+    <div className="max-w-7xl grid grid-cols-1 lg:grid-cols-12 lg:gap-8 relative overflow-hidden mt-14 sm:mt-24 mx-auto px-4 sm:px-6 lg:mt-28">  
         <div className="mb-6 lg:mb-0 sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-right">
           <h1>
             <span className="mt-1 block text-3xl leading-10 font-extrabold xl:text-4xl">
