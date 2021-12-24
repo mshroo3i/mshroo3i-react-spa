@@ -77,7 +77,7 @@ export function ModalViewCart({ cart, removeFromCart }: { cart: ProductOrderInCa
   });
 
   return (
-    <div className="text-right px-4 pt-4 sm:p-6">
+    <div className="text-right px-4  sm:px-6 sm:pb-6 pt-1">
       <div className="lg:col-start-2">
         <h1 className=" border-b pb-4 text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">السلة</h1>
         <div className="scrollbar-hide max-modal-scrollable-height-88vh overflow-y-auto">

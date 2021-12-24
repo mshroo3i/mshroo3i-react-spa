@@ -2,6 +2,8 @@
 import { Fragment, ReactElement } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { getImagePathForHero } from '../../lib/imagePath'
+import { ChevronLeftIcon } from '@heroicons/react/solid'
+import Image from 'next/image'
 
 export function Modal({ open, closeModal, imageSrc, imageAlt, children }: { children: ReactElement, open: boolean, closeModal: any, imageSrc?: string | StaticImageData, imageAlt?: string }) {
 
@@ -35,26 +37,25 @@ export function Modal({ open, closeModal, imageSrc, imageAlt, children }: { chil
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
             <div className=" inline-block w-full align-bottom bg-white rounded-lg pb-4 overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6 sm:pt-0 sm:px-0">
-              {imageSrc &&
-                <div className="w-full h-52 ml-0 flex-shrink-0 sm:m-0  sm:order-first">
-                  <img
-                    src={getImagePathForHero(imageSrc as string)}
-                    alt={imageAlt}
-                    className="w-full h-full object-center object-cover" //
-                  />
-                </div>}
-              <div className="absolute top-0 left-0 pt-4 pl-4">
-                <button
-                  type="button"
-                  className="py-1 px-2 bg-white font-bold rounded-md text-red-400 hover:text-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-                  onClick={() => closeModal()}
-                >
-                  <span className="sr-only">Close</span>
-                  <span>الرجوع</span>
-                  {/* <XIcon className="h-6 w-6" aria-hidden="true" /> */}
-                </button>
+              <div className='flex flex-col items-end px-4 pt-2'>
+                <nav className="mb-2" aria-label="Back">
+                  <button onClick={() => closeModal()} className="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700">
+                    الرجوع
+                    <ChevronLeftIcon className="flex-shrink-0 -ml-1 mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
+                  </button>
+                </nav>
+                {imageSrc &&
+                  <div className="relative w-full h-52 ml-0 flex-shrink-0 sm:m-0">
+                    <Image
+                      src={getImagePathForHero(imageSrc as string)}
+                      alt={imageAlt}
+                      objectFit='cover'
+                      layout='fill'
+                      className="rounded-md" //
+                    />
+                  </div>}
               </div>
-                {children}
+              {children}
             </div>
           </Transition.Child>
         </div>
