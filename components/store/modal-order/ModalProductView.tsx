@@ -18,9 +18,6 @@ export const ModalProductView = ({  order,children, onAdd }: { children: ReactEl
           <p className="text-sm text-gray-500 mt-1">
             {product.description}
           </p>
-          <p className="text-sm font-medium text-gray-900 mt-1">
-            {price}
-          </p>
           <div className="mt-3 pt-3 border-t max-modal-scrollable-height overflow-y-auto">
             {children}
           </div>
@@ -32,7 +29,7 @@ export const ModalProductView = ({  order,children, onAdd }: { children: ReactEl
           className="w-full inline-flex justify-between rounded-md border border-transparent shadow-sm px-2 py-1 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:text-sm"
           onClick={() => onAdd(order)}//onAddToCart()}
         >
-          <div>{price}</div>
+          <div className=" font-bold"><span className="ml-3">السعر</span>{price}</div>
           <div>أضف للسلة</div>
         </button>
       </div>

@@ -1,16 +1,15 @@
 import React, { useState } from 'react'
 import Head from 'next/head'
 import { Layout, siteTitle } from "../components/Layout";
-import { products, storeInfo } from '../data/zatar-samar';
-import { GetStaticPropsResult } from 'next';
-import { Banner } from '../components/zatar-samar/Banner'
-import { Modal } from '../components/zatar-samar/modal-order/Modal'
-import { ProductItem } from '../components/zatar-samar/ProductItem'
-import { ModalProductView } from '../components/zatar-samar/modal-order/ModalProductView'
-import { Customizations } from '../components/zatar-samar/modal-order/Customizations'
-import { ModalViewCart } from '../components/zatar-samar/modal-order/ModalViewCart'
+import { GetServerSideProps } from 'next';
+import { Banner } from '../components/store/Banner'
+import { Modal } from '../components/store/Modal'
+import { ProductItem } from '../components/store/ProductItem'
+import { ModalProductView } from '../components/store/modal-order/ModalProductView'
+import { Customizations } from '../components/store/modal-order/Customizations'
+import { ModalViewCart } from '../components/store/modal-order/ModalViewCart'
 import { getTotalQuantity, selectTotalPrice, useCartState, UserActionType } from '../lib/cart-reducer'
-import { Product, ProductOrder } from '../types';
+import { Product, ProductOrder, StoreInfo } from '../types';
 import { StoreHero } from '../components/store/StoreHero';
 
 const enum ModalView {
@@ -18,18 +17,11 @@ const enum ModalView {
   REVIEW_CART = "REVIEW_CART"
 }
 
-export default function ZatarSamar() {
+export default function Store({storeInfo}: Params) {
+  const { products } = storeInfo;
   const [openModal, setOpenModal] = useState<ModalView | undefined>(undefined)
   const [state, dispatch] = useCartState({
-    products, cart: [], currentProductView: {
-      product: products[0],
-      quantity: 1,
-      productId: products[0].id,
-      options: products[0].options.reduce((acc, o) => {
-        acc = { ...acc, [o.id]: o.choices[0].id }
-        return acc
-      }, {})
-    }
+    products, cart: [], currentProductView: null
   });
   const closeModal = () => {
     setOpenModal(undefined);
@@ -42,8 +34,8 @@ export default function ZatarSamar() {
         product,
         productId: product.id,
         quantity: 1,
-        options: product.options.reduce((acc, o) => {
-          acc = { ...acc, [o.id]: o.choices[0].id }
+        productOptions: product.productFields.reduce((acc, o) => {
+          acc = { ...acc, [o.id]: o.options[0].id }
           return acc
         }, {})
       }
@@ -81,7 +73,7 @@ export default function ZatarSamar() {
 
   return (<Layout>
     <Head>
-      <title>{`${storeInfo.storeNameEn} - ${siteTitle}`}</title>
+      <title>{`${storeInfo.nameEn} - ${siteTitle}`}</title>
     </Head>
     <div className="bg-white">
       {/* <Header /> */}
@@ -100,13 +92,13 @@ export default function ZatarSamar() {
             </div>
 
             <div className="pt-4">
-              <div className="grid gap-2 mb-8 md:grid-cols-1 lg:grid-cols-2 ltr md:rtl">
+              <ul className="grid gap-2 mb-8 md:grid-cols-1 lg:grid-cols-2 ltr md:rtl">
                 <React.Fragment>
                   {products.map((product) => (
                     <ProductItem product={product} key={product.id} onClick={() => onProductClick(product)} />
                   ))}
                 </React.Fragment>
-              </div>
+              </ul>
             </div>
 
             <div className="mt-8 relative">
@@ -114,7 +106,6 @@ export default function ZatarSamar() {
           </div>
         </section>
       </div>
-      {/* price={selectTotalPrice(state.cart)} quantity={getTotalQuantity(state.cart)} */}
       {state.cart.length > 0
         && <Banner onClickHandler={() => { setOpenModal(ModalView.REVIEW_CART) }}>
           <div className="absolute inset-y-0 left-0 pt-2 ml-2">
@@ -129,7 +120,7 @@ export default function ZatarSamar() {
         </Banner>
       }
 
-      <Modal open={openModal != null} closeModal={closeModal} imageSrc={openModal === ModalView.PRODUCT_VIEW ? state.currentProductView.product.imageSrc : undefined} imageAlt={state.currentProductView.product.imageAlt} >
+      <Modal open={openModal != null} closeModal={closeModal} imageSrc={openModal === ModalView.PRODUCT_VIEW ? state.currentProductView?.product?.imageSrc : undefined} imageAlt={state.currentProductView?.product?.imageAlt} >
         {modalView ?? <div />}
       </Modal>
 
@@ -137,10 +128,29 @@ export default function ZatarSamar() {
   </Layout>)
 }
 
-export function getStaticProps(): GetStaticPropsResult<{ products: Product[] }> {
+interface Params {
+  storeInfo: StoreInfo
+}
+
+export const getServerSideProps: GetServerSideProps<Params> = async (context) => {
+  const shortcode = context.params!.shortcode;
+  const res = await fetch(`${process.env.API_BASE}/api/stores/${shortcode}`);
+
+  if (res.status == 404) {
+    return {
+      notFound: true
+    }
+  }
+
+  if (!res.ok) {
+    throw new Error(`${process.env.API_BASE}/api/stores/${shortcode}: ${res.status} - ${res.statusText}`)
+  }
+
+  const storeInfo = (await res.json()) as StoreInfo;
+
   return {
     props: {
-      products,
-    },
+      storeInfo
+    }
   }
 }

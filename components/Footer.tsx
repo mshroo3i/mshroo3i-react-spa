@@ -29,30 +29,34 @@ const navigation = {
 
 export function Footer() {
   return (
-    <footer className="bg-gray-50 border-t text-right" aria-labelledby="footer-heading">
+    <footer className="bg-gray-50 border-t" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-14 lg:px-8">
         <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
-          هل تريد متجرك الالكتروني بسهولة؟
+          هل تريد توفير وقتك لاستلام الطلبات لمشروعك؟
         </h3>
         <p className="mt-4 text-base text-gray-500">
-          تواصل معنا لفتح متجرك الالكتروني لمشورعك
+          تواصل معنا لفتح لمشورعك
         </p>
-        <form className="mt-4 sm:flex">
+        <div className="mt-4 sm:flex">
           <div className="rounded-md sm:mt-0  sm:flex-shrink-0">
-            <Link href={`/sign-up`}>
               <a
+                href="https://kturqc0z67s.typeform.com/to/MZwt9vwe" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full flex items-center justify-center bg-white mt-6 py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:w-auto sm:mt-0"
               >
                 تواصل الآن
               </a>
-            </Link>
           </div>
-        </form>
+        </div>
         <div className="mt-8 border-t border-gray-200 pt-8 md:flex md:items-center md:justify-between">
-          <div className="flex space-x-6 space-x-reverse md:order-1">
+          <p className="mt-8 text-base text-gray-400 md:mt-0">
+            &copy; 2021 مشروعي, Inc. All rights reserved.
+          </p>
+          <div className="flex space-x-6 space-x-reverse">
             {navigation.social.map((item) => (
               <a key={item.name} href={item.href} className="text-gray-400 hover:text-gray-500">
                 <span className="sr-only">{item.name}</span>
@@ -60,9 +64,6 @@ export function Footer() {
               </a>
             ))}
           </div>
-          <p className="mt-8 text-base text-gray-400 md:mt-0 md:order-2">
-            &copy; 2021 مشروعي, Inc. All rights reserved.
-          </p>
         </div>
       </div>
     </footer>

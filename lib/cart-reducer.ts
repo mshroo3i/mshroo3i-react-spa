@@ -27,7 +27,7 @@ export type UserAction =
 export interface State {
     cart: ProductOrderInCart[],
     products: { [key: number]: Product },
-    currentProductView: ProductOrder
+    currentProductView?: ProductOrder
 }
 
 let uniqueId = 0;
@@ -48,18 +48,18 @@ const reducer = (state: State, action: UserAction): State => {
             return { ...state, currentProductView: { ...currentProductView, quantity: action.quantity}}
         case UserActionType.SET_CURRENT_ORDER_VIEW_OPTION:
             const {optionId, choiceId} = action;
-            const { options } = state.currentProductView;
-            return { ...state, currentProductView: {...state.currentProductView,  options: { ...options, [optionId]: choiceId }}}
+            const { productOptions: options } = state.currentProductView;
+            return { ...state, currentProductView: {...state.currentProductView,  productOptions: { ...options, [optionId]: choiceId }}}
         default:
             throw new Error();
     }
 }
 
 export function getOrderOptions(order: ProductOrder): string[] {
-    const choices = Object.keys(order.options).reduce((acc: string[], key: string) => {
+    const choices = Object.keys(order.productOptions).reduce((acc: string[], key: string) => {
         const optionId = parseInt(key)
-        const choiceId = order.options[optionId];
-        const choiceString = order.product.options.find(o => o.id === optionId)!.choices.find(c => c.id === choiceId)!.text;
+        const choiceId = order.productOptions[optionId];
+        const choiceString = order.product.productFields.find(o => o.id === optionId)!.options.find(c => c.id === choiceId)!.name;
         acc.push(choiceString);
         return acc
     }, [])
@@ -84,14 +84,14 @@ export function getTotalQuantity(cart: ProductOrder[]): number {
 }
 
 export function getPriceForSingleOrder(order: ProductOrder): Price {
-    let orderTotal = 0;
-    if (Object.keys(order.options).length === 0) {
+    let orderTotal = order.product.price;
+    if (Object.keys(order.productOptions).length === 0) {
         return new Price(order.product.price * order.quantity)
     }
-    for (const optionId of Object.keys(order.options)) {
-        const productOption = order.product.options.find(o => o.id === Number.parseInt(optionId));
-        const productChoice = productOption!.choices.find(c => c.id === order.options[Number.parseInt(optionId)])
-        orderTotal += productChoice!.price;
+    for (const optionId of Object.keys(order.productOptions)) {
+        const productOption = order.product.productFields.find(o => o.id === Number.parseInt(optionId));
+        const productChoice = productOption!.options.find(c => c.id === order.productOptions[Number.parseInt(optionId)])
+        orderTotal += productChoice!.priceIncrement;
     }
 
     return new Price(orderTotal * order.quantity);

@@ -8,6 +8,9 @@ const nextConfig = {
     env: {
         ANALYTICS_SCRIPT: prodAnalytics,
     },
+    images: {
+        domains: ['www.mshroo3i.com'],
+    },
 }
 
 module.exports = nextConfig
