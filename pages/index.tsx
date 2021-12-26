@@ -3,6 +3,7 @@ import { Layout } from '../components/Layout';
 import { Hero } from '../components/home/Hero';
 import { Fearures } from '../components/home/Features';
 import { GetStaticPropsResult } from 'next';
+import { StoresShowcase } from '../components/home/StoresShowcase';
 
 export default function Home(props: PageProps) {
   return (
@@ -10,6 +11,7 @@ export default function Home(props: PageProps) {
       <main>
         <Hero title={props.title} subtitle={props.subtitle} />
         {/* <Fearures /> */}
+        <StoresShowcase></StoresShowcase>
         <div className="flex flex-col items-center justify-center  py-2">
           {/* <main className="flex flex-col items-center  w-full flex-1 px-20 text-center">
           <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
