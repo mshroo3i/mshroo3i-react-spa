@@ -12,10 +12,10 @@ interface LinkData {
 }
 
 const navItems: LinkData[] = [
-  // {
-  //   href: '#',
-  //   text: 'Dashboard'
-  // },
+  {
+    href: '/dashboard',
+    text: 'إعدادات'
+  },
   // {
   //   href: '#',
   //   text: 'Team'
