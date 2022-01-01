@@ -26,6 +26,7 @@ export const ProductItem = ({ product, onClick, displayPrice: showPrice = true }
             height={500}
             width={500}
             className="rounded-md"
+            priority
           /></div>}
           <div className={`space-y-2 pt-4 ${productAndNameColSpan}`}>
             <h3 className="text-gray-900 font-medium">{product.name}</h3>
