@@ -125,7 +125,7 @@ export default function Store({storeInfo}: Params) {
         </Banner>
       }
 
-      <Modal open={openModal != null} closeModal={closeModal} imageSrc={openModal === ModalView.PRODUCT_VIEW ? state.currentProductView?.product?.imageSrc : undefined} imageAlt={state.currentProductView?.product?.imageAlt} >
+      <Modal open={openModal != null} closeModal={closeModal} >
         {modalView ?? <div />}
       </Modal>
 

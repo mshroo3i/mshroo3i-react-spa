@@ -2,19 +2,29 @@ import { Dialog } from "@headlessui/react";
 import { ReactElement } from "react";
 import { getPriceForSingleOrder } from "../../../lib/cart-reducer";
 import { ProductOrder } from "../../../types";
+import Image from 'next/image'
+import { getImagePathForHero } from "../../../lib/imagePath";
 
-export const ModalProductView = ({  order,children, onAdd }: { children: ReactElement, order: ProductOrder, onAdd: (order: ProductOrder) => void }) => {
+export const ModalProductView = ({ order, children, onAdd }: { children: ReactElement, order: ProductOrder, onAdd: (order: ProductOrder) => void }) => {
   const product = order.product
   const price = getPriceForSingleOrder(order).toFormattedString();
 
   return (
     <>
       <div className="sm:flex sm:items-start px-4 pt-1 sm:p-6">
-        <div className="w-full mt-3 text-right sm:mt-0">
-          <Dialog.Title as="h3" className="text-lg leading-6 font-medium text-gray-900">
+        <div className="w-full text-right sm:mt-0">
+          <div className="relative w-full h-52 ml-0 flex-shrink-0 sm:m-0">
+            {order.product.imageSrc && <Image
+              src={getImagePathForHero(order.product.imageSrc as string)}
+              alt={order.product.imageAlt}
+              objectFit='cover'
+              layout='fill'
+              className="rounded-md" //
+            />}
+          </div>
+          <Dialog.Title as="h3" className="mt-3 text-lg leading-6 font-medium text-gray-900">
             {product.name}
           </Dialog.Title>
-          {/* <h2>{product.price.toFormattedString()}</h2> */}
           <p className="text-sm text-gray-500 mt-1">
             {product.description}
           </p>

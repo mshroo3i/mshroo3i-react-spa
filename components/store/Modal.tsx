@@ -5,7 +5,7 @@ import { getImagePathForHero } from '../../lib/imagePath'
 import { ChevronLeftIcon } from '@heroicons/react/solid'
 import Image from 'next/image'
 
-export function Modal({ open, closeModal, imageSrc, imageAlt, children }: { children: ReactElement, open: boolean, closeModal: any, imageSrc?: string | StaticImageData, imageAlt?: string }) {
+export function Modal({ open, closeModal, children }: { children: ReactElement, open: boolean, closeModal: any, imageSrc?: string | StaticImageData, imageAlt?: string }) {
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -44,16 +44,6 @@ export function Modal({ open, closeModal, imageSrc, imageAlt, children }: { chil
                     <ChevronLeftIcon className="flex-shrink-0 -ml-1 mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
                   </button>
                 </nav>
-                {imageSrc &&
-                  <div className="relative w-full h-52 ml-0 flex-shrink-0 sm:m-0">
-                    <Image
-                      src={getImagePathForHero(imageSrc as string)}
-                      alt={imageAlt}
-                      objectFit='cover'
-                      layout='fill'
-                      className="rounded-md" //
-                    />
-                  </div>}
               </div>
               {children}
             </div>
