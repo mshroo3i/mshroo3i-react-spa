@@ -17,7 +17,7 @@ code {
 }
 
 .max-modal-scrollable-height {
-  max-height: 50vh;
+  max-height: calc(100vh - 60vh);
 }
 
 .max-modal-scrollable-height-88vh {

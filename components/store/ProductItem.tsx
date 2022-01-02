@@ -3,7 +3,9 @@ import { getImagePathForThumbnail } from "../../lib/imagePath";
 import { Price } from "../../lib/price";
 import { Product } from "../../types";
 
-export const ProductItem = ({ product, onClick, displayPrice: showPrice = true }: { product: Product, onClick: any, displayPrice?: boolean }) => {
+export const ProductItem = ({ product, onClick }: { product: Product, onClick: any, displayPrice?: boolean }) => {
+  const showPrice = product.displayPrice;
+
   let productAndNameColSpan = 'col-span-6'
   if ((product.imageSrc && !showPrice) || (!product.imageSrc && showPrice)) {
     productAndNameColSpan = 'col-span-9'

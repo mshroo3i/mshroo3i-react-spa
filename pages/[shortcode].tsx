@@ -48,6 +48,11 @@ export default function Store({storeInfo}: Params) {
     setOpenModal(undefined);
   }
 
+  // TODO: techdebt. this is important business logix burried in this line
+  // will need do more user research to understand this line
+  // basically some customers don't want to show any prices and want to have customers build their inquiry only
+  const shouldShowPrice = state.cart.some(c => c.product.displayPrice);
+
   const productView = (<ModalProductView order={state.currentProductView} onAdd={() => { onAddToCart(state.currentProductView) }}>
     <Customizations
       order={state.currentProductView}
@@ -108,11 +113,11 @@ export default function Store({storeInfo}: Params) {
       </div>
       {state.cart.length > 0
         && <Banner onClickHandler={() => { setOpenModal(ModalView.REVIEW_CART) }}>
-          <div className="absolute inset-y-0 left-0 pt-2 ml-2">
+          {shouldShowPrice && <div className="absolute inset-y-0 left-0 pt-2 ml-2">
             <span className="text-white" aria-hidden="true">{selectTotalPrice(state.cart).toFormattedString()}</span>
-          </div>
+          </div>}
           <p className="font-medium text-center text-white truncate">
-            راجع السلة
+            راجع طلب الاستفسار
           </p>
           <div className=" border-white border-2 absolute inset-y-0 right-0 my-2 mr-2 rounded-full px-2">
             <span className="text-white" aria-hidden="true">{getTotalQuantity(state.cart).toLocaleString("ar-EG")}</span>

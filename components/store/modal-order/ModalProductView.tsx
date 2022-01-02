@@ -23,14 +23,14 @@ export const ModalProductView = ({  order,children, onAdd }: { children: ReactEl
           </div>
         </div>
       </div>
-      <div className="mx-4 mt-5 sm:mt-1 sm:flex">
+      <div className="pb-10 mx-4 mt-5 sm:mt-1 sm:flex relative">
         <button
           type="button"
-          className="w-full inline-flex justify-between rounded-md border border-transparent shadow-sm px-2 py-1 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:text-sm"
+          className="absolute inset-y-0 left-0 pt-2 ml-2 w-full inline-flex justify-between rounded-md border border-transparent shadow-sm px-2 py-1 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:text-sm"
           onClick={() => onAdd(order)}//onAddToCart()}
         >
           <div className=" font-bold"><span className="ml-3">السعر</span>{price}</div>
-          <div>أضف للسلة</div>
+          <div>أضف لطلب الاستفسار</div>
         </button>
       </div>
     </>

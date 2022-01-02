@@ -19,6 +19,7 @@ export interface Product {
   imageSrc: string | null | StaticImageData
   imageAlt: string
   productFields: ProductField[]
+  displayPrice: boolean
 }
 
 export const enum CustomizationOptionType {
