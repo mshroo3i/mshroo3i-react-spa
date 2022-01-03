@@ -11,7 +11,7 @@ export const ModalProductView = ({ order, children, onAdd }: { children: ReactEl
 
   return (
     <>
-      <div className="sm:flex sm:items-start px-4 pt-1 sm:p-6">
+      <div className="sm:flex sm:items-start px-4 pt-1">
         <div className="w-full text-right sm:mt-0">
           <div className="relative w-full h-52 ml-0 flex-shrink-0 sm:m-0">
             {order.product.imageSrc && <Image
