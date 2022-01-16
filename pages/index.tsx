@@ -1,8 +1,6 @@
-import Head from 'next/head'
 import { Layout } from '../components/Layout';
 import { Hero } from '../components/home/Hero';
-import { Fearures } from '../components/home/Features';
-import { GetStaticPropsResult, NextPage, GetStaticProps  } from 'next';
+import { NextPage, GetStaticProps  } from 'next';
 import { StoresShowcase } from '../components/home/StoresShowcase';
 
 
