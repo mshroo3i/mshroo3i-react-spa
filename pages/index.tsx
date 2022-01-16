@@ -2,10 +2,11 @@ import Head from 'next/head'
 import { Layout } from '../components/Layout';
 import { Hero } from '../components/home/Hero';
 import { Fearures } from '../components/home/Features';
-import { GetStaticPropsResult } from 'next';
+import { GetStaticPropsResult, NextPage, GetStaticProps  } from 'next';
 import { StoresShowcase } from '../components/home/StoresShowcase';
 
-export default function Home(props: PageProps) {
+
+const Page: NextPage<PageProps> = props => {
   return (
     <Layout mainClassName="flex-grow">
       <main>
@@ -62,12 +63,17 @@ export default function Home(props: PageProps) {
   )
 }
 
+export default Page;
+
 interface PageProps {
   title: string
   subtitle: string
 }
 
-export function getStaticProps(): GetStaticPropsResult<PageProps> {
+
+
+export const getStaticProps: GetStaticProps = (context) => {
+  console.log(context.locale)
   return {
     props: {
       title: "وفر وقتك و استقبل الطلبات من زبائنك بالواتساب بسهولة",

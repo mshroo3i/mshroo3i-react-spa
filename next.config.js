@@ -11,6 +11,11 @@ const nextConfig = {
     images: {
         domains: ['www.mshroo3i.com'],
     },
+    i18n: {
+        locales: ['ar', 'en'],
+        defaultLocale: 'en',
+        localeDetection: true,
+    }
 }
 
 module.exports = nextConfig

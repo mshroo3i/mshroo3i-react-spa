@@ -20,6 +20,7 @@ export function Layout({ children, currentPage = '', mainClassName = '' }) {
                 <meta property="og:image" content="/favicon-16x16.png" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <link rel="manifest" href="/manifest.json" />
+                <link rel="alternate" hrefLang="ar" href="https://www.mshroo3i.com/ar" />
             </Head>
             <Navbar></Navbar>
             <main className={className}>{children}</main>
