@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import { Mshroo3iLogoFull } from './svg/Mshroo3iLogoFull';
+import { useUser } from '@auth0/nextjs-auth0';
 
 interface LinkData {
   href: string
@@ -11,10 +12,10 @@ interface LinkData {
 }
 
 const navItems: LinkData[] = [
-  // {
-  //   href: '#',
-  //   text: 'Dashboard'
-  // },
+  {
+    href: '/dashboard',
+    text: 'إعدادات'
+  },
   // {
   //   href: '#',
   //   text: 'Team'
@@ -33,11 +34,11 @@ const navData: { navItems: LinkData[], login: LinkData, logout: LinkData } = {
   navItems,
   login: {
     text: "تسجيل الدخول",
-    href: "#"
+    href: "/api/auth/login"
   },
   logout: {
     text: "تسجيل الخروج",
-    href: "#"
+    href: "/api/auth/logout"
   },
 }
 
@@ -62,6 +63,7 @@ const NavItemMobile = (props: { href: string, children: any }) => {
 }
 
 export function Navbar() {
+  const { user } = useUser();
   return (
     <Disclosure as="nav" className="bg-white shadow z-30">
       {({ open }) => (
@@ -102,7 +104,9 @@ export function Navbar() {
                 </div>
               </div>
               <div className="hidden sm:flex absolute inset-y-0 left-0 items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <NavItem href={navData.login.href}>{navData.login.text}</NavItem>
+                {!user 
+                ? <NavItem href={navData.login.href}>{navData.login.text}</NavItem>
+                : <NavItem href={navData.logout.href}>{navData.logout.text}</NavItem>}
                 {/* <button
                   type="button"
                   className="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
