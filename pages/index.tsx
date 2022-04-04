@@ -1,13 +1,28 @@
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation, Trans } from 'next-i18next';
+import Link from 'next/link';
 import { Layout } from '../components/Layout';
 import { Hero } from '../components/home/Hero';
 import { NextPage, GetStaticProps  } from 'next';
 import { StoresShowcase } from '../components/home/StoresShowcase';
+import { LinkText } from '../components/common/LinkText';
 
 
 const Page: NextPage<PageProps> = props => {
+  const { t } = useTranslation('common');
+
   return (
     <Layout mainClassName="flex-grow">
+      {/* <code>{t('h1')} - {t('change-locale', {h1: "OMG"})}</code> */}
       <main>
+      <Trans 
+        i18nKey="change-locale" 
+        values={{ h1: "OMGG"}} 
+        t={t}
+        components={[
+          <LinkText href="/blah" />
+        ]}
+      />
         <Hero title={props.title} subtitle={props.subtitle} />
         {/* <Fearures /> */}
         <StoresShowcase></StoresShowcase>
@@ -70,10 +85,11 @@ interface PageProps {
 
 
 
-export const getStaticProps: GetStaticProps = (context) => {
+export const getStaticProps: GetStaticProps = async (context) => {
   console.log(context.locale)
   return {
     props: {
+      ...(await serverSideTranslations(context.locale, ['common'])),
       title: "وفر وقتك و استقبل الطلبات من زبائنك بالواتساب بسهولة",
       subtitle: "مشروعي يتيح لزبائنك تحديد طلباتهم و اخذ بياناتهم و نقلها لك عن طريق الواتساب"
     },
