@@ -1,9 +1,8 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment, ReactElement } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { getImagePathForHero } from '../../lib/imagePath'
 import { ChevronLeftIcon } from '@heroicons/react/solid'
-import Image from 'next/image'
+import { StaticImageData } from 'next/image'
 
 export function Modal({ open, closeModal, children }: { children: ReactElement, open: boolean, closeModal: any, imageSrc?: string | StaticImageData, imageAlt?: string }) {
 
