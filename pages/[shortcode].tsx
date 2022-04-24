@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Head from 'next/head'
+import * as cache from 'memory-cache'
 import { Layout, siteTitle } from "../components/Layout";
 import { GetServerSideProps } from 'next';
 import { Banner } from '../components/store/Banner'
@@ -148,10 +149,21 @@ export const getServerSideProps: GetServerSideProps<Params> = async (context) =>
   }
 
   if (!res.ok) {
-    throw new Error(`${process.env.API_BASE}/api/stores/${shortcode}: ${res.status} - ${res.statusText}`)
+    const storeCache = cache.get(shortcode) as StoreInfo | null;
+
+    if (storeCache == null) {
+      throw new Error(`${process.env.API_BASE}/api/stores/${shortcode}: ${res.status} - ${res.statusText}`)
+    }
+
+    return {
+      props: {
+        storeInfo: storeCache
+      }
+    }
   }
 
   const storeInfo = (await res.json()) as StoreInfo;
+  cache.put(shortcode, storeInfo);
 
   return {
     props: {
